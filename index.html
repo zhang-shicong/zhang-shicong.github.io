@@ -112,7 +112,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -130,6 +130,80 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/12/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%EF%BC%882023212%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhang-shicong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zsc的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | zsc的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/02/12/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%EF%BC%882023212%EF%BC%89/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-12 18:39:33" itemprop="dateCreated datePublished" datetime="2023-02-12T18:39:33+08:00">2023-02-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>title: LeetCode每日一题（2023&#x2F;2&#x2F;12）</p>
+<h4 id="1138-字母板上的路径"><a href="#1138-字母板上的路径" class="headerlink" title="1138. 字母板上的路径"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/alphabet-board-path/">1138. 字母板上的路径</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">我们从一块字母板上的位置 (0, 0) 出发，该坐标对应的字符为 board[0][0]。</span><br><span class="line"></span><br><span class="line">在本题里，字母板为board = [&quot;abcde&quot;, &quot;fghij&quot;, &quot;klmno&quot;, &quot;pqrst&quot;, &quot;uvwxy&quot;, &quot;z&quot;]，如下所示。</span><br><span class="line"></span><br><span class="line">我们可以按下面的指令规则行动：</span><br><span class="line"></span><br><span class="line">如果方格存在，&#x27;U&#x27; 意味着将我们的位置上移一行；</span><br><span class="line">如果方格存在，&#x27;D&#x27; 意味着将我们的位置下移一行；</span><br><span class="line">如果方格存在，&#x27;L&#x27; 意味着将我们的位置左移一列；</span><br><span class="line">如果方格存在，&#x27;R&#x27; 意味着将我们的位置右移一列；</span><br><span class="line">&#x27;!&#x27; 会把在我们当前位置 (r, c) 的字符 board[r][c] 添加到答案中。</span><br><span class="line">（注意，字母板上只存在有字母的位置。）</span><br><span class="line"></span><br><span class="line">返回指令序列，用最小的行动次数让答案和目标 target 相同。你可以返回任何达成目标的路径。</span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line">输入：target = &quot;leet&quot;</span><br><span class="line">输出：&quot;DDR!UURRR!!DDD!&quot;</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：target = &quot;code&quot;</span><br><span class="line">输出：&quot;RR!DDRR!UUL!R!&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>解答：只需保证先上再右（从Z出来时），先左再下（往Z移动时）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">alphabetBoardPath</span><span class="params">(String target)</span> &#123;</span><br><span class="line">        StringBuilder sb=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">char</span> cur=<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">char</span> c:target.toCharArray())&#123;</span><br><span class="line">            <span class="comment">// 四个方向 只需保证 &quot;先上再右，先左再下&quot; 即可</span></span><br><span class="line">             <span class="keyword">while</span>(c!=cur)&#123;</span><br><span class="line">                 <span class="type">int</span> rowcur=(cur-<span class="string">&#x27;a&#x27;</span>)/<span class="number">5</span>;</span><br><span class="line">                 <span class="type">int</span> colcur=(cur-<span class="string">&#x27;a&#x27;</span>)%<span class="number">5</span>;</span><br><span class="line">                 <span class="type">int</span> row=(c-<span class="string">&#x27;a&#x27;</span>)/<span class="number">5</span>;</span><br><span class="line">                 <span class="type">int</span> col=(c-<span class="string">&#x27;a&#x27;</span>)%<span class="number">5</span>;</span><br><span class="line">                 <span class="comment">//往上走</span></span><br><span class="line">                 <span class="keyword">if</span>(rowcur&gt;row)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;rowcur-row;i++)sb.append(<span class="string">&#x27;U&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="comment">//先往左</span></span><br><span class="line">                 <span class="keyword">if</span>(col&lt;colcur)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;colcur-col;i++)sb.append(<span class="string">&#x27;L&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="comment">//往下走</span></span><br><span class="line">                 <span class="keyword">if</span>(rowcur&lt;row)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;row-rowcur;i++)sb.append(<span class="string">&#x27;D&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="comment">//往右走</span></span><br><span class="line">                 <span class="keyword">if</span>(col&gt;colcur)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;col-colcur;i++)sb.append(<span class="string">&#x27;R&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 cur=c;</span><br><span class="line">            &#125;</span><br><span class="line">             <span class="keyword">if</span>(c==cur)sb.append(<span class="string">&#x27;!&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
