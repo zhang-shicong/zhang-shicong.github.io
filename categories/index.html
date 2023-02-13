@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="LeetCode每日一题（2023/2/12）, zsc&#39;s Blog">
-    <meta name="description" content="1138. 字母板上的路径12345678910111213141516171819202122我们从一块字母板上的位置 (0, 0) 出发，该坐标对应的字符为 board[0][0]。在本题里，字母板为board = [&amp;quot;abc">
+    <meta name="keywords" content="分类, zsc&#39;s Blog">
+    <meta name="description" content="zsc&#39;s Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>LeetCode每日一题（2023/2/12） | zsc&#39;s Blog</title>
+    <title>分类 | zsc&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -334,12 +334,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">LeetCode每日一题（2023/2/12）</h1>
+                    <h1 class="description center-align post-title">分类</h1>
                 </div>
             </div>
         </div>
@@ -375,7 +375,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-12
+                    2019-04-24
                 </div>
                 
 
@@ -401,11 +401,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1138-字母板上的路径"><a href="#1138-字母板上的路径" class="headerlink" title="1138. 字母板上的路径"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/alphabet-board-path/">1138. 字母板上的路径</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">我们从一块字母板上的位置 (0, 0) 出发，该坐标对应的字符为 board[0][0]。</span><br><span class="line"></span><br><span class="line">在本题里，字母板为board = [<span class="string">&quot;abcde&quot;</span>, <span class="string">&quot;fghij&quot;</span>, <span class="string">&quot;klmno&quot;</span>, <span class="string">&quot;pqrst&quot;</span>, <span class="string">&quot;uvwxy&quot;</span>, <span class="string">&quot;z&quot;</span>]，如下所示。</span><br><span class="line"></span><br><span class="line">我们可以按下面的指令规则行动：</span><br><span class="line"></span><br><span class="line">如果方格存在，<span class="string">&#x27;U&#x27;</span> 意味着将我们的位置上移一行；</span><br><span class="line">如果方格存在，<span class="string">&#x27;D&#x27;</span> 意味着将我们的位置下移一行；</span><br><span class="line">如果方格存在，<span class="string">&#x27;L&#x27;</span> 意味着将我们的位置左移一列；</span><br><span class="line">如果方格存在，<span class="string">&#x27;R&#x27;</span> 意味着将我们的位置右移一列；</span><br><span class="line"><span class="string">&#x27;!&#x27;</span> 会把在我们当前位置 (r, c) 的字符 board[r][c] 添加到答案中。</span><br><span class="line">（注意，字母板上只存在有字母的位置。）</span><br><span class="line"></span><br><span class="line">返回指令序列，用最小的行动次数让答案和目标 target 相同。你可以返回任何达成目标的路径。</span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line">输入：target = <span class="string">&quot;leet&quot;</span></span><br><span class="line">输出：<span class="string">&quot;DDR!UURRR!!DDD!&quot;</span></span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：target = <span class="string">&quot;code&quot;</span></span><br><span class="line">输出：<span class="string">&quot;RR!DDRR!UUL!R!&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>解答：只需保证先上再右（从Z出来时），先左再下（往Z移动时）。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">alphabetBoardPath</span><span class="params">(String target)</span> &#123;</span><br><span class="line">        StringBuilder sb=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">char</span> cur=<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">char</span> c:target.toCharArray())&#123;</span><br><span class="line">            <span class="comment">// 四个方向 只需保证 &quot;先上再右，先左再下&quot; 即可</span></span><br><span class="line">             <span class="keyword">while</span>(c!=cur)&#123;</span><br><span class="line">                 <span class="type">int</span> rowcur=(cur-<span class="string">&#x27;a&#x27;</span>)/<span class="number">5</span>;</span><br><span class="line">                 <span class="type">int</span> colcur=(cur-<span class="string">&#x27;a&#x27;</span>)%<span class="number">5</span>;</span><br><span class="line">                 <span class="type">int</span> row=(c-<span class="string">&#x27;a&#x27;</span>)/<span class="number">5</span>;</span><br><span class="line">                 <span class="type">int</span> col=(c-<span class="string">&#x27;a&#x27;</span>)%<span class="number">5</span>;</span><br><span class="line">                 <span class="comment">//往上走</span></span><br><span class="line">                 <span class="keyword">if</span>(rowcur&gt;row)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;rowcur-row;i++)sb.append(<span class="string">&#x27;U&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="comment">//先往左</span></span><br><span class="line">                 <span class="keyword">if</span>(col&lt;colcur)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;colcur-col;i++)sb.append(<span class="string">&#x27;L&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="comment">//往下走</span></span><br><span class="line">                 <span class="keyword">if</span>(rowcur&lt;row)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;row-rowcur;i++)sb.append(<span class="string">&#x27;D&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="comment">//往右走</span></span><br><span class="line">                 <span class="keyword">if</span>(col&gt;colcur)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;col-colcur;i++)sb.append(<span class="string">&#x27;R&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 cur=c;</span><br><span class="line">            &#125;</span><br><span class="line">             <span class="keyword">if</span>(c==cur)sb.append(<span class="string">&#x27;!&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+                
                 
             </div>
             <hr/>
@@ -431,7 +427,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/02/12/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.12)/">http://example.com/2023/02/12/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.12)/</a>
+                    <a href="http://example.com/categories/index.html">http://example.com/categories/index.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -544,7 +540,7 @@
         repo: 'zhang-shicong.github.io',
         owner: 'zhang-shicong',
         admin: ["zhang-shicong"],
-        id: '2023-02-12T19-18-48',
+        id: '2019-04-24T15-30-30',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -572,66 +568,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/02/12/1.synchronized%E5%92%8CLock%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/">
+                <a href="/categories/index.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="java八股文">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="分类">
                         
-                        <span class="card-title">java八股文</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-12
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/java%E5%85%AB%E8%82%A1%E6%96%87/" class="post-category">
-                                    java八股文
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E9%9D%A2%E8%AF%95-java-%E5%85%AB%E8%82%A1%E6%96%87/">
-                        <span class="chip bg-color">面试 java 八股文</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/02/11/LeetCode/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="LeetCode 332周赛">
-                        
-                        <span class="card-title">LeetCode 332周赛</span>
+                        <span class="card-title">分类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -642,7 +590,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-24
                             </span>
                         <span class="publish-author">
                             
@@ -652,6 +600,45 @@
                         </span>
                     </div>
                 </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/categories/index.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="分类">
+                        
+                        <span class="card-title">分类</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zhang-shicong
+                            
+                        </span>
+                    </div>
+                </div>
+
                 
             </div>
         </div>
