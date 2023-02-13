@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: java八股文, zsc&#39;s Blog">
+    <meta name="keywords" content="contact, zsc&#39;s Blog">
     <meta name="description" content="zsc&#39;s Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>分类: java八股文 | zsc&#39;s Blog</title>
+    <title>contact | zsc&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -330,7 +330,13 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/barrager.css">
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.barrager.js"></script>
+
+<div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
@@ -378,101 +384,80 @@
     </div>
 </div>
 
+<style>
+    #send{
+        margin-bottom: 10px;
+        width: 49%;
+        background-color: #0ba360;
+    }
+    #clear{
+        margin-bottom: 10px;
+        width: 49%;
+        background-color: #e7c65c;
+    }
+    p{
+        text-align: center;
+    }
+</style>
 <main class="content">
-
-    
-
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分类
-            </div>
-            <div class="tag-chips">
-                
-                
-                
-                <a href="/categories/java%E5%85%AB%E8%82%A1%E6%96%87/" title="java八股文: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #F9EBEA;">java八股文
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">算法
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
+    <div id="contact" class="container chip-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="tag-title center-align">
+                    <i class="fas fa-comments"></i>&nbsp;&nbsp;留言板
+                </div>
                 
             </div>
+            <!--valine评论弹幕-->
+            
         </div>
+
+        <!--其他评论card-->
+        <div class="card">
+            
+                <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
     </div>
+    <div id="gitalk-container" class="card-content"></div>
 </div>
 
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '152e842ab86e3328707b',
+        clientSecret: 'e6cda2d1e410de01a2988e1b7f92e4dd20c123c4',
+        repo: 'zhang-shicong.github.io',
+        owner: 'zhang-shicong',
+        admin: ["zhang-shicong"],
+        id: '2023-02-13T22-23-50',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
 
-    
+    gitalk.render('gitalk-container');
+</script>
 
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/02/12/1.synchronized%E5%92%8CLock%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="java八股文">
-                            
-                            <span class="card-title">java八股文</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1.synchronized和Lock有什么区别
-  1.lock是一个接口，synchronized是java关键字。 2.lock不会主动释放，需要手动释放锁。synchronized自动释放锁 3.lock可以通过tryLock()查
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-12
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/java%E5%85%AB%E8%82%A1%E6%96%87/" class="post-category">
-                                    java八股文
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E9%9D%A2%E8%AF%95-java-%E5%85%AB%E8%82%A1%E6%96%87/">
-                            <span class="chip bg-color">面试 java 八股文</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
             
+
+            
+
+            
+
+            
+
+            
+
+            
+
         </div>
-    </article>
+    </div>
 </main>
-
-
 
 
     <footer class="page-footer bg-color">
