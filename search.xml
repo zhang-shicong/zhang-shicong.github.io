@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2023/02/13/hexo-theme-matery%E4%B8%BB%E9%A2%98%E4%BD%BF%E7%94%A8/"/>
+      <url>/2023/02/13/hexo-theme-matery%E4%B8%BB%E9%A2%98%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<hr><h2 id="title：hexo-theme-matery主题使用"><a href="#title：hexo-theme-matery主题使用" class="headerlink" title="title：hexo-theme-matery主题使用"></a>title：hexo-theme-matery主题使用</h2><h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>简单漂亮，文章内容美观易读<br>Material Design 设计<br>响应式设计，博客在桌面端、平板、手机等设备上均能很好的展现<br>首页轮播文章及每天动态切换 Banner 图片<br>瀑布流式的博客文章列表（文章无特色图片时会有 24 张漂亮的图片代替）<br>时间轴式的归档页<br>词云的标签页和雷达图的分类页<br>丰富的关于我页面（包括关于我、文章统计图、我的项目、我的技能、相册等）<br>可自定义的数据的友情链接页面<br>支持文章置顶和文章打赏<br>支持 MathJax<br>TOC 目录<br>可设置复制文章内容时追加版权信息<br>可设置阅读文章时做密码验证<br>Gitalk、Gitment、Valine 和 Disqus 评论模块（推荐使用 Gitalk）<br>集成了不蒜子统计、谷歌分析（Google Analytics）和文章字数统计等功能<br>支持在首页的音乐播放和视频播放功能<br>支持emoji表情，用markdown emoji语法书写直接生成对应的能跳跃的表情。<br>支持 DaoVoice、Tidio 在线聊天功能。</p><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h3><p>修改 Hexo 根目录下的 _config.yml 的 theme 的值：theme: hexo-theme-matery</p><p>_config.yml 文件的其它修改建议:<br>请修改 _config.yml 的 url 的值为你的网站主 URL（如：<a href="http://xxx.github.io)./">http://xxx.github.io）。</a><br>建议修改两个 per_page 的分页条数值为 6 的倍数，如：12、18 等，这样文章列表在各个屏幕下都能较好的显示。<br>如果你是中文用户，则建议修改 language 的值为 zh-CN。</p><h3 id="新建分类-categories-页"><a href="#新建分类-categories-页" class="headerlink" title="新建分类 categories 页"></a>新建分类 categories 页</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">categories 页是用来展示所有分类的页面，如果在你的博客 source 目录下还没有 categories/index.md 文件，那么你就需要新建一个，命令如下</span><br><span class="line"></span><br><span class="line">hexo new page &quot;categories&quot;</span><br><span class="line"></span><br><span class="line">编辑你刚刚新建的页面文件 /source/categories/index.md，至少需要以下内容：</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2018-09-30 17:25:30</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">layout: &quot;categories&quot;</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="新建标签-tags-页"><a href="#新建标签-tags-页" class="headerlink" title="新建标签 tags 页"></a>新建标签 tags 页</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">tags 页是用来展示所有标签的页面，如果在你的博客 source 目录下还没有 tags/index.md 文件，那么你就需要新建一个，命令如下：</span><br><span class="line"></span><br><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line"></span><br><span class="line">编辑你刚刚新建的页面文件 /source/tags/index.md，至少需要以下内容：</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2018-09-30 18:23:38</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">layout: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure><h3 id="新建关于我-about-页"><a href="#新建关于我-about-页" class="headerlink" title="新建关于我 about 页"></a>新建关于我 about 页</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">about 页是用来展示关于我和我的博客信息的页面，如果在你的博客 source 目录下还没有 about/index.md 文件，那么你就需要新建一个，命令如下：</span><br><span class="line"></span><br><span class="line">hexo new page &quot;about&quot;</span><br><span class="line"></span><br><span class="line">编辑你刚刚新建的页面文件 /source/about/index.md，至少需要以下内容：</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">title: about</span><br><span class="line">date: 2018-09-30 17:25:30</span><br><span class="line">type: &quot;about&quot;</span><br><span class="line">layout: &quot;about&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2023/02/13/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E7%9A%84format%E6%A0%BC%E5%BC%8F/"/>
+      <url>/2023/02/13/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E7%9A%84format%E6%A0%BC%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<hr><h2 id="title：博客"><a href="#title：博客" class="headerlink" title="title：博客"></a>title：博客</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">title: 标题</span><br><span class="line">date: 2020-02-29 16:00:00</span><br><span class="line">summary: # 文章摘要</span><br><span class="line">toc: true</span><br><span class="line">mathjax: true</span><br><span class="line">top: true</span><br><span class="line">cover: true</span><br><span class="line">abbrlink: 213245 # 自己可随意设置</span><br><span class="line">img: &#x27;https://img-blog.csdnimg.cn/20200309120551356.png&#x27; # 设置文章背景图，设置为外链图片，访问快</span><br><span class="line">tags:</span><br><span class="line">  - 算法</span><br><span class="line">  - 计算机知识</span><br><span class="line">categories:</span><br><span class="line">  - 算法</span><br><span class="line">author: # 设置文章作者</span><br><span class="line">password: # 设置密码（yml中开启相应功能）</span><br><span class="line">coverImg: # 轮播图片</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo博客添加站内搜索功能</title>
       <link href="/2023/02/13/Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/"/>
       <url>/2023/02/13/Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</url>
@@ -156,33 +182,6 @@
         <tags>
             
             <tag> 算法 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>标题</title>
-      <link href="/2020/02/29/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E7%9A%84format%E6%A0%BC%E5%BC%8F/"/>
-      <url>/2020/02/29/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%BC%80%E5%A4%B4%E7%9A%84format%E6%A0%BC%E5%BC%8F/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 计算机知识 </tag>
             
         </tags>
       
