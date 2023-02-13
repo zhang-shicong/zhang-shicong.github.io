@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2023/02/13/Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/"/>
+      <url>/2023/02/13/Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/</url>
+      
+        <content type="html"><![CDATA[<p>title: Hexo博客添加站内搜索功能</p><h1 id="在cmd中安装插件"><a href="#在cmd中安装插件" class="headerlink" title="在cmd中安装插件"></a>在cmd中安装插件</h1><p>首先通过以下<a href="https://so.csdn.net/so/search?q=npm%E5%91%BD%E4%BB%A4&spm=1001.2101.3001.7020">npm命令</a>安装一个<strong>hexo-generator-search</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure><h1 id="更改主题配置文件"><a href="#更改主题配置文件" class="headerlink" title="更改主题配置文件"></a>更改主题配置文件</h1><p>找到主题文件夹下的\themes\next_config.yml文件，并添加以下代码：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: -1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br><span class="line">  # Preload the search data when the page loads.</span><br><span class="line">  preload: false</span><br></pre></td></tr></table></figure><h1 id="然后重新运行Hexo博客即可"><a href="#然后重新运行Hexo博客即可" class="headerlink" title="然后重新运行Hexo博客即可"></a>然后重新运行Hexo博客即可</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo的Matery主题添加评论功能</title>
       <link href="/2023/02/13/Hexo%E7%9A%84Matery%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/"/>
       <url>/2023/02/13/Hexo%E7%9A%84Matery%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/</url>
