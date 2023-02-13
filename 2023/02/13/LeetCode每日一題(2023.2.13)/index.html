@@ -520,6 +520,33 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '152e842ab86e3328707b',
+        clientSecret: 'e6cda2d1e410de01a2988e1b7f92e4dd20c123c4',
+        repo: 'https://github.com/zhang-shicong/zhang-shicong.github.io.git',
+        owner: 'zhang-shicong',
+        admin: "zhang-shicong",
+        id: '2023-02-13T12-45-28',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
 
     
 
@@ -540,18 +567,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/02/13/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.13)/">
+                <a href="/2023/02/13/Hexo%E7%9A%84Matery%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="LeetCode每日一题（2023/2/13）">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Hexo的Matery主题添加评论功能">
                         
-                        <span class="card-title">LeetCode每日一题（2023/2/13）</span>
+                        <span class="card-title">Hexo的Matery主题添加评论功能</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -561,9 +587,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -572,7 +598,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
