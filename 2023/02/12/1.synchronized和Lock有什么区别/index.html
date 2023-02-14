@@ -364,8 +364,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%9D%A2%E8%AF%95-java-%E5%85%AB%E8%82%A1%E6%96%87/">
-                                <span class="chip bg-color">面试 java 八股文</span>
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
+                            </a>
+                        
+                            <a href="/tags/java%E5%85%AB%E8%82%A1%E6%96%87/">
+                                <span class="chip bg-color">java八股文</span>
                             </a>
                         
                     </div>
@@ -684,12 +688,47 @@
 <p>3.优先级 aof&gt;rdb</p>
 <p>76.请你讲讲单例模式、请你手写一下单例模式</p>
 <p>懒汉式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton3</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton3</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;private Singleton3()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton3</span> <span class="variable">INSTANCE</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Singleton3.class</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton3 <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (INSTANCE == <span class="literal">null</span>) &#123;</span><br><span class="line">        INSTANCE = <span class="keyword">new</span> <span class="title class_">Singleton3</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> INSTANCE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">otherMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;otherMethod()&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">public class Singleton3 implements Serializable &#123;
+    private Singleton3() &#123;
+        System.out.println(&quot;private Singleton3()&quot;);
+    &#125;
+private static Singleton3 INSTANCE = null;
 
+// Singleton3.class
+public static synchronized Singleton3 getInstance() &#123;
+    if (INSTANCE == null) &#123;
+        INSTANCE = new Singleton3();
+    &#125;
+    return INSTANCE;
+&#125;
+
+public static void otherMethod() &#123;
+    System.out.println(&quot;otherMethod()&quot;);
+&#125;
+&#125;
+</code></pre>
 <p><strong>饿汉式</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton1</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton1</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (INSTANCE != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;单例对象不能重复创建&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;private Singleton1()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Singleton1</span> <span class="variable">INSTANCE</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton1</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Singleton1 <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> INSTANCE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">otherMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;otherMethod()&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">readResolve</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> INSTANCE;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">public class Singleton1 implements Serializable &#123;
+    private Singleton1() &#123;
+        if (INSTANCE != null) &#123;
+            throw new RuntimeException(&quot;单例对象不能重复创建&quot;);
+        &#125;
+        System.out.println(&quot;private Singleton1()&quot;);
+    &#125;
+private static final Singleton1 INSTANCE = new Singleton1();
 
+public static Singleton1 getInstance() &#123;
+    return INSTANCE;
+&#125;
 
+public static void otherMethod() &#123;
+    System.out.println(&quot;otherMethod()&quot;);
+&#125;
+
+public Object readResolve() &#123;
+    return INSTANCE;
+&#125;&#125;
+</code></pre>
 <p>77.请你说说虚拟内存和物理内存的区别</p>
 <p>物理内存：计算机中真实拥有的内存。物理内存是有限的，容易产生内存不足问题。</p>
 <p>虚拟内存是一种抽象的逻辑概念，拥有连续的内存地址。</p>
@@ -898,8 +937,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%9D%A2%E8%AF%95-java-%E5%85%AB%E8%82%A1%E6%96%87/">
-                                    <span class="chip bg-color">面试 java 八股文</span>
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
+                                </a>
+                            
+                                <a href="/tags/java%E5%85%AB%E8%82%A1%E6%96%87/">
+                                    <span class="chip bg-color">java八股文</span>
                                 </a>
                             
                         </div>
