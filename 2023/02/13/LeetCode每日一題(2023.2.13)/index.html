@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="LeetCode每日一题（2023/2/13）, zsc&#39;s Blog">
-    <meta name="description" content="1234. 替换子串得到平衡字符串1234567891011121314151617181920212223242526有一个只含有 &amp;#x27;Q&amp;#x27;, &amp;#x27;W&amp;#x27;, &amp;#x27;E&amp;#x27;, &amp;#x27;R&amp;">
+    <meta name="description" content="1234. 替换子串得到平衡字符串有一个只含有 &amp;#39;Q&amp;#39;, &amp;#39;W&amp;#39;, &amp;#39;E&amp;#39;, &amp;#39;R&amp;#39; 四种字符，且长度为 n 的字符串。
+假如在该字符串中，这四个字符都恰好出现 n/4 次，那">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,10 +415,72 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1234-替换子串得到平衡字符串"><a href="#1234-替换子串得到平衡字符串" class="headerlink" title="1234. 替换子串得到平衡字符串"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/replace-the-substring-for-balanced-string/">1234. 替换子串得到平衡字符串</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">有一个只含有 <span class="string">&#x27;Q&#x27;</span>, <span class="string">&#x27;W&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;R&#x27;</span> 四种字符，且长度为 n 的字符串。</span><br><span class="line">假如在该字符串中，这四个字符都恰好出现 n/4 次，那么它就是一个「平衡字符串」。</span><br><span class="line">给你一个这样的字符串 s，请通过「替换一个子串」的方式，使原字符串 s 变成一个「平衡字符串」。</span><br><span class="line">你可以用和「待替换子串」长度相同的 任何 其他字符串来完成替换。</span><br><span class="line">请返回待替换子串的最小可能长度。</span><br><span class="line">如果原字符串自身就是一个平衡字符串，则返回 0。</span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line">输入：s = <span class="string">&quot;QWER&quot;</span></span><br><span class="line">输出：0</span><br><span class="line">解释：s 已经是平衡的了。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：s = <span class="string">&quot;QQWE&quot;</span></span><br><span class="line">输出：1</span><br><span class="line">解释：我们需要把一个 <span class="string">&#x27;Q&#x27;</span> 替换成 <span class="string">&#x27;R&#x27;</span>，这样得到的 <span class="string">&quot;RQWE&quot;</span> (或 <span class="string">&quot;QRWE&quot;</span>) 是平衡的。</span><br><span class="line"></span><br><span class="line">示例 3：</span><br><span class="line">输入：s = <span class="string">&quot;QQQW&quot;</span></span><br><span class="line">输出：2</span><br><span class="line">解释：我们可以把前面的 <span class="string">&quot;QQ&quot;</span> 替换成 <span class="string">&quot;ER&quot;</span>。 </span><br><span class="line"></span><br><span class="line">示例 4：</span><br><span class="line">输入：s = <span class="string">&quot;QQQQ&quot;</span></span><br><span class="line">输出：3</span><br><span class="line">解释：我们可以替换后 3 个 <span class="string">&#x27;Q&#x27;</span>，使 s = <span class="string">&quot;QWER&quot;</span></span><br></pre></td></tr></table></figure>
+                <h4 id="1234-替换子串得到平衡字符串"><a href="#1234-替换子串得到平衡字符串" class="headerlink" title="1234. 替换子串得到平衡字符串"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/replace-the-substring-for-balanced-string/">1234. 替换子串得到平衡字符串</a></h4><pre><code>有一个只含有 &#39;Q&#39;, &#39;W&#39;, &#39;E&#39;, &#39;R&#39; 四种字符，且长度为 n 的字符串。
+假如在该字符串中，这四个字符都恰好出现 n/4 次，那么它就是一个「平衡字符串」。
+给你一个这样的字符串 s，请通过「替换一个子串」的方式，使原字符串 s 变成一个「平衡字符串」。
+你可以用和「待替换子串」长度相同的 任何 其他字符串来完成替换。
+请返回待替换子串的最小可能长度。
+如果原字符串自身就是一个平衡字符串，则返回 0。
 
+示例 1：
+输入：s = &quot;QWER&quot;
+输出：0
+解释：s 已经是平衡的了。
+
+示例 2：
+输入：s = &quot;QQWE&quot;
+输出：1
+解释：我们需要把一个 &#39;Q&#39; 替换成 &#39;R&#39;，这样得到的 &quot;RQWE&quot; (或 &quot;QRWE&quot;) 是平衡的。
+
+示例 3：
+输入：s = &quot;QQQW&quot;
+输出：2
+解释：我们可以把前面的 &quot;QQ&quot; 替换成 &quot;ER&quot;。 
+
+示例 4：
+输入：s = &quot;QQQQ&quot;
+输出：3
+解释：我们可以替换后 3 个 &#39;Q&#39;，使 s = &quot;QWER&quot;
+</code></pre>
 <p>解答：双指针+滑动窗口</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">balancedString</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> n=s.length();</span><br><span class="line">        <span class="type">int</span> res=n;</span><br><span class="line">        <span class="type">int</span>[] tol=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">4</span>];</span><br><span class="line">        <span class="comment">//统计每个字符出现的次数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">char</span> c:s.toCharArray())tol[get(c)]++;</span><br><span class="line">        <span class="comment">//本身就符合条件直接返回0</span></span><br><span class="line">        <span class="keyword">if</span>(tol[<span class="number">0</span>]==n/<span class="number">4</span>&amp;&amp;tol[<span class="number">1</span>]==n/<span class="number">4</span>&amp;&amp;tol[<span class="number">2</span>]==n/<span class="number">4</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//统计l-r区间每个字符出现的次数</span></span><br><span class="line">        <span class="type">int</span>[] sum=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">4</span>];</span><br><span class="line">        <span class="comment">//l左指针，r右指针</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> r=<span class="number">0</span>,l=<span class="number">0</span>;r&lt;n;r++)&#123;</span><br><span class="line">            sum[get(s.charAt(r))]++;</span><br><span class="line">            <span class="keyword">while</span>(l&lt;=r&amp;&amp;check(tol,sum,n/<span class="number">4</span>))&#123;</span><br><span class="line">                res=Math.min(r-l+<span class="number">1</span>,res);</span><br><span class="line">                <span class="comment">//缩短区间</span></span><br><span class="line">                sum[get(s.charAt(l++))]--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">get</span><span class="params">(<span class="type">char</span> c)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(c==<span class="string">&#x27;Q&#x27;</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(c==<span class="string">&#x27;W&#x27;</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(c==<span class="string">&#x27;E&#x27;</span>)<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//通过check找最短待替换字串</span></span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">check</span><span class="params">(<span class="type">int</span>[] tol,<span class="type">int</span>[] sum,<span class="type">int</span> target)</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">            <span class="comment">//如果本身都大于n/4，不符合条件直接返回false</span></span><br><span class="line">            <span class="keyword">if</span>(tol[i]-sum[i]&gt;target)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>class Solution &#123;
+    public int balancedString(String s) &#123;
+        int n=s.length();
+        int res=n;
+        int[] tol=new int[4];
+        //统计每个字符出现的次数
+        for(char c:s.toCharArray())tol[get(c)]++;
+        //本身就符合条件直接返回0
+        if(tol[0]==n/4&amp;&amp;tol[1]==n/4&amp;&amp;tol[2]==n/4)return 0;
+        //统计l-r区间每个字符出现的次数
+        int[] sum=new int[4];
+        //l左指针，r右指针
+        for(int r=0,l=0;r&lt;n;r++)&#123;
+            sum[get(s.charAt(r))]++;
+            while(l&lt;=r&amp;&amp;check(tol,sum,n/4))&#123;
+                res=Math.min(r-l+1,res);
+                //缩短区间
+                sum[get(s.charAt(l++))]--;
+            &#125;
+        &#125;
+        return res;
+    &#125;
+    int get(char c)&#123;
+        if(c==&#39;Q&#39;)return 0;
+        if(c==&#39;W&#39;)return 1;
+        if(c==&#39;E&#39;)return 2;
+        return 3;
+    &#125;
+    //通过check找最短待替换字串
+    boolean check(int[] tol,int[] sum,int target)&#123;
+        for(int i=0;i&lt;4;i++)&#123;
+            //如果本身都大于n/4，不符合条件直接返回false
+            if(tol[i]-sum[i]&gt;target)return false;
+        &#125;
+        return true;
+    &#125;
+&#125;
+</code></pre>
 
                 
             </div>
