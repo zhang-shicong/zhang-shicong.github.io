@@ -126,7 +126,7 @@ code {
     top: 13px !important;
     font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
     font-size: 0.91rem;
-    color: #e96900;
+    color: #050200;
     background-color: #f8f8f8;
     border-radius: 2px;
 }
@@ -181,8 +181,8 @@ code {
 
 pre code {
     padding: 0;
-    color: #e8eaf6;
-    background-color: #272822;
+    color: #00020a;
+    background-color: #fdfdfb;
 }
 
 pre[class*="language-"] {
@@ -203,7 +203,7 @@ pre[class*="language-"] {
 .line-numbers {
     padding: 1.5rem 1.5rem 1.5rem 3.2rem !important;
     margin: 1rem 0 !important;
-    background: #272822;
+    background: #fbfcf9;
     overflow: auto;
     border-radius: 0.35rem;
     tab-size: 4;
