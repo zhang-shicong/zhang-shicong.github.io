@@ -425,203 +425,203 @@ highlight:
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="代码块优化"><a href="#代码块优化" class="headerlink" title="代码块优化"></a>代码块优化</h3><h4 id="1-安装代码块插件"><a href="#1-安装代码块插件" class="headerlink" title="1. 安装代码块插件"></a>1. 安装代码块插件</h4><pre><code class="bash">npm i -S hexo-prism-plugin
-</code></pre>
+                <h3 id="代码块优化"><a href="#代码块优化" class="headerlink" title="代码块优化"></a>代码块优化</h3><h4 id="1-安装代码块插件"><a href="#1-安装代码块插件" class="headerlink" title="1. 安装代码块插件"></a>1. 安装代码块插件</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">npm i <span class="token operator">-</span><span class="token class-name">S</span> hexo<span class="token operator">-</span>prism<span class="token operator">-</span>plugin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h4 id="2-Hexo根目录配置"><a href="#2-Hexo根目录配置" class="headerlink" title="2. Hexo根目录配置"></a>2. Hexo根目录配置</h4><p>打开Hexo根目录的配置文件<code>_config.yml</code>，修改并添加如下代码</p>
-<pre><code class="bash">highlight:
-  enable: false # 关闭原有的高亮代码
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">highlight:
+  enable: <span class="token boolean">false</span> <span class="token comment"># 关闭原有的高亮代码</span>
 
-# 添加prism_plugin配置项
+<span class="token comment"># 添加prism_plugin配置项</span>
 prism_plugin:
-  mode: &#39;preprocess&#39;    # realtime/preprocess
-  theme: &#39;tomorrow&#39;
-  line_number: true    # default false
-  custom_css: 
-</code></pre>
+  mode: <span class="token string">'preprocess'</span>    <span class="token comment"># realtime/preprocess</span>
+  theme: <span class="token string">'tomorrow'</span>
+  line_number: <span class="token boolean">true</span>    <span class="token comment"># default false</span>
+  custom_css: <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="3-Matery主题根目录"><a href="#3-Matery主题根目录" class="headerlink" title="3. Matery主题根目录"></a>3. Matery主题根目录</h4><p>打开Matery主题的配置文件<code>themes\matery\_config.yml</code>，添加如下代码</p>
-<pre><code class="bash">code:
-  lang: true # 代码块是否显示名称
-  copy: true # 代码块是否可复制
-  shrink: true # 代码块是否可以收缩
-  break: false # 代码是否折行
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">code<span class="token operator">:</span>
+  lang<span class="token operator">:</span> <span class="token boolean">true</span> # 代码块是否显示名称
+  copy<span class="token operator">:</span> <span class="token boolean">true</span> # 代码块是否可复制
+  shrink<span class="token operator">:</span> <span class="token boolean">true</span> # 代码块是否可以收缩
+  <span class="token keyword">break</span><span class="token operator">:</span> <span class="token boolean">false</span> # 代码是否折行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="4-代码块CSS优化"><a href="#4-代码块CSS优化" class="headerlink" title="4. 代码块CSS优化"></a>4. 代码块CSS优化</h4><p>打开<code>themes\source\css\matery.css</code>，大概在100到200行左右,修改代码块CSS样式如下</p>
-<pre><code class="css">pre &#123;
-    padding: 1.5rem 1.5rem 1.5rem 3.3rem !important;
-    margin: 1rem 0 !important;
-    background: #272822;
-    overflow: auto;
-    border-radius: 0.35rem;
-    tab-size: 4;
-&#125;
-.code-area::after &#123;
-    content: &quot; &quot;;
-    position: absolute;
-    border-radius: 50%;
-    background: #ff5f56;
-    width: 12px;
-    height: 12px;
-    top: 0;
-    left: 12px;
-    margin-top: 12px;
-    -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-    box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-&#125;
-code &#123;
-    padding: 1px 5px;
-    top: 13px !important;
-    font-family: Inconsolata, Monaco, Consolas, &#39;Courier New&#39;, Courier, monospace;
-    font-size: 0.91rem;
-    color: #e96900;
-    background-color: #f8f8f8;
-    border-radius: 2px;
-&#125;
-.code_copy &#123;
-    position: absolute;
-    top: 0.7rem;
-    right: 25px;
-    z-index: 1;
-    filter: invert(50%);
-    cursor: pointer;
-&#125;
-.codecopy_notice &#123;
-    position: absolute;
-    top: 0.7rem;
-    right: 6px;
-    z-index: 1;
-    filter: invert(50%);
-    opacity: 0;
-&#125;
-.code_lang &#123;
-    position: absolute;
-    top: 1.2rem;
-    right: 46px;
-    line-height: 0;
-    font-weight: bold;
-    font-family: normal;
-    z-index: 1;
-    filter: invert(50%);
-    cursor: pointer;
-&#125;
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">pre</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1.5rem 1.5rem 1.5rem 3.3rem <span class="token important">!important</span><span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 1rem 0 <span class="token important">!important</span><span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #272822<span class="token punctuation">;</span>
+    <span class="token property">overflow</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 0.35rem<span class="token punctuation">;</span>
+    <span class="token property">tab-size</span><span class="token punctuation">:</span> 4<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">.code-area::after</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #ff5f56<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+    <span class="token property">margin-top</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+    <span class="token property">-webkit-box-shadow</span><span class="token punctuation">:</span> 20px 0 #ffbd2e<span class="token punctuation">,</span> 40px 0 #27c93f<span class="token punctuation">;</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 20px 0 #ffbd2e<span class="token punctuation">,</span> 40px 0 #27c93f<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">code</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1px 5px<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 13px <span class="token important">!important</span><span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> Inconsolata<span class="token punctuation">,</span> Monaco<span class="token punctuation">,</span> Consolas<span class="token punctuation">,</span> <span class="token string">'Courier New'</span><span class="token punctuation">,</span> Courier<span class="token punctuation">,</span> monospace<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 0.91rem<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #e96900<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #f8f8f8<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">.code_copy</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0.7rem<span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> 25px<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">invert</span><span class="token punctuation">(</span>50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">.codecopy_notice</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0.7rem<span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> 6px<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">invert</span><span class="token punctuation">(</span>50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">.code_lang</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 1.2rem<span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> 46px<span class="token punctuation">;</span>
+    <span class="token property">line-height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">invert</span><span class="token punctuation">(</span>50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-.code-expand &#123;
-    position: absolute;
-    top: 4px;
-    right: 0px;
-    filter: invert(50%);
-    padding: 7px;
-    z-index: 999 !important;
-    cursor: pointer;
-    transition: all .3s;
-    transform: rotate(0deg);
-&#125;
+<span class="token selector">.code-expand</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+    <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">invert</span><span class="token punctuation">(</span>50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 7px<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 999 <span class="token important">!important</span><span class="token punctuation">;</span>
+    <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> all .3s<span class="token punctuation">;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>0deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-.code-closed .code-expand &#123;
-    transform: rotate(-180deg) !important;
-    transition: all .3s;
-&#125;
+<span class="token selector">.code-closed .code-expand</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>-180deg<span class="token punctuation">)</span> <span class="token important">!important</span><span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> all .3s<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-.code-closed pre::before &#123;
-    height: 0px;
-&#125;
+<span class="token selector">.code-closed pre::before</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-pre code &#123;
-    padding: 0;
-    color: #e8eaf6;
-    background-color: #272822;
-&#125;
+<span class="token selector">pre code</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #e8eaf6<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #272822<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-pre[class*=&quot;language-&quot;] &#123;
-    padding: 1.2em;
-    margin: .5em 0;
-&#125;
+<span class="token selector">pre[class*="language-"]</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1.2em<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> .5em 0<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-code[class*=&quot;language-&quot;],
-pre[class*=&quot;language-&quot;] &#123;
-    color: #e8eaf6;
-    white-space: pre-wrap !important;
-&#125;
+<span class="token selector">code[class*="language-"],
+pre[class*="language-"]</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #e8eaf6<span class="token punctuation">;</span>
+    <span class="token property">white-space</span><span class="token punctuation">:</span> pre-wrap <span class="token important">!important</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-.line-numbers-rows &#123;
-    border-right-width: 0px !important;
-&#125;
+<span class="token selector">.line-numbers-rows</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">border-right-width</span><span class="token punctuation">:</span> 0px <span class="token important">!important</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-.line-numbers &#123;
-    padding: 1.5rem 1.5rem 1.5rem 3.2rem !important;
-    margin: 1rem 0 !important;
-    background: #272822;
-    overflow: auto;
-    border-radius: 0.35rem;
-    tab-size: 4;
-&#125;
-</code></pre>
+<span class="token selector">.line-numbers</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1.5rem 1.5rem 1.5rem 3.2rem <span class="token important">!important</span><span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 1rem 0 <span class="token important">!important</span><span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #272822<span class="token punctuation">;</span>
+    <span class="token property">overflow</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 0.35rem<span class="token punctuation">;</span>
+    <span class="token property">tab-size</span><span class="token punctuation">:</span> 4<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="5-文章代码块添加"><a href="#5-文章代码块添加" class="headerlink" title="5. 文章代码块添加"></a>5. 文章代码块添加</h4><p>打开<code>themes\matery\layout\_partial\post-detail.ejs</code>，添加如下代码</p>
-<pre><code class="html">&lt;!-- 代码块功能依赖 --&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%- url_for(&#39;/libs/codeBlock/codeBlockFunction.js&#39;) %&gt;&quot;&gt;&lt;/script&gt;
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- 代码块功能依赖 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;%- url_for('/libs/codeBlock/codeBlockFunction.js') %><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 
-&lt;!-- 代码语言 --&gt;
-&lt;% if (theme.code.lang) &#123; %&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%- url_for(&#39;/libs/codeBlock/codeLang.js&#39;) %&gt;&quot;&gt;&lt;/script&gt;
-&lt;% &#125; %&gt;
+<span class="token comment">&lt;!-- 代码语言 --></span>
+&lt;% if (theme.code.lang) &#123; %>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;%- url_for('/libs/codeBlock/codeLang.js') %><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+&lt;% &#125; %>
 
-&lt;!-- 代码块复制 --&gt;
-&lt;% if (theme.code.copy) &#123; %&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%- url_for(&#39;/libs/codeBlock/codeCopy.js&#39;) %&gt;&quot;&gt;&lt;/script&gt;
-&lt;% &#125; %&gt;
+<span class="token comment">&lt;!-- 代码块复制 --></span>
+&lt;% if (theme.code.copy) &#123; %>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;%- url_for('/libs/codeBlock/codeCopy.js') %><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+&lt;% &#125; %>
 
-&lt;!-- 代码块收缩 --&gt;
-&lt;% if (theme.code.shrink) &#123; %&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%- url_for(&#39;/libs/codeBlock/codeShrink.js&#39;) %&gt;&quot;&gt;&lt;/script&gt;
-&lt;% &#125; %&gt;
+<span class="token comment">&lt;!-- 代码块收缩 --></span>
+&lt;% if (theme.code.shrink) &#123; %>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;%- url_for('/libs/codeBlock/codeShrink.js') %><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+&lt;% &#125; %>
 
-&lt;!-- 代码块折行 --&gt;
-&lt;% if (!theme.code.break) &#123; %&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-code[class*=&quot;language-&quot;], pre[class*=&quot;language-&quot;] &#123; white-space: pre !important; &#125;
-&lt;/style&gt;
-&lt;% &#125; %&gt;
-</code></pre>
+<span class="token comment">&lt;!-- 代码块折行 --></span>
+&lt;% if (!theme.code.break) &#123; %>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+<span class="token selector">code[class*="language-"], pre[class*="language-"]</span> <span class="token punctuation">&#123;</span> <span class="token property">white-space</span><span class="token punctuation">:</span> pre <span class="token important">!important</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+&lt;% &#125; %><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="6-代码块JS添加"><a href="#6-代码块JS添加" class="headerlink" title="6. 代码块JS添加"></a>6. 代码块JS添加</h4><p>打开目录<code>themes\matery\source\libs</code>，新建一个名字为<code>codeBlock</code>的目录，然后打开该目录。</p>
 <p>在<code>themes\matery\source\libs\codeBlock</code>目录下新建<code>codeBlockFunction.js</code>文件，并添加如下代码</p>
-<pre><code class="html">// 代码块功能依赖
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">// 代码块功能依赖
 $(function () &#123;
-    $(&#39;pre&#39;).wrap(&#39;&lt;div class=&quot;code-area&quot; style=&quot;position: relative&quot;&gt;&lt;/div&gt;&#39;);
-&#125;);
-</code></pre>
+    $('pre').wrap('<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>code-area<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">position</span><span class="token punctuation">:</span> relative</span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>');
+&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>在<code>themes\matery\source\libs\codeBlock</code>目录下新建<code>codeCopy.js</code>文件，并添加如下代码</p>
-<pre><code class="html">// 代码块一键复制
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">// 代码块一键复制
 $(function () &#123;
-    var $copyIcon = $(&#39;&lt;i class=&quot;fa fa-files-o code_copy&quot; title=&quot;复制代码&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&#39;)
-    var $notice = $(&#39;&lt;div class=&quot;codecopy_notice&quot;&gt;&lt;/div&gt;&#39;)
-    $(&#39;.code-area&#39;).prepend($copyIcon)
-    $(&#39;.code-area&#39;).prepend($notice)
+    var $copyIcon = $('<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fa fa-files-o code_copy<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>复制代码<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span>')
+    var $notice = $('<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>codecopy_notice<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>')
+    $('.code-area').prepend($copyIcon)
+    $('.code-area').prepend($notice)
     // “复制成功”字出现
     function copy(text, ctx) &#123;
-        if (document.queryCommandSupported &amp;&amp; document.queryCommandSupported(&#39;copy&#39;)) &#123;
+        if (document.queryCommandSupported &amp;&amp; document.queryCommandSupported('copy')) &#123;
             try &#123;
-                document.execCommand(&#39;copy&#39;) // Security exception may be thrown by some browsers.
-                $(ctx).prev(&#39;.codecopy_notice&#39;)
-                    .text(&quot;复制成功&quot;)
+                document.execCommand('copy') // Security exception may be thrown by some browsers.
+                $(ctx).prev('.codecopy_notice')
+                    .text("复制成功")
                     .animate(&#123;
                         opacity: 1,
                         top: 30
                     &#125;, 450, function () &#123;
                         setTimeout(function () &#123;
-                            $(ctx).prev(&#39;.codecopy_notice&#39;).animate(&#123;
+                            $(ctx).prev('.codecopy_notice').animate(&#123;
                                 opacity: 0,
                                 top: 0
                             &#125;, 650)
                         &#125;, 400)
                     &#125;)
             &#125; catch (ex) &#123;
-                $(ctx).prev(&#39;.codecopy_notice&#39;)
-                    .text(&quot;复制失败&quot;)
+                $(ctx).prev('.codecopy_notice')
+                    .text("复制失败")
                     .animate(&#123;
                         opacity: 1,
                         top: 30
                     &#125;, 650, function () &#123;
                         setTimeout(function () &#123;
-                            $(ctx).prev(&#39;.codecopy_notice&#39;).animate(&#123;
+                            $(ctx).prev('.codecopy_notice').animate(&#123;
                                 opacity: 0,
                                 top: 0
                             &#125;, 650)
@@ -630,68 +630,68 @@ $(function () &#123;
                 return false
             &#125;
         &#125; else &#123;
-            $(ctx).prev(&#39;.codecopy_notice&#39;).text(&quot;浏览器不支持复制&quot;)
+            $(ctx).prev('.codecopy_notice').text("浏览器不支持复制")
         &#125;
     &#125;
     // 复制
-    $(&#39;.code-area .fa-files-o&#39;).on(&#39;click&#39;, function () &#123;
+    $('.code-area .fa-files-o').on('click', function () &#123;
         var selection = window.getSelection()
         var range = document.createRange()
-        range.selectNodeContents($(this).siblings(&#39;pre&#39;).find(&#39;code&#39;)[0])
+        range.selectNodeContents($(this).siblings('pre').find('code')[0])
         selection.removeAllRanges()
         selection.addRange(range)
         var text = selection.toString()
         copy(text, this)
         selection.removeAllRanges()
     &#125;)
-&#125;);
-</code></pre>
-<p>在<code>themes\matery\source\libs\codeBlock</code>目录下新建<code>codeLang.js</code>文件，并添加如下代码</p>
-<pre><code class="html">// 代码块语言识别
-$(function () &#123;
-  var $highlight_lang = $(&#39;&lt;div class=&quot;code_lang&quot; title=&quot;代码语言&quot;&gt;&lt;/div&gt;&#39;);
+&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  $(&#39;pre&#39;).before($highlight_lang);
-  $(&#39;pre&#39;).each(function () &#123;
-    var code_language = $(this).attr(&#39;class&#39;);
+<p>在<code>themes\matery\source\libs\codeBlock</code>目录下新建<code>codeLang.js</code>文件，并添加如下代码</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">// 代码块语言识别
+$(function () &#123;
+  var $highlight_lang = $('<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>code_lang<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>代码语言<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>');
+
+  $('pre').before($highlight_lang);
+  $('pre').each(function () &#123;
+    var code_language = $(this).attr('class');
 
     if (!code_language) &#123;
       return true;
     &#125;;
-    var lang_name = code_language.replace(&quot;line-numbers&quot;, &quot;&quot;).trim().replace(&quot;language-&quot;, &quot;&quot;).trim();
+    var lang_name = code_language.replace("line-numbers", "").trim().replace("language-", "").trim();
 
     // 首字母大写
     // lang_name = lang_name.slice(0, 1).toUpperCase() + lang_name.slice(1);
     
-    $(this).siblings(&quot;.code_lang&quot;).text(lang_name);
+    $(this).siblings(".code_lang").text(lang_name);
   &#125;);
-&#125;);
-</code></pre>
-<p>在<code>themes\matery\source\libs\codeBlock</code>目录下新建<code>codeShrink.js</code>文件，并添加如下代码</p>
-<pre><code class="html">// 代码块收缩
-$(function () &#123;
-  var $code_expand = $(&#39;&lt;i class=&quot;fa fa-angle-down code-expand&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&#39;);
+&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  $(&#39;.code-area&#39;).prepend($code_expand);
-  $(&#39;.code-expand&#39;).on(&#39;click&#39;, function () &#123;
-    if ($(this).parent().hasClass(&#39;code-closed&#39;)) &#123;
-      $(this).siblings(&#39;pre&#39;).find(&#39;code&#39;).show();
-      $(this).parent().removeClass(&#39;code-closed&#39;);
+<p>在<code>themes\matery\source\libs\codeBlock</code>目录下新建<code>codeShrink.js</code>文件，并添加如下代码</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">// 代码块收缩
+$(function () &#123;
+  var $code_expand = $('<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fa fa-angle-down code-expand<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span>');
+
+  $('.code-area').prepend($code_expand);
+  $('.code-expand').on('click', function () &#123;
+    if ($(this).parent().hasClass('code-closed')) &#123;
+      $(this).siblings('pre').find('code').show();
+      $(this).parent().removeClass('code-closed');
     &#125; else &#123;
-      $(this).siblings(&#39;pre&#39;).find(&#39;code&#39;).hide();
-      $(this).parent().addClass(&#39;code-closed&#39;);
+      $(this).siblings('pre').find('code').hide();
+      $(this).parent().addClass('code-closed');
     &#125;
   &#125;);
-&#125;);
-</code></pre>
+&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="7-解决代码块复制内容不换行问题"><a href="#7-解决代码块复制内容不换行问题" class="headerlink" title="7. 解决代码块复制内容不换行问题"></a>7. 解决代码块复制内容不换行问题</h4><blockquote>
 <p>Matery主题在开启复制版权且添加了版权信息后，会导致复制的所有内容换行失效，以下将解决这个问题。</p>
 </blockquote>
 <p>在<code>themes\matery\layout\_partial\post-detail.ejs</code>文件中，大约在222行左右找到 <code>selection.getRangeAt(0).commonAncestorContainer.nodeName</code>，将原先<code>if</code>条件中的的<code>PRE</code>修改为<code>CODE</code>即可。</p>
-<pre><code class="none">if (selection.getRangeAt(0).commonAncestorContainer.nodeName === &#39;CODE&#39;) &#123;
-    newdiv.innerHTML = &quot;&lt;pre&gt;&quot; + newdiv.innerHTML + &quot;&lt;/pre&gt;&quot;;
-&#125;
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">if (selection.getRangeAt(0).commonAncestorContainer.nodeName &#x3D;&#x3D;&#x3D; &#39;CODE&#39;) &#123;
+    newdiv.innerHTML &#x3D; &quot;&lt;pre&gt;&quot; + newdiv.innerHTML + &quot;&lt;&#x2F;pre&gt;&quot;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>至此，代码块的优化已经全部完成。</p>
 
                 

@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="LeetCode每日一题（2023/2/12）, zsc&#39;s Blog">
-    <meta name="description" content="1138. 字母板上的路径12345678910111213141516171819202122我们从一块字母板上的位置 (0, 0) 出发，该坐标对应的字符为 board[0][0]。在本题里，字母板为board = [&amp;quot;abc">
+    <meta name="description" content="1138. 字母板上的路径我们从一块字母板上的位置 (0, 0) 出发，该坐标对应的字符为 board[0][0]。
+
+在本题里，字母板为board &amp;#x3D; [&amp;quot;abcde&amp;quot;, &amp;quot;fghij&amp;quot;,">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -404,10 +406,64 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1138-字母板上的路径"><a href="#1138-字母板上的路径" class="headerlink" title="1138. 字母板上的路径"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/alphabet-board-path/">1138. 字母板上的路径</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">我们从一块字母板上的位置 (0, 0) 出发，该坐标对应的字符为 board[0][0]。</span><br><span class="line"></span><br><span class="line">在本题里，字母板为board = [<span class="string">&quot;abcde&quot;</span>, <span class="string">&quot;fghij&quot;</span>, <span class="string">&quot;klmno&quot;</span>, <span class="string">&quot;pqrst&quot;</span>, <span class="string">&quot;uvwxy&quot;</span>, <span class="string">&quot;z&quot;</span>]，如下所示。</span><br><span class="line"></span><br><span class="line">我们可以按下面的指令规则行动：</span><br><span class="line"></span><br><span class="line">如果方格存在，<span class="string">&#x27;U&#x27;</span> 意味着将我们的位置上移一行；</span><br><span class="line">如果方格存在，<span class="string">&#x27;D&#x27;</span> 意味着将我们的位置下移一行；</span><br><span class="line">如果方格存在，<span class="string">&#x27;L&#x27;</span> 意味着将我们的位置左移一列；</span><br><span class="line">如果方格存在，<span class="string">&#x27;R&#x27;</span> 意味着将我们的位置右移一列；</span><br><span class="line"><span class="string">&#x27;!&#x27;</span> 会把在我们当前位置 (r, c) 的字符 board[r][c] 添加到答案中。</span><br><span class="line">（注意，字母板上只存在有字母的位置。）</span><br><span class="line"></span><br><span class="line">返回指令序列，用最小的行动次数让答案和目标 target 相同。你可以返回任何达成目标的路径。</span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line">输入：target = <span class="string">&quot;leet&quot;</span></span><br><span class="line">输出：<span class="string">&quot;DDR!UURRR!!DDD!&quot;</span></span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：target = <span class="string">&quot;code&quot;</span></span><br><span class="line">输出：<span class="string">&quot;RR!DDRR!UUL!R!&quot;</span></span><br></pre></td></tr></table></figure>
+                <h4 id="1138-字母板上的路径"><a href="#1138-字母板上的路径" class="headerlink" title="1138. 字母板上的路径"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/alphabet-board-path/">1138. 字母板上的路径</a></h4><pre class="line-numbers language-none"><code class="language-none">我们从一块字母板上的位置 (0, 0) 出发，该坐标对应的字符为 board[0][0]。
+
+在本题里，字母板为board &#x3D; [&quot;abcde&quot;, &quot;fghij&quot;, &quot;klmno&quot;, &quot;pqrst&quot;, &quot;uvwxy&quot;, &quot;z&quot;]，如下所示。
+
+我们可以按下面的指令规则行动：
+
+如果方格存在，&#39;U&#39; 意味着将我们的位置上移一行；
+如果方格存在，&#39;D&#39; 意味着将我们的位置下移一行；
+如果方格存在，&#39;L&#39; 意味着将我们的位置左移一列；
+如果方格存在，&#39;R&#39; 意味着将我们的位置右移一列；
+&#39;!&#39; 会把在我们当前位置 (r, c) 的字符 board[r][c] 添加到答案中。
+（注意，字母板上只存在有字母的位置。）
+
+返回指令序列，用最小的行动次数让答案和目标 target 相同。你可以返回任何达成目标的路径。
+
+示例 1：
+输入：target &#x3D; &quot;leet&quot;
+输出：&quot;DDR!UURRR!!DDD!&quot;
+
+示例 2：
+输入：target &#x3D; &quot;code&quot;
+输出：&quot;RR!DDRR!UUL!R!&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>解答：只需保证先上再右（从Z出来时），先左再下（往Z移动时）。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">alphabetBoardPath</span><span class="params">(String target)</span> &#123;</span><br><span class="line">        StringBuilder sb=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">char</span> cur=<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">char</span> c:target.toCharArray())&#123;</span><br><span class="line">            <span class="comment">// 四个方向 只需保证 &quot;先上再右，先左再下&quot; 即可</span></span><br><span class="line">             <span class="keyword">while</span>(c!=cur)&#123;</span><br><span class="line">                 <span class="type">int</span> rowcur=(cur-<span class="string">&#x27;a&#x27;</span>)/<span class="number">5</span>;</span><br><span class="line">                 <span class="type">int</span> colcur=(cur-<span class="string">&#x27;a&#x27;</span>)%<span class="number">5</span>;</span><br><span class="line">                 <span class="type">int</span> row=(c-<span class="string">&#x27;a&#x27;</span>)/<span class="number">5</span>;</span><br><span class="line">                 <span class="type">int</span> col=(c-<span class="string">&#x27;a&#x27;</span>)%<span class="number">5</span>;</span><br><span class="line">                 <span class="comment">//往上走</span></span><br><span class="line">                 <span class="keyword">if</span>(rowcur&gt;row)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;rowcur-row;i++)sb.append(<span class="string">&#x27;U&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="comment">//先往左</span></span><br><span class="line">                 <span class="keyword">if</span>(col&lt;colcur)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;colcur-col;i++)sb.append(<span class="string">&#x27;L&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="comment">//往下走</span></span><br><span class="line">                 <span class="keyword">if</span>(rowcur&lt;row)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;row-rowcur;i++)sb.append(<span class="string">&#x27;D&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="comment">//往右走</span></span><br><span class="line">                 <span class="keyword">if</span>(col&gt;colcur)&#123;</span><br><span class="line">                     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;col-colcur;i++)sb.append(<span class="string">&#x27;R&#x27;</span>);</span><br><span class="line">                 &#125;</span><br><span class="line">                 cur=c;</span><br><span class="line">            &#125;</span><br><span class="line">             <span class="keyword">if</span>(c==cur)sb.append(<span class="string">&#x27;!&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">alphabetBoardPath</span><span class="token punctuation">(</span><span class="token class-name">String</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">StringBuilder</span> sb<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">char</span> cur<span class="token operator">=</span><span class="token char">'a'</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token operator">:</span>target<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token comment">// 四个方向 只需保证 "先上再右，先左再下" 即可</span>
+             <span class="token keyword">while</span><span class="token punctuation">(</span>c<span class="token operator">!=</span>cur<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                 <span class="token keyword">int</span> rowcur<span class="token operator">=</span><span class="token punctuation">(</span>cur<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">5</span><span class="token punctuation">;</span>
+                 <span class="token keyword">int</span> colcur<span class="token operator">=</span><span class="token punctuation">(</span>cur<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">5</span><span class="token punctuation">;</span>
+                 <span class="token keyword">int</span> row<span class="token operator">=</span><span class="token punctuation">(</span>c<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">5</span><span class="token punctuation">;</span>
+                 <span class="token keyword">int</span> col<span class="token operator">=</span><span class="token punctuation">(</span>c<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">5</span><span class="token punctuation">;</span>
+                 <span class="token comment">//往上走</span>
+                 <span class="token keyword">if</span><span class="token punctuation">(</span>rowcur<span class="token operator">></span>row<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>rowcur<span class="token operator">-</span>row<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token char">'U'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                 <span class="token punctuation">&#125;</span>
+                 <span class="token comment">//先往左</span>
+                 <span class="token keyword">if</span><span class="token punctuation">(</span>col<span class="token operator">&lt;</span>colcur<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>colcur<span class="token operator">-</span>col<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token char">'L'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                 <span class="token punctuation">&#125;</span>
+                 <span class="token comment">//往下走</span>
+                 <span class="token keyword">if</span><span class="token punctuation">(</span>rowcur<span class="token operator">&lt;</span>row<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>row<span class="token operator">-</span>rowcur<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token char">'D'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                 <span class="token punctuation">&#125;</span>
+                 <span class="token comment">//往右走</span>
+                 <span class="token keyword">if</span><span class="token punctuation">(</span>col<span class="token operator">></span>colcur<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>col<span class="token operator">-</span>colcur<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token char">'R'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                 <span class="token punctuation">&#125;</span>
+                 cur<span class="token operator">=</span>c<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+             <span class="token keyword">if</span><span class="token punctuation">(</span>c<span class="token operator">==</span>cur<span class="token punctuation">)</span>sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token char">'!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -632,7 +688,7 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/11/LeetCode/">
+                <a href="/2023/02/11/LeetCode%20332%E5%91%A8%E8%B5%9B/">
                     <div class="card-image">
                         
                         
@@ -658,6 +714,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%91%A8%E8%B5%9B/">
+                        <span class="chip bg-color">周赛</span>
+                    </a>
+                    
                 </div>
                 
             </div>

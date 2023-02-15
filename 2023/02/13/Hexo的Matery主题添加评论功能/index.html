@@ -6,7 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo的Matery主题添加评论功能, zsc&#39;s Blog">
     <meta name="description" content="注册OAuth Application链接(https://gitalk.github.io/)
-1234Application name:填写项目名称Homepage URL：域名Application description：项目描述A">
+Application name:填写项目名称
+Homepage URL：域名
+Application description：项目描述
+Au">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -406,10 +409,25 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h4 id="注册OAuth-Application"><a href="#注册OAuth-Application" class="headerlink" title="注册OAuth Application"></a>注册OAuth Application</h4><p>链接(<a target="_blank" rel="noopener" href="https://gitalk.github.io/">https://gitalk.github.io/</a>)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application name:填写项目名称</span><br><span class="line">Homepage URL：域名</span><br><span class="line">Application description：项目描述</span><br><span class="line">Autorization callback URL：填写自己的域名</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Application</span> name<span class="token operator">:</span>填写项目名称
+<span class="token class-name">Homepage</span> <span class="token constant">URL</span>：域名
+<span class="token class-name">Application</span> description：项目描述
+<span class="token class-name">Autorization</span> callback <span class="token constant">URL</span>：填写自己的域名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="对主题配置文件进行配置"><a href="#对主题配置文件进行配置" class="headerlink" title="对主题配置文件进行配置"></a>对主题配置文件进行配置</h2><p>进入blog&#x2F;themes&#x2F;matery进行配置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">编辑 __config.yml 文件</span><br><span class="line"></span><br><span class="line"># the Gitalk config，<span class="keyword">default</span> disabled</span><br><span class="line"># Gitalk 评论模块的配置，默认为不激活</span><br><span class="line">gitalk:</span><br><span class="line">  enable: <span class="literal">true</span> #默认的是<span class="literal">false</span>，没有打开</span><br><span class="line">  owner: <span class="string">&#x27;你的github的用户名&#x27;</span></span><br><span class="line">  repo: <span class="string">&#x27;github的用户名.github.io&#x27;</span></span><br><span class="line">  oauth:</span><br><span class="line">    clientId: <span class="string">&#x27;注册时的id&#x27;</span></span><br><span class="line">    clientSecret: <span class="string">&#x27;注册时的secret&#x27;</span></span><br><span class="line">  admin: [<span class="string">&#x27;你的github的用户名&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">编辑 __config<span class="token punctuation">.</span>yml 文件
+
+# the <span class="token class-name">Gitalk</span> config，<span class="token keyword">default</span> disabled
+# <span class="token class-name">Gitalk</span> 评论模块的配置，默认为不激活
+gitalk<span class="token operator">:</span>
+  enable<span class="token operator">:</span> <span class="token boolean">true</span> #默认的是<span class="token boolean">false</span>，没有打开
+  owner<span class="token operator">:</span> '你的github的用户名'
+  repo<span class="token operator">:</span> 'github的用户名<span class="token punctuation">.</span>github<span class="token punctuation">.</span>io'
+  oauth<span class="token operator">:</span>
+    clientId<span class="token operator">:</span> <span class="token char">'注册时的id'</span>
+    clientSecret<span class="token operator">:</span> '注册时的secret'
+  admin<span class="token operator">:</span> <span class="token punctuation">[</span>'你的github的用户名'<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>

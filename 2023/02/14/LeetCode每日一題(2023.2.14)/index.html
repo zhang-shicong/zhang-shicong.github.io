@@ -423,53 +423,52 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1124-表现良好的最长时间段"><a href="#1124-表现良好的最长时间段" class="headerlink" title="1124. 表现良好的最长时间段"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-well-performing-interval/">1124. 表现良好的最长时间段</a></h4><pre><code>给你一份工作时间表 hours，上面记录着某一位员工每天的工作小时数。
+                <h4 id="1124-表现良好的最长时间段"><a href="#1124-表现良好的最长时间段" class="headerlink" title="1124. 表现良好的最长时间段"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-well-performing-interval/">1124. 表现良好的最长时间段</a></h4><pre class="line-numbers language-none"><code class="language-none">给你一份工作时间表 hours，上面记录着某一位员工每天的工作小时数。
 我们认为当员工一天中的工作小时数大于 8 小时的时候，那么这一天就是「劳累的一天」。
 所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 大于「不劳累的天数」。
 请你返回「表现良好时间段」的最大长度。
 
 示例 1：
 
-输入：hours = [9,9,6,0,6,6,9]
+输入：hours &#x3D; [9,9,6,0,6,6,9]
 输出：3
 解释：最长的表现良好时间段是 [9,9,6]。
 示例 2：
 
-输入：hours = [6,6,6]
+输入：hours &#x3D; [6,6,6]
 输出：0
 
 提示：
-1 &lt;= hours.length &lt;= 104
-0 &lt;= hours[i] &lt;= 16
-</code></pre>
+1 &lt;&#x3D; hours.length &lt;&#x3D; 104
+0 &lt;&#x3D; hours[i] &lt;&#x3D; 16<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>解答：前缀和+哈希表</p>
-<pre><code>class Solution &#123;
-    //前缀和+哈希表
-    public int longestWPI(int[] hours) &#123;
-       Map&lt;Integer,Integer&gt; map=new HashMap&lt;&gt;();
-       int sum=0;//前缀和
-       int res=0;
-       for(int i=0;i&lt;hours.length;i++)&#123;
-           if(hours[i]&gt;8)sum++;
-           else sum--;
-           //从0到i都表现良好；
-           if(sum&gt;0)&#123;
-              res=i+1;
-           &#125;
-           else&#123;
-               //查询第一个sum-1出现的位置
-               if(map.containsKey(sum-1))&#123;
-                   res=Math.max(res,i-map.get(sum-1));
-               &#125;
-               //如果sum不在哈希表中，才存储，
-               //保证只统计sum第一次出现的位置
-               if(!map.containsKey(sum))map.put(sum,i);
-           &#125;
-       &#125;
-       return res;
-    &#125;
-&#125;
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//前缀和+哈希表</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">longestWPI</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> hours<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+       <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token keyword">int</span> sum<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment">//前缀和</span>
+       <span class="token keyword">int</span> res<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+       <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>hours<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+           <span class="token keyword">if</span><span class="token punctuation">(</span>hours<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span><span class="token number">8</span><span class="token punctuation">)</span>sum<span class="token operator">++</span><span class="token punctuation">;</span>
+           <span class="token keyword">else</span> sum<span class="token operator">--</span><span class="token punctuation">;</span>
+           <span class="token comment">//从0到i都表现良好；</span>
+           <span class="token keyword">if</span><span class="token punctuation">(</span>sum<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+              res<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+           <span class="token punctuation">&#125;</span>
+           <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+               <span class="token comment">//查询第一个sum-1出现的位置</span>
+               <span class="token keyword">if</span><span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>sum<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                   res<span class="token operator">=</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span>i<span class="token operator">-</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>sum<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+               <span class="token punctuation">&#125;</span>
+               <span class="token comment">//如果sum不在哈希表中，才存储，</span>
+               <span class="token comment">//保证只统计sum第一次出现的位置</span>
+               <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">)</span>map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>sum<span class="token punctuation">,</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token punctuation">&#125;</span>
+       <span class="token punctuation">&#125;</span>
+       <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -706,9 +705,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="hexo-theme-matery主题使用">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">hexo-theme-matery主题使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -723,11 +722,23 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            zhang-shicong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/hexo/" class="post-category">
+                                    hexo
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/matery/">
+                        <span class="chip bg-color">matery</span>
+                    </a>
+                    
                 </div>
                 
             </div>

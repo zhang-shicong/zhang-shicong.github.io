@@ -691,47 +691,48 @@
 <p>3.优先级 aof&gt;rdb</p>
 <p>76.请你讲讲单例模式、请你手写一下单例模式</p>
 <p>懒汉式</p>
-<pre><code class="java">public class Singleton3 implements Serializable &#123;
-    private Singleton3() &#123;
-        System.out.println(&quot;private Singleton3()&quot;);
-    &#125;
-private static Singleton3 INSTANCE = null;
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton3</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Singleton3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"private Singleton3()"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton3</span> <span class="token constant">INSTANCE</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
 
-// Singleton3.class
-public static synchronized Singleton3 getInstance() &#123;
-    if (INSTANCE == null) &#123;
-        INSTANCE = new Singleton3();
-    &#125;
-    return INSTANCE;
-&#125;
+<span class="token comment">// Singleton3.class</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">synchronized</span> <span class="token class-name">Singleton3</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">INSTANCE</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token constant">INSTANCE</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token constant">INSTANCE</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-public static void otherMethod() &#123;
-    System.out.println(&quot;otherMethod()&quot;);
-&#125;
-&#125;
-</code></pre>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">otherMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"otherMethod()"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>饿汉式</strong></p>
-<pre><code class="java">public class Singleton1 implements Serializable &#123;
-    private Singleton1() &#123;
-        if (INSTANCE != null) &#123;
-            throw new RuntimeException(&quot;单例对象不能重复创建&quot;);
-        &#125;
-        System.out.println(&quot;private Singleton1()&quot;);
-    &#125;
-private static final Singleton1 INSTANCE = new Singleton1();
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton1</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Singleton1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">INSTANCE</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"单例对象不能重复创建"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"private Singleton1()"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Singleton1</span> <span class="token constant">INSTANCE</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-public static Singleton1 getInstance() &#123;
-    return INSTANCE;
-&#125;
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton1</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token constant">INSTANCE</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-public static void otherMethod() &#123;
-    System.out.println(&quot;otherMethod()&quot;);
-&#125;
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">otherMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"otherMethod()"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-public Object readResolve() &#123;
-    return INSTANCE;
-&#125;&#125;
-</code></pre>
+<span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">readResolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token constant">INSTANCE</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 <p>77.请你说说虚拟内存和物理内存的区别</p>
 <p>物理内存：计算机中真实拥有的内存。物理内存是有限的，容易产生内存不足问题。</p>
 <p>虚拟内存是一种抽象的逻辑概念，拥有连续的内存地址。</p>
