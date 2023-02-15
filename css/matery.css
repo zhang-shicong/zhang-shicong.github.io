@@ -100,7 +100,7 @@ blockquote {
     background-color: rgba(66, 185, 131, .1);
 }
 /*修改后的代码样式*/
-/* pre {
+pre {
     padding: 1.5rem 1.5rem 1.5rem 3.3rem !important;
     margin: 1rem 0 !important;
     background: #272822;
@@ -207,9 +207,9 @@ pre[class*="language-"] {
     overflow: auto;
     border-radius: 0.35rem;
     tab-size: 4;
-} */
+}
 
-pre {
+/* pre {
     padding: 2rem 1rem 1rem 3rem !important;
     border-radius: 0.35rem;
     tab-size: 4;
@@ -294,7 +294,7 @@ pre code {
     padding: 0;
     color: #e8eaf6;
     background-color: #272822;
-}
+} */
 
 /* 键盘 kbd 标签样式 */
 kbd {
