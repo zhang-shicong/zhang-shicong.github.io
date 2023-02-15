@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>LeetCode每日一题（2023/2/15）</title>
+      <link href="/2023/02/15/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.15)/"/>
+      <url>/2023/02/15/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.15)/</url>
+      
+        <content type="html"><![CDATA[<h4 id="1250-检查「好数组」"><a href="#1250-检查「好数组」" class="headerlink" title="1250. 检查「好数组」"></a><a href="https://leetcode.cn/problems/check-if-it-is-a-good-array/">1250. 检查「好数组」</a></h4><pre class="line-numbers language-none"><code class="language-none">给你一个正整数数组 nums，你需要从中任选一些子集，然后将子集中每一个数乘以一个 任意整数，并求出他们的和。假如该和结果为 1，那么原数组就是一个「好数组」，则返回 True；否则请返回 False。示例 1：输入：nums &#x3D; [12,5,7,23]输出：true解释：挑选数字 5 和 7。5*3 + 7*(-2) &#x3D; 1示例 2：输入：nums &#x3D; [29,6,10]输出：true解释：挑选数字 29, 6 和 10。29*1 + 6*(-3) + 10*(-1) &#x3D; 1示例 3：输入：nums &#x3D; [3,6]输出：false 提示：1 &lt;&#x3D; nums.length &lt;&#x3D; 10^51 &lt;&#x3D; nums[i] &lt;&#x3D; 10^9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>解答：设a1,a2,a3……an为n个整数，d是它们的<a href="https://baike.baidu.com/item/%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0?fromModule=lemma_inlink">最大公约数</a>，那么存在整数x1……xn使得x1<em>a1+x2</em>a2+…xn*an&#x3D;d。</p><p>特别来说，如果a1…an存在任意两个数是<a href="https://baike.baidu.com/item/%E4%BA%92%E8%B4%A8/577412?fromModule=lemma_inlink">互质</a>的（不必满足<a href="https://baike.baidu.com/item/%E4%B8%A4%E4%B8%A4%E4%BA%92%E8%B4%A8/6014796?fromModule=lemma_inlink">两两互质</a>），那么存在整数x1……xn使得x1<em>a1+x2</em>a2+…xn*an&#x3D;1。证法类似两个数的情况。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token comment">//根据裴蜀定理求最大公约数是否为1</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isGoodArray</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> res<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token operator">:</span>nums<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>            res<span class="token operator">=</span><span class="token function">gcd</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">int</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> b<span class="token operator">==</span><span class="token number">0</span><span class="token operator">?</span>a<span class="token operator">:</span><span class="token function">gcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span>a<span class="token operator">%</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gcd（最大公约数） </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>matery主题之代码块优化</title>
       <link href="/2023/02/14/matery%E4%B8%BB%E9%A2%98%E4%B9%8B%E4%BB%A3%E7%A0%81%E5%9D%97%E4%BC%98%E5%8C%96/"/>
       <url>/2023/02/14/matery%E4%B8%BB%E9%A2%98%E4%B9%8B%E4%BB%A3%E7%A0%81%E5%9D%97%E4%BC%98%E5%8C%96/</url>

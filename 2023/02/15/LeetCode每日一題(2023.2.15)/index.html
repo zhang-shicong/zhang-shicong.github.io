@@ -4,12 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="matery主题之代码块优化, zsc&#39;s Blog">
-    <meta name="description" content="代码块优化1. 安装代码块插件npm i -S hexo-prism-plugin
+    <meta name="keywords" content="LeetCode每日一题（2023/2/15）, zsc&#39;s Blog">
+    <meta name="description" content="1250. 检查「好数组」给你一个正整数数组 nums，你需要从中任选一些子集，然后将子集中每一个数乘以一个 任意整数，并求出他们的和。
 
-2. Hexo根目录配置打开Hexo根目录的配置文件_config.yml，修改并添加如下代码
-highlight:
-  enable: false # ">
+假如该和结果为 1，那么原数组就是一个「好数组」，则返回 True；否则请返回 False。
+
+
+示">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +22,7 @@ highlight:
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>matery主题之代码块优化 | zsc&#39;s Blog</title>
+    <title>LeetCode每日一题（2023/2/15） | zsc&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -338,12 +339,12 @@ highlight:
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">matery主题之代码块优化</h1>
+                    <h1 class="description center-align post-title">LeetCode每日一题（2023/2/15）</h1>
                 </div>
             </div>
         </div>
@@ -367,12 +368,8 @@ highlight:
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/matery/">
-                                <span class="chip bg-color">matery</span>
-                            </a>
-                        
-                            <a href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97%E4%BC%98%E5%8C%96/">
-                                <span class="chip bg-color">代码块优化</span>
+                            <a href="/tags/gcd%EF%BC%88%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%EF%BC%89/">
+                                <span class="chip bg-color">gcd（最大公约数）</span>
                             </a>
                         
                     </div>
@@ -383,8 +380,8 @@ highlight:
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/matery/" class="post-category">
-                                matery
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -396,7 +393,7 @@ highlight:
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-14
+                    2023-02-15
                 </div>
                 
 
@@ -425,274 +422,49 @@ highlight:
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="代码块优化"><a href="#代码块优化" class="headerlink" title="代码块优化"></a>代码块优化</h3><h4 id="1-安装代码块插件"><a href="#1-安装代码块插件" class="headerlink" title="1. 安装代码块插件"></a>1. 安装代码块插件</h4><pre><code class="bash">npm i -S hexo-prism-plugin
-</code></pre>
-<h4 id="2-Hexo根目录配置"><a href="#2-Hexo根目录配置" class="headerlink" title="2. Hexo根目录配置"></a>2. Hexo根目录配置</h4><p>打开Hexo根目录的配置文件<code>_config.yml</code>，修改并添加如下代码</p>
-<pre><code class="bash">highlight:
-  enable: false # 关闭原有的高亮代码
+                <h4 id="1250-检查「好数组」"><a href="#1250-检查「好数组」" class="headerlink" title="1250. 检查「好数组」"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/check-if-it-is-a-good-array/">1250. 检查「好数组」</a></h4><pre class="line-numbers language-none"><code class="language-none">给你一个正整数数组 nums，你需要从中任选一些子集，然后将子集中每一个数乘以一个 任意整数，并求出他们的和。
 
-# 添加prism_plugin配置项
-prism_plugin:
-  mode: &#39;preprocess&#39;    # realtime/preprocess
-  theme: &#39;tomorrow&#39;
-  line_number: true    # default false
-  custom_css: 
-</code></pre>
-<h4 id="3-Matery主题根目录"><a href="#3-Matery主题根目录" class="headerlink" title="3. Matery主题根目录"></a>3. Matery主题根目录</h4><p>打开Matery主题的配置文件<code>themes\matery\_config.yml</code>，添加如下代码</p>
-<pre><code class="bash">code:
-  lang: true # 代码块是否显示名称
-  copy: true # 代码块是否可复制
-  shrink: true # 代码块是否可以收缩
-  break: false # 代码是否折行
-</code></pre>
-<h4 id="4-代码块CSS优化"><a href="#4-代码块CSS优化" class="headerlink" title="4. 代码块CSS优化"></a>4. 代码块CSS优化</h4><p>打开<code>themes\source\css\matery.css</code>，大概在100到200行左右,修改代码块CSS样式如下</p>
-<pre><code class="css">pre &#123;
-    padding: 1.5rem 1.5rem 1.5rem 3.3rem !important;
-    margin: 1rem 0 !important;
-    background: #272822;
-    overflow: auto;
-    border-radius: 0.35rem;
-    tab-size: 4;
-&#125;
-.code-area::after &#123;
-    content: &quot; &quot;;
-    position: absolute;
-    border-radius: 50%;
-    background: #ff5f56;
-    width: 12px;
-    height: 12px;
-    top: 0;
-    left: 12px;
-    margin-top: 12px;
-    -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-    box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-&#125;
-code &#123;
-    padding: 1px 5px;
-    top: 13px !important;
-    font-family: Inconsolata, Monaco, Consolas, &#39;Courier New&#39;, Courier, monospace;
-    font-size: 0.91rem;
-    color: #e96900;
-    background-color: #f8f8f8;
-    border-radius: 2px;
-&#125;
-.code_copy &#123;
-    position: absolute;
-    top: 0.7rem;
-    right: 25px;
-    z-index: 1;
-    filter: invert(50%);
-    cursor: pointer;
-&#125;
-.codecopy_notice &#123;
-    position: absolute;
-    top: 0.7rem;
-    right: 6px;
-    z-index: 1;
-    filter: invert(50%);
-    opacity: 0;
-&#125;
-.code_lang &#123;
-    position: absolute;
-    top: 1.2rem;
-    right: 46px;
-    line-height: 0;
-    font-weight: bold;
-    font-family: normal;
-    z-index: 1;
-    filter: invert(50%);
-    cursor: pointer;
-&#125;
+假如该和结果为 1，那么原数组就是一个「好数组」，则返回 True；否则请返回 False。
 
-.code-expand &#123;
-    position: absolute;
-    top: 4px;
-    right: 0px;
-    filter: invert(50%);
-    padding: 7px;
-    z-index: 999 !important;
-    cursor: pointer;
-    transition: all .3s;
-    transform: rotate(0deg);
-&#125;
 
-.code-closed .code-expand &#123;
-    transform: rotate(-180deg) !important;
-    transition: all .3s;
-&#125;
+示例 1：
 
-.code-closed pre::before &#123;
-    height: 0px;
-&#125;
+输入：nums &#x3D; [12,5,7,23]
+输出：true
+解释：挑选数字 5 和 7。
+5*3 + 7*(-2) &#x3D; 1
+示例 2：
 
-pre code &#123;
-    padding: 0;
-    color: #e8eaf6;
-    background-color: #272822;
-&#125;
+输入：nums &#x3D; [29,6,10]
+输出：true
+解释：挑选数字 29, 6 和 10。
+29*1 + 6*(-3) + 10*(-1) &#x3D; 1
+示例 3：
 
-pre[class*=&quot;language-&quot;] &#123;
-    padding: 1.2em;
-    margin: .5em 0;
-&#125;
+输入：nums &#x3D; [3,6]
+输出：false
+ 
 
-code[class*=&quot;language-&quot;],
-pre[class*=&quot;language-&quot;] &#123;
-    color: #e8eaf6;
-    white-space: pre-wrap !important;
-&#125;
+提示：
 
-.line-numbers-rows &#123;
-    border-right-width: 0px !important;
-&#125;
+1 &lt;&#x3D; nums.length &lt;&#x3D; 10^5
+1 &lt;&#x3D; nums[i] &lt;&#x3D; 10^9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-.line-numbers &#123;
-    padding: 1.5rem 1.5rem 1.5rem 3.2rem !important;
-    margin: 1rem 0 !important;
-    background: #272822;
-    overflow: auto;
-    border-radius: 0.35rem;
-    tab-size: 4;
-&#125;
-</code></pre>
-<h4 id="5-文章代码块添加"><a href="#5-文章代码块添加" class="headerlink" title="5. 文章代码块添加"></a>5. 文章代码块添加</h4><p>打开<code>themes\matery\layout\_partial\post-detail.ejs</code>，添加如下代码</p>
-<pre><code class="html">&lt;!-- 代码块功能依赖 --&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%- url_for(&#39;/libs/codeBlock/codeBlockFunction.js&#39;) %&gt;&quot;&gt;&lt;/script&gt;
-
-&lt;!-- 代码语言 --&gt;
-&lt;% if (theme.code.lang) &#123; %&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%- url_for(&#39;/libs/codeBlock/codeLang.js&#39;) %&gt;&quot;&gt;&lt;/script&gt;
-&lt;% &#125; %&gt;
-
-&lt;!-- 代码块复制 --&gt;
-&lt;% if (theme.code.copy) &#123; %&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%- url_for(&#39;/libs/codeBlock/codeCopy.js&#39;) %&gt;&quot;&gt;&lt;/script&gt;
-&lt;% &#125; %&gt;
-
-&lt;!-- 代码块收缩 --&gt;
-&lt;% if (theme.code.shrink) &#123; %&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;%- url_for(&#39;/libs/codeBlock/codeShrink.js&#39;) %&gt;&quot;&gt;&lt;/script&gt;
-&lt;% &#125; %&gt;
-
-&lt;!-- 代码块折行 --&gt;
-&lt;% if (!theme.code.break) &#123; %&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-code[class*=&quot;language-&quot;], pre[class*=&quot;language-&quot;] &#123; white-space: pre !important; &#125;
-&lt;/style&gt;
-&lt;% &#125; %&gt;
-</code></pre>
-<h4 id="6-代码块JS添加"><a href="#6-代码块JS添加" class="headerlink" title="6. 代码块JS添加"></a>6. 代码块JS添加</h4><p>打开目录<code>themes\matery\source\libs</code>，新建一个名字为<code>codeBlock</code>的目录，然后打开该目录。</p>
-<p>在<code>themes\matery\source\libs\codeBlock</code>目录下新建<code>codeBlockFunction.js</code>文件，并添加如下代码</p>
-<pre><code class="html">// 代码块功能依赖
-$(function () &#123;
-    $(&#39;pre&#39;).wrap(&#39;&lt;div class=&quot;code-area&quot; style=&quot;position: relative&quot;&gt;&lt;/div&gt;&#39;);
-&#125;);
-</code></pre>
-<p>在<code>themes\matery\source\libs\codeBlock</code>目录下新建<code>codeCopy.js</code>文件，并添加如下代码</p>
-<pre><code class="html">// 代码块一键复制
-$(function () &#123;
-    var $copyIcon = $(&#39;&lt;i class=&quot;fa fa-files-o code_copy&quot; title=&quot;复制代码&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&#39;)
-    var $notice = $(&#39;&lt;div class=&quot;codecopy_notice&quot;&gt;&lt;/div&gt;&#39;)
-    $(&#39;.code-area&#39;).prepend($copyIcon)
-    $(&#39;.code-area&#39;).prepend($notice)
-    // “复制成功”字出现
-    function copy(text, ctx) &#123;
-        if (document.queryCommandSupported &amp;&amp; document.queryCommandSupported(&#39;copy&#39;)) &#123;
-            try &#123;
-                document.execCommand(&#39;copy&#39;) // Security exception may be thrown by some browsers.
-                $(ctx).prev(&#39;.codecopy_notice&#39;)
-                    .text(&quot;复制成功&quot;)
-                    .animate(&#123;
-                        opacity: 1,
-                        top: 30
-                    &#125;, 450, function () &#123;
-                        setTimeout(function () &#123;
-                            $(ctx).prev(&#39;.codecopy_notice&#39;).animate(&#123;
-                                opacity: 0,
-                                top: 0
-                            &#125;, 650)
-                        &#125;, 400)
-                    &#125;)
-            &#125; catch (ex) &#123;
-                $(ctx).prev(&#39;.codecopy_notice&#39;)
-                    .text(&quot;复制失败&quot;)
-                    .animate(&#123;
-                        opacity: 1,
-                        top: 30
-                    &#125;, 650, function () &#123;
-                        setTimeout(function () &#123;
-                            $(ctx).prev(&#39;.codecopy_notice&#39;).animate(&#123;
-                                opacity: 0,
-                                top: 0
-                            &#125;, 650)
-                        &#125;, 400)
-                    &#125;)
-                return false
-            &#125;
-        &#125; else &#123;
-            $(ctx).prev(&#39;.codecopy_notice&#39;).text(&quot;浏览器不支持复制&quot;)
-        &#125;
-    &#125;
-    // 复制
-    $(&#39;.code-area .fa-files-o&#39;).on(&#39;click&#39;, function () &#123;
-        var selection = window.getSelection()
-        var range = document.createRange()
-        range.selectNodeContents($(this).siblings(&#39;pre&#39;).find(&#39;code&#39;)[0])
-        selection.removeAllRanges()
-        selection.addRange(range)
-        var text = selection.toString()
-        copy(text, this)
-        selection.removeAllRanges()
-    &#125;)
-&#125;);
-</code></pre>
-<p>在<code>themes\matery\source\libs\codeBlock</code>目录下新建<code>codeLang.js</code>文件，并添加如下代码</p>
-<pre><code class="html">// 代码块语言识别
-$(function () &#123;
-  var $highlight_lang = $(&#39;&lt;div class=&quot;code_lang&quot; title=&quot;代码语言&quot;&gt;&lt;/div&gt;&#39;);
-
-  $(&#39;pre&#39;).before($highlight_lang);
-  $(&#39;pre&#39;).each(function () &#123;
-    var code_language = $(this).attr(&#39;class&#39;);
-
-    if (!code_language) &#123;
-      return true;
-    &#125;;
-    var lang_name = code_language.replace(&quot;line-numbers&quot;, &quot;&quot;).trim().replace(&quot;language-&quot;, &quot;&quot;).trim();
-
-    // 首字母大写
-    // lang_name = lang_name.slice(0, 1).toUpperCase() + lang_name.slice(1);
-    
-    $(this).siblings(&quot;.code_lang&quot;).text(lang_name);
-  &#125;);
-&#125;);
-</code></pre>
-<p>在<code>themes\matery\source\libs\codeBlock</code>目录下新建<code>codeShrink.js</code>文件，并添加如下代码</p>
-<pre><code class="html">// 代码块收缩
-$(function () &#123;
-  var $code_expand = $(&#39;&lt;i class=&quot;fa fa-angle-down code-expand&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&#39;);
-
-  $(&#39;.code-area&#39;).prepend($code_expand);
-  $(&#39;.code-expand&#39;).on(&#39;click&#39;, function () &#123;
-    if ($(this).parent().hasClass(&#39;code-closed&#39;)) &#123;
-      $(this).siblings(&#39;pre&#39;).find(&#39;code&#39;).show();
-      $(this).parent().removeClass(&#39;code-closed&#39;);
-    &#125; else &#123;
-      $(this).siblings(&#39;pre&#39;).find(&#39;code&#39;).hide();
-      $(this).parent().addClass(&#39;code-closed&#39;);
-    &#125;
-  &#125;);
-&#125;);
-</code></pre>
-<h4 id="7-解决代码块复制内容不换行问题"><a href="#7-解决代码块复制内容不换行问题" class="headerlink" title="7. 解决代码块复制内容不换行问题"></a>7. 解决代码块复制内容不换行问题</h4><blockquote>
-<p>Matery主题在开启复制版权且添加了版权信息后，会导致复制的所有内容换行失效，以下将解决这个问题。</p>
-</blockquote>
-<p>在<code>themes\matery\layout\_partial\post-detail.ejs</code>文件中，大约在222行左右找到 <code>selection.getRangeAt(0).commonAncestorContainer.nodeName</code>，将原先<code>if</code>条件中的的<code>PRE</code>修改为<code>CODE</code>即可。</p>
-<pre><code class="none">if (selection.getRangeAt(0).commonAncestorContainer.nodeName === &#39;CODE&#39;) &#123;
-    newdiv.innerHTML = &quot;&lt;pre&gt;&quot; + newdiv.innerHTML + &quot;&lt;/pre&gt;&quot;;
-&#125;
-</code></pre>
-<p>至此，代码块的优化已经全部完成。</p>
+<p>解答：设a1,a2,a3……an为n个整数，d是它们的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0?fromModule=lemma_inlink">最大公约数</a>，那么存在整数x1……xn使得x1<em>a1+x2</em>a2+…xn*an&#x3D;d。</p>
+<p>特别来说，如果a1…an存在任意两个数是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BA%92%E8%B4%A8/577412?fromModule=lemma_inlink">互质</a>的（不必满足<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%A4%E4%B8%A4%E4%BA%92%E8%B4%A8/6014796?fromModule=lemma_inlink">两两互质</a>），那么存在整数x1……xn使得x1<em>a1+x2</em>a2+…xn*an&#x3D;1。证法类似两个数的情况。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//根据裴蜀定理求最大公约数是否为1</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isGoodArray</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> res<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token operator">:</span>nums<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            res<span class="token operator">=</span><span class="token function">gcd</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> res<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">int</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> b<span class="token operator">==</span><span class="token number">0</span><span class="token operator">?</span>a<span class="token operator">:</span><span class="token function">gcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span>a<span class="token operator">%</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -719,7 +491,7 @@ $(function () &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/02/14/matery%E4%B8%BB%E9%A2%98%E4%B9%8B%E4%BB%A3%E7%A0%81%E5%9D%97%E4%BC%98%E5%8C%96/">http://example.com/2023/02/14/matery%E4%B8%BB%E9%A2%98%E4%B9%8B%E4%BB%A3%E7%A0%81%E5%9D%97%E4%BC%98%E5%8C%96/</a>
+                    <a href="http://example.com/2023/02/15/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.15)/">http://example.com/2023/02/15/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.15)/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -757,12 +529,8 @@ $(function () &#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/matery/">
-                                    <span class="chip bg-color">matery</span>
-                                </a>
-                            
-                                <a href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97%E4%BC%98%E5%8C%96/">
-                                    <span class="chip bg-color">代码块优化</span>
+                                <a href="/tags/gcd%EF%BC%88%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%EF%BC%89/">
+                                    <span class="chip bg-color">gcd（最大公约数）</span>
                                 </a>
                             
                         </div>
@@ -840,7 +608,7 @@ $(function () &#123;
         repo: 'zhang-shicong.github.io',
         owner: 'zhang-shicong',
         admin: ["zhang-shicong"],
-        id: '2023-02-14T12-34-47',
+        id: '2023-02-15T11-58-48',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -868,9 +636,10 @@ $(function () &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/02/15/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.15)/">
                     <div class="card-image">
@@ -888,9 +657,9 @@ $(function () &#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -903,6 +672,7 @@ $(function () &#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -921,13 +691,13 @@ $(function () &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/14/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.14)/">
+                <a href="/2023/02/14/matery%E4%B8%BB%E9%A2%98%E4%B9%8B%E4%BB%A3%E7%A0%81%E5%9D%97%E4%BC%98%E5%8C%96/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="LeetCode每日一题（2023/2/14）">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="matery主题之代码块优化">
                         
-                        <span class="card-title">LeetCode每日一题（2023/2/14）</span>
+                        <span class="card-title">matery主题之代码块优化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -944,8 +714,8 @@ $(function () &#123;
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/matery/" class="post-category">
+                                    matery
                                 </a>
                             
                             
@@ -955,12 +725,12 @@ $(function () &#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">
-                        <span class="chip bg-color">前缀和</span>
+                    <a href="/tags/matery/">
+                        <span class="chip bg-color">matery</span>
                     </a>
                     
-                    <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
-                        <span class="chip bg-color">哈希表</span>
+                    <a href="/tags/%E4%BB%A3%E7%A0%81%E5%9D%97%E4%BC%98%E5%8C%96/">
+                        <span class="chip bg-color">代码块优化</span>
                     </a>
                     
                 </div>
