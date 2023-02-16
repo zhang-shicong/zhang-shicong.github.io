@@ -460,6 +460,14 @@ type: &quot;about&quot;
 layout: &quot;about&quot;
 ---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h1 id="代码块全选问题，似乎是行号那边影响了内容"><a href="#代码块全选问题，似乎是行号那边影响了内容" class="headerlink" title="代码块全选问题，似乎是行号那边影响了内容"></a>代码块全选问题，似乎是行号那边影响了内容</h1><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302161241131.png" alt="image-20230216124144063"></p>
+<p>下面路径修改代码</p>
+<p>blog.deploy_git\libs\prism\prism.min.css</p>
+<pre class="line-numbers language-none"><code class="language-none">pre[class*&#x3D;&quot;language-&quot;].line-numbers&gt;code &#123;
+	position: sticky;  &#x2F;* 原来是relative *&#x2F;
+	white-space: inherit;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
