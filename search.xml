@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>Typora+Picgo图床+阿里云Oss实现自动上传图片</title>
+      <link href="/2023/02/16/Typora+Picgo%E5%9B%BE%E5%BA%8A+%E9%98%BF%E9%87%8C%E4%BA%91Oss%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
+      <url>/2023/02/16/Typora+Picgo%E5%9B%BE%E5%BA%8A+%E9%98%BF%E9%87%8C%E4%BA%91Oss%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-设置typora，进入偏好设置"><a href="#1-设置typora，进入偏好设置" class="headerlink" title="1.设置typora，进入偏好设置"></a>1.设置typora，进入偏好设置</h3><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302161626092.png" alt="image-20230216162653794"></p><h3 id="2-选择【图像】的设置，插入图片选择上传图片。"><a href="#2-选择【图像】的设置，插入图片选择上传图片。" class="headerlink" title="2.选择【图像】的设置，插入图片选择上传图片。"></a>2.选择【图像】的设置，插入图片选择上传图片。</h3><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302161627723.png" alt="image-20230216162735646"></p><h3 id="3-注册阿里云对象存储"><a href="#3-注册阿里云对象存储" class="headerlink" title="3.注册阿里云对象存储"></a>3.注册阿里云对象存储</h3><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302161629511.png" alt="image-20230216162948439"></p><h3 id="4-Picgo绑定阿里云OSS"><a href="#4-Picgo绑定阿里云OSS" class="headerlink" title="4.Picgo绑定阿里云OSS"></a>4.Picgo绑定阿里云OSS</h3><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302161630278.png" alt="image-20230216163041213"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>设计模式</title>
+      <link href="/2023/02/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <url>/2023/02/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<h3 id="单例模式："><a href="#单例模式：" class="headerlink" title="单例模式："></a>单例模式：</h3><h4 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式:"></a>懒汉式:</h4><p>在<strong>真正需要使用</strong>对象时才去创建该单例类对象</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">&#123;</span><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">volatile</span> <span class="token class-name">Singleton</span> singleton<span class="token punctuation">;</span><span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">if</span> <span class="token punctuation">(</span>singleton <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>          <span class="token comment">// 线程A和线程B同时看到singleton = null，如果不为null，则直接返回singleton</span>        <span class="token keyword">synchronized</span><span class="token punctuation">(</span><span class="token class-name">Singleton</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>             <span class="token comment">// 线程A或线程B获得该锁进行初始化</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>singleton <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                 <span class="token comment">// 其中一个线程进入该分支，另外一个线程则不会进入该分支</span>                singleton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> singleton<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="饿汉式："><a href="#饿汉式：" class="headerlink" title="饿汉式："></a>饿汉式：</h4><p>  在<strong>类加载</strong>时已经创建好该单例对象，等待被程序使用</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton</span><span class="token punctuation">&#123;</span><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Singleton</span> singleton <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> singleton<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 单例模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode每日一题（2023/2/16）</title>
       <link href="/2023/02/16/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.16)/"/>
       <url>/2023/02/16/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.16)/</url>
@@ -42,6 +92,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
       
     </entry>
     
