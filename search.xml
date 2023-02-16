@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>什么是缓存雪崩，击穿，穿透？</title>
+      <link href="/2023/02/16/%E4%BB%80%E4%B9%88%E6%98%AF%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%EF%BC%8C%E5%87%BB%E7%A9%BF%EF%BC%8C%E7%A9%BF%E9%80%8F%EF%BC%9F/"/>
+      <url>/2023/02/16/%E4%BB%80%E4%B9%88%E6%98%AF%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%EF%BC%8C%E5%87%BB%E7%A9%BF%EF%BC%8C%E7%A9%BF%E9%80%8F%EF%BC%9F/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-缓存雪崩"><a href="#1-缓存雪崩" class="headerlink" title="1.缓存雪崩"></a>1.缓存雪崩</h3><p>  为了保证缓存中的数据与数据库中的数据一致性，会给 Redis 里的数据设置过期时间，当缓存数据过期后，用户访问的数据如果不在缓存里，业务系统需要重新生成缓存，因此就会访问数据库，并将数据更新到 Redis 里，这样后续请求都可以直接命中缓存。</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302162025157.png" alt="image-20230216202530094"></p><p>  当<strong>大量缓存数据在同一时间过期（失效）或者 Redis 故障宕机</strong>时，如果此时有大量的用户请求，都无法在 Redis 中处理，于是全部请求都直接访问数据库，从而导致数据库的压力骤增，严重的会造成数据库宕机，从而形成一系列连锁反应，造成整个系统崩溃，这就是<strong>缓存雪崩</strong>的问题。</p><p>发生缓存雪崩的原因有两点</p><ul><li>大量数据同时过期</li><li>Redis 故障宕机</li></ul><h4 id="大量数据同时过期解决方案"><a href="#大量数据同时过期解决方案" class="headerlink" title="大量数据同时过期解决方案"></a>大量数据同时过期解决方案</h4><ul><li>均匀设置过期时间</li></ul><p>过期时间加上随机数，避免大量数据同时过期</p><ul><li>互斥锁</li></ul><p>设置互斥锁并且设置超时时间，保证同一时间内只有一个请求来构建缓存</p><ul><li>双 key 策略</li></ul><p>设置两个key缓存数据，<strong>主 key，会设置过期时间</strong>，<strong>备 key，不会设置过期</strong>，访问不到主Key，直接返回备Key的数据，然后在更新缓存的时候，<strong>同时更新「主 key 」和「备 key 」的数据。</strong></p><ul><li>后台更新缓存</li><li>业务线程不再负责更新缓存，缓存也不设置有效期，而是<strong>让缓存“永久有效”，并将更新缓存的工作交由后台线程定时更新</strong>。</li></ul><h4 id="Redis宕机解决方案"><a href="#Redis宕机解决方案" class="headerlink" title="Redis宕机解决方案"></a>Redis宕机解决方案</h4><ul><li>服务熔断或请求限流机制；</li></ul><p>启动<strong>服务熔断</strong>机制，<strong>暂停业务应用对缓存服务的访问，直接返回错误</strong>，不用再继续访问数据库，从而降低对数据库的访问压力，保证数据库系统的正常运行，然后等到 Redis 恢复正常后，再允许业务应用访问缓存服务。</p><ul><li>构建 Redis 缓存高可靠集群；</li></ul><p>服务熔断或请求限流机制是缓存雪崩发生后的应对方案，我们最好通过<strong>主从节点的方式构建 Redis 缓存高可靠集群</strong>。</p><h3 id="2-缓存击穿"><a href="#2-缓存击穿" class="headerlink" title="2.缓存击穿"></a>2.缓存击穿</h3><p>如果缓存中的<strong>某个热点数据过期</strong>了，此时大量的请求访问了该热点数据，就无法从缓存中读取，直接访问数据库，数据库很容易就被高并发的请求冲垮，这就是<strong>缓存击穿</strong>的问题。</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302162038213.png" alt="image-20230216203832131"></p><h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ul><li>互斥锁</li></ul><p>保证同一时间只有一个业务线程更新缓存，未能获取互斥锁的请求，要么等待锁释放后重新读取缓存，要么就返回空值或者默认值。</p><ul><li>不给热点数据设置过期时间</li></ul><p>由后台异步更新缓存，或者在热点数据准备要过期前，提前通知后台线程更新缓存以及重新设置过期时间。</p><h3 id="3-缓存穿透"><a href="#3-缓存穿透" class="headerlink" title="3.缓存穿透"></a>3.缓存穿透</h3><p>当用户访问的数据，<strong>既不在缓存中，也不在数据库中</strong>，导致请求在访问缓存时，发现缓存缺失，再去访问数据库时，发现数据库中也没有要访问的数据，没办法构建缓存数据，来服务后续的请求。那么当有大量这样的请求到来时，数据库的压力骤增，这就是<strong>缓存穿透</strong>的问题。</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302162040700.png" alt="image-20230216204046635"></p><h4 id="发生缓存击穿的两种情况："><a href="#发生缓存击穿的两种情况：" class="headerlink" title="发生缓存击穿的两种情况："></a>发生缓存击穿的两种情况：</h4><ul><li>业务误操作，缓存中的数据和数据库中的数据都被误删除了，所以导致缓存和数据库中都没有数据；</li><li>黑客恶意攻击，故意大量访问某些读取不存在数据的业务；</li></ul><h4 id="缓存击穿解决方案"><a href="#缓存击穿解决方案" class="headerlink" title="缓存击穿解决方案"></a>缓存击穿解决方案</h4><ul><li>非法请求的限制</li><li>缓存空值或者默认值</li><li>使用布隆过滤器快速判断数据是否存在，避免通过查询数据库来判断数据是否存在</li></ul><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302162043586.png" alt="image-20230216204346526"></p><h4 id="参考资料：-小林coding"><a href="#参考资料：-小林coding" class="headerlink" title="参考资料： 小林coding"></a>参考资料：<a href="https://www.xiaolincoding.com/"> 小林coding</a></h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Typora+Picgo图床+阿里云Oss实现自动上传图片</title>
       <link href="/2023/02/16/Typora+Picgo%E5%9B%BE%E5%BA%8A+%E9%98%BF%E9%87%8C%E4%BA%91Oss%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
       <url>/2023/02/16/Typora+Picgo%E5%9B%BE%E5%BA%8A+%E9%98%BF%E9%87%8C%E4%BA%91Oss%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</url>
