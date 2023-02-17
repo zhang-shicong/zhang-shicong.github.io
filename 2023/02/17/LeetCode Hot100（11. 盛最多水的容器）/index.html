@@ -4,12 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="LeetCode Hot100（2.两数相加）, zsc&#39;s Blog">
-    <meta name="description" content="2. 两数相加给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
-
-请你将两个数相加，并以相同形式返回一个表示和的链表。
-
-你可以假设除了数字 0 之外，这两个数都不会以">
+    <meta name="keywords" content="LeetCode Hot100（11. 盛最多水的容器）, zsc&#39;s Blog">
+    <meta name="description" content="11. 盛最多水的容器给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 
+(i, 0) 和 (i, height[i]) 。
+找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+返回">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>LeetCode Hot100（2.两数相加） | zsc&#39;s Blog</title>
+    <title>LeetCode Hot100（11. 盛最多水的容器） | zsc&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -343,7 +342,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">LeetCode Hot100（2.两数相加）</h1>
+                    <h1 class="description center-align post-title">LeetCode Hot100（11. 盛最多水的容器）</h1>
                 </div>
             </div>
         </div>
@@ -367,8 +366,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%93%BE%E8%A1%A8/">
-                                <span class="chip bg-color">链表</span>
+                            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                                <span class="chip bg-color">双指针</span>
                             </a>
                         
                             <a href="/tags/Hot100/">
@@ -429,52 +428,43 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="2-两数相加"><a href="#2-两数相加" class="headerlink" title="2. 两数相加"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/add-two-numbers/">2. 两数相加</a></h4><pre class="line-numbers language-none"><code class="language-none">给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
+                <h4 id="11-盛最多水的容器"><a href="#11-盛最多水的容器" class="headerlink" title="11. 盛最多水的容器"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/container-with-most-water/">11. 盛最多水的容器</a></h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 
+<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> 和 <span class="token punctuation">(</span>i<span class="token punctuation">,</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> 。
+找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+返回容器可以储存的最大水量。
+说明：你不能倾斜容器。
+ 
+示例 <span class="token number">1</span>：
 
-请你将两个数相加，并以相同形式返回一个表示和的链表。
+输入：<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">]</span>
+输出：<span class="token number">49</span> 
+解释：图中垂直线代表输入数组 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">]</span>。在此情况下，
+容器能够容纳水（表示为蓝色部分）的最大值为 <span class="token number">49</span>。
+示例 <span class="token number">2</span>：
 
-你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
-
-示例 1：
-
-输入：l1 &#x3D; [2,4,3], l2 &#x3D; [5,6,4]
-输出：[7,0,8]
-解释：342 + 465 &#x3D; 807.
-示例 2：
-
-输入：l1 &#x3D; [0], l2 &#x3D; [0]
-输出：[0]
-示例 3：
-
-输入：l1 &#x3D; [9,9,9,9,9,9,9], l2 &#x3D; [9,9,9,9]
-输出：[8,9,9,9,0,0,0,1]
- 
+输入：height <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+输出：<span class="token number">1</span>
+ 
 提示：
 
-每个链表中的节点数在范围 [1, 100] 内
-0 &lt;&#x3D; Node.val &lt;&#x3D; 9
-题目数据保证列表表示的数字不含前导零<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+n <span class="token operator">==</span> height<span class="token punctuation">.</span>length
+<span class="token number">2</span> <span class="token operator">&lt;=</span> n <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token operator">^</span><span class="token number">5</span>
+<span class="token number">0</span> <span class="token operator">&lt;=</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token operator">^</span><span class="token number">4</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>解答：建立虚拟头结点+遍历</p>
+<p>解答：双指针，左右两边哪边小就移动哪边</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">addTwoNumbers</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> l1<span class="token punctuation">,</span> <span class="token class-name">ListNode</span> l2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">ListNode</span> q1<span class="token operator">=</span>l1<span class="token punctuation">,</span>q2<span class="token operator">=</span>l2<span class="token punctuation">;</span>
-      <span class="token class-name">ListNode</span> dummy<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token class-name">ListNode</span> cur<span class="token operator">=</span>dummy<span class="token punctuation">;</span>
-      <span class="token keyword">int</span> carry<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-      <span class="token keyword">while</span><span class="token punctuation">(</span>q1<span class="token operator">!=</span><span class="token keyword">null</span><span class="token operator">||</span>q2<span class="token operator">!=</span><span class="token keyword">null</span><span class="token operator">||</span>carry<span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-          <span class="token keyword">int</span> v1<span class="token operator">=</span>q1<span class="token operator">==</span><span class="token keyword">null</span><span class="token operator">?</span><span class="token number">0</span><span class="token operator">:</span>q1<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
-          <span class="token keyword">int</span> v2<span class="token operator">=</span>q2<span class="token operator">==</span><span class="token keyword">null</span><span class="token operator">?</span><span class="token number">0</span><span class="token operator">:</span>q2<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
-          <span class="token class-name">ListNode</span> node<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v1<span class="token operator">+</span>v2<span class="token operator">+</span>carry<span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          cur<span class="token punctuation">.</span>next<span class="token operator">=</span>node<span class="token punctuation">;</span>
-          carry<span class="token operator">=</span><span class="token punctuation">(</span>v1<span class="token operator">+</span>v2<span class="token operator">+</span>carry<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>
-          <span class="token keyword">if</span><span class="token punctuation">(</span>q1<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span>q1<span class="token operator">=</span>q1<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-          <span class="token keyword">if</span><span class="token punctuation">(</span>q2<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span>q2<span class="token operator">=</span>q2<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-          cur<span class="token operator">=</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-      <span class="token punctuation">&#125;</span>
-      <span class="token keyword">return</span> dummy<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">maxArea</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> height<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+       <span class="token keyword">int</span> res<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>r<span class="token operator">=</span>height<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+       <span class="token keyword">while</span><span class="token punctuation">(</span>l<span class="token operator">&lt;</span>r<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+           <span class="token comment">//计算面积</span>
+           res<span class="token operator">=</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token punctuation">(</span>r<span class="token operator">-</span>l<span class="token punctuation">)</span><span class="token operator">*</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">,</span>height<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token comment">//每次都移动小的那边</span>
+           <span class="token keyword">if</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token operator">></span>height<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">)</span>r<span class="token operator">--</span><span class="token punctuation">;</span>
+           <span class="token keyword">else</span> l<span class="token operator">++</span><span class="token punctuation">;</span>
+       <span class="token punctuation">&#125;</span>
+       <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -501,7 +491,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/02/17/LeetCode%20Hot100%EF%BC%882.%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0%EF%BC%89/">http://example.com/2023/02/17/LeetCode%20Hot100%EF%BC%882.%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0%EF%BC%89/</a>
+                    <a href="http://example.com/2023/02/17/LeetCode%20Hot100%EF%BC%8811.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%89/">http://example.com/2023/02/17/LeetCode%20Hot100%EF%BC%8811.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -539,8 +529,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%93%BE%E8%A1%A8/">
-                                    <span class="chip bg-color">链表</span>
+                                <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                                    <span class="chip bg-color">双指针</span>
                                 </a>
                             
                                 <a href="/tags/Hot100/">
@@ -626,7 +616,7 @@
         repo: 'zhang-shicong.github.io',
         owner: 'zhang-shicong',
         admin: ["zhang-shicong"],
-        id: '2023-02-17T13-50-38',
+        id: '2023-02-17T14-16-41',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -658,13 +648,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/02/17/LeetCode%20Hot100%EF%BC%883.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%EF%BC%89/">
+                <a href="/2023/02/17/LeetCode%20Hot100%EF%BC%8815.%20%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="LeetCode Hot100（3. 无重复字符的最长子串）">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="LeetCode Hot100（15. 三数之和）">
                         
-                        <span class="card-title">LeetCode Hot100（3. 无重复字符的最长子串）</span>
+                        <span class="card-title">LeetCode Hot100（15. 三数之和）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -696,10 +686,6 @@
                         <span class="chip bg-color">双指针</span>
                     </a>
                     
-                    <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
-                        <span class="chip bg-color">滑动窗口</span>
-                    </a>
-                    
                     <a href="/tags/Hot100/">
                         <span class="chip bg-color">Hot100</span>
                     </a>
@@ -719,13 +705,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/17/Redis%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6-%E8%BF%87%E6%9C%9Fkey%E5%A4%84%E7%90%86/">
+                <a href="/2023/02/17/LeetCode%20Hot100%EF%BC%885.%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="LeetCode Hot100（5. 最长回文子串）">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">LeetCode Hot100（5. 最长回文子串）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -740,11 +726,31 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            zhang-shicong
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Hot100/" class="post-category">
+                                    Hot100
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hot100/">
+                        <span class="chip bg-color">Hot100</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%AD%E7%AD%89/">
+                        <span class="chip bg-color">中等</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/">
+                        <span class="chip bg-color">回文串</span>
+                    </a>
+                    
                 </div>
                 
             </div>
