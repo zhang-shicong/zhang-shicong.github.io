@@ -4,6 +4,69 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2023/02/17/MySQL%E9%9D%A2%E8%AF%95%E7%AF%87/"/>
+      <url>/2023/02/17/MySQL%E9%9D%A2%E8%AF%95%E7%AF%87/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redis面试篇</title>
+      <link href="/2023/02/17/Redis%E9%9D%A2%E8%AF%95%E7%AF%87/"/>
+      <url>/2023/02/17/Redis%E9%9D%A2%E8%AF%95%E7%AF%87/</url>
+      
+        <content type="html"><![CDATA[<h3 id="什么是-Redis？"><a href="#什么是-Redis？" class="headerlink" title="什么是 Redis？"></a>什么是 Redis？</h3><p>Redis 是一种基于内存的数据库，对数据的读写操作都是在内存中完成，因此<strong>读写速度非常快</strong>，常用于<strong>缓存，消息队列、分布式锁等场景</strong>。</p><h3 id="为什么用-Redis-作为-MySQL-的缓存？"><a href="#为什么用-Redis-作为-MySQL-的缓存？" class="headerlink" title="为什么用 Redis 作为 MySQL 的缓存？"></a>为什么用 Redis 作为 MySQL 的缓存？</h3><p>主要是因为 <strong>Redis 具备「高性能」和「高并发」两种特性</strong>。</p><h4 id="Redis-具备高性能"><a href="#Redis-具备高性能" class="headerlink" title="Redis 具备高性能"></a>Redis 具备高性能</h4><p>假如用户第一次访问 MySQL 中的某些数据。这个过程会比较慢，因为是从硬盘上读取的。将该用户访问的数据缓存在 Redis 中，这样下一次再访问这些数据的时候就可以直接从缓存中获取了，操作 Redis 缓存就是直接操作内存，所以速度相当快。</p><h4 id="Redis-具备高并发"><a href="#Redis-具备高并发" class="headerlink" title="Redis 具备高并发"></a>Redis 具备高并发</h4><p>单台设备的 Redis 的 QPS（Query Per Second，每秒钟处理完请求的次数） 是 MySQL 的 10 倍，Redis 单机的 QPS 能轻松破 10w，而 MySQL 单机的 QPS 很难破 1w。</p><p>所以，直接访问 Redis 能够承受的请求是远远大于直接访问 MySQL 的，所以我们可以考虑把数据库中的部分数据转移到缓存中去，这样用户的一部分请求会直接到缓存这里而不用经过数据库。</p><h3 id="Redis-数据类型以及使用场景分别是什么？"><a href="#Redis-数据类型以及使用场景分别是什么？" class="headerlink" title="Redis 数据类型以及使用场景分别是什么？"></a>Redis 数据类型以及使用场景分别是什么？</h3><p>Redis 提供了丰富的数据类型，常见的有五种数据类型：<strong>String（字符串），Hash（哈希），List（列表），Set（集合）、Zset（有序集合）</strong>。</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302171626232.png" alt="image-20230217162645123"></p><h3 id="Redis-是单线程吗？"><a href="#Redis-是单线程吗？" class="headerlink" title="Redis 是单线程吗？"></a>Redis 是单线程吗？</h3><p><strong>Redis 单线程指的是「接收客户端请求-&gt;解析请求 -&gt;进行数据读写等操作-&gt;发送数据给客户端」这个过程是由一个线程（主线程）来完成的</strong>。</p><p>但是，<strong>Redis 程序并不是单线程的</strong>，Redis 在启动的时候，是会<strong>启动后台线程</strong>（BIO）。</p><h3 id="Redis-采用单线程为什么还这么快？"><a href="#Redis-采用单线程为什么还这么快？" class="headerlink" title="Redis 采用单线程为什么还这么快？"></a>Redis 采用单线程为什么还这么快？</h3><ul><li>Redis 的大部分操作<strong>都在内存中完成</strong>，并且采用了高效的数据结构，因此 Redis 瓶颈可能是机器的内存或者网络带宽，而并非 CPU，既然 CPU 不是瓶颈，那么自然就采用单线程的解决方案了；</li><li>Redis 采用单线程模型可以<strong>避免了多线程之间的竞争</strong>，省去了多线程切换带来的时间和性能上的开销，而且也不会导致死锁问题。</li><li>Redis 采用了 <strong>I&#x2F;O 多路复用机制</strong>处理大量的客户端 Socket 请求，IO 多路复用机制是指一个线程处理多个 IO 流，就是我们经常听到的 select&#x2F;epoll 机制。简单来说，在 Redis 只运行单线程的情况下，该机制允许内核中，同时存在多个监听 Socket 和已连接 Socket。内核会一直监听这些 Socket 上的连接请求或数据请求。一旦有请求到达，就会交给 Redis 线程处理，这就实现了一个 Redis 线程处理多个 IO 流的效果。</li></ul><h3 id="Redis-如何实现数据不丢失？"><a href="#Redis-如何实现数据不丢失？" class="headerlink" title="Redis 如何实现数据不丢失？"></a>Redis 如何实现数据不丢失？</h3><p>Redis 共有三种数据持久化的方式：</p><ul><li><strong>AOF 日志</strong>：每执行一条写操作命令，就把该命令以追加的方式写入到一个文件里；</li><li><strong>RDB 快照</strong>：将某一时刻的内存数据，以二进制的方式写入磁盘；</li><li><strong>混合持久化方式</strong>：Redis 4.0 新增的方式，集成了 AOF 和 RBD 的优点；</li></ul><h3 id="AOF-日志为什么先执行命令，再把数据写入日志呢？"><a href="#AOF-日志为什么先执行命令，再把数据写入日志呢？" class="headerlink" title="AOF 日志为什么先执行命令，再把数据写入日志呢？"></a>AOF 日志为什么先执行命令，再把数据写入日志呢？</h3><h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><ul><li><strong>避免额外的检查开销</strong>：因为如果先将写操作命令记录到 AOF 日志里，再执行该命令的话，如果当前的命令语法有问题，那么如果不进行命令语法检查，该错误的命令记录到 AOF 日志里后，Redis 在使用日志恢复数据时，就可能会出错。</li><li><strong>不会阻塞当前写操作命令的执行</strong>：因为当写操作命令执行成功后，才会将命令记录到 AOF 日志。</li></ul><h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><ul><li><strong>数据可能会丢失：</strong> 执行写操作命令和记录日志是两个过程，那当 Redis 在还没来得及将命令写入到硬盘时，服务器发生宕机了，这个数据就会有丢失的风险。</li><li><strong>可能阻塞其他操作：</strong> 由于写操作命令执行成功后才记录到 AOF 日志，所以不会阻塞当前命令的执行，但因为 AOF 日志也是在主线程中执行，所以当 Redis 把日志文件写入磁盘的时候，还是会阻塞后续的操作无法执行。</li></ul><h3 id="AOF-写回策略有几种？"><a href="#AOF-写回策略有几种？" class="headerlink" title="AOF 写回策略有几种？"></a>AOF 写回策略有几种？</h3><ul><li><strong>Always</strong>，这个单词的意思是「总是」，所以它的意思是每次写操作命令执行完后，同步将 AOF 日志数据写回硬盘；</li><li><strong>Everysec</strong>，这个单词的意思是「每秒」，所以它的意思是每次写操作命令执行完后，先将命令写入到 AOF 文件的内核缓冲区，然后每隔一秒将缓冲区里的内容写回到硬盘；</li><li><strong>No</strong>，意味着不由 Redis 控制写回硬盘的时机，转交给操作系统控制写回的时机，也就是每次写操作命令执行完后，先将命令写入到 AOF 文件的内核缓冲区，再由操作系统决定何时将缓冲区内容写回硬盘。</li></ul><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302171633764.png" alt="image-20230217163333706"></p><h3 id="AOF-日志过大，会触发什么机制？"><a href="#AOF-日志过大，会触发什么机制？" class="headerlink" title="AOF 日志过大，会触发什么机制？"></a>AOF 日志过大，会触发什么机制？</h3><p>Redis 为了避免 AOF 文件越写越大，提供了 <strong>AOF 重写机制</strong>，当 AOF 文件的大小超过所设定的阈值后，Redis 就会启用 AOF 重写机制，来压缩 AOF 文件。</p><h3 id="RDB-快照是如何实现的呢？"><a href="#RDB-快照是如何实现的呢？" class="headerlink" title="RDB 快照是如何实现的呢？"></a>RDB 快照是如何实现的呢？</h3><p>RDB 快照就是记录某一个瞬间的内存数据，记录的是实际数据，而 AOF 文件记录的是命令操作的日志，而不是实际的数据。</p><p>因此在 Redis 恢复数据时， RDB 恢复数据的效率会比 AOF 高些，因为直接将 RDB 文件读入内存就可以，不需要像 AOF 那样还需要额外执行操作命令的步骤才能恢复数据。</p><h3 id="RDB-做快照时会阻塞线程吗？"><a href="#RDB-做快照时会阻塞线程吗？" class="headerlink" title="RDB 做快照时会阻塞线程吗？"></a>RDB 做快照时会阻塞线程吗？</h3><p>Redis 提供了两个命令来生成 RDB 文件，分别是 save 和 bgsave：</p><ul><li>执行了 save 命令，就会在主线程生成 RDB 文件，由于和执行操作命令在同一个线程，所以如果写入 RDB 文件的时间太长，<strong>会阻塞主线程</strong>；</li><li>执行了 bgsave 命令，会创建一个子进程来生成 RDB 文件，这样可以<strong>避免主线程的阻塞</strong>；</li></ul><h3 id="RDB-在执行快照的时候，数据能修改吗？"><a href="#RDB-在执行快照的时候，数据能修改吗？" class="headerlink" title="RDB 在执行快照的时候，数据能修改吗？"></a>RDB 在执行快照的时候，数据能修改吗？</h3><p>可以的，执行 bgsave 过程中，Redis 依然<strong>可以继续处理操作命令</strong>的，也就是数据是能被修改的，关键的技术就在于<strong>写时复制技术（Copy-On-Write, COW）。</strong></p><h3 id="为什么会有混合持久化？"><a href="#为什么会有混合持久化？" class="headerlink" title="为什么会有混合持久化？"></a>为什么会有混合持久化？</h3><p>RDB 优点是数据恢复速度快，但是快照的频率不好把握。频率太低，丢失的数据就会比较多，频率太高，就会影响性能。</p><p>AOF 优点是丢失数据少，但是数据恢复不快。</p><p>为了集成了两者的优点， Redis 4.0 提出了<strong>混合使用 AOF 日志和内存快照</strong>，也叫混合持久化，既保证了 Redis 重启速度，又降低数据丢失风险。</p><p><strong>混合持久化优点：</strong></p><ul><li>混合持久化结合了 RDB 和 AOF 持久化的优点，开头为 RDB 的格式，使得 Redis 可以更快的启动，同时结合 AOF 的优点，有减低了大量数据丢失的风险。</li></ul><p><strong>混合持久化缺点：</strong></p><ul><li>AOF 文件中添加了 RDB 格式的内容，使得 AOF 文件的可读性变得很差；</li><li>兼容性差，如果开启混合持久化，那么此混合持久化 AOF 文件，就不能用在 Redis 4.0 之前版本了。</li></ul><h3 id="Redis-如何实现服务高可用？"><a href="#Redis-如何实现服务高可用？" class="headerlink" title="Redis 如何实现服务高可用？"></a>Redis 如何实现服务高可用？</h3><p>要想设计一个高可用的 Redis 服务，一定要从 Redis 的多服务节点来考虑，比如 Redis 的<strong>主从复制</strong>、<strong>哨兵模式</strong>、<strong>切片集群</strong>。</p><h4 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h4><p>主从复制是 Redis 高可用服务的最基础的保证，实现方案就是将从前的一台 Redis 服务器，同步数据到多台从 Redis 服务器上，即一主多从的模式，且主从服务器之间采用的是「读写分离」的方式。</p><p><strong>主服务器可以进行读写操作</strong>，当发生写操作时自动将写操作同步给从服务器，而<strong>从服务器一般是只读</strong>，并接受主服务器同步过来写操作命令，然后执行这条命令。</p><p>注意，主从服务器之间的命令复制是<strong>异步</strong>进行的。</p><h4 id="哨兵模式"><a href="#哨兵模式" class="headerlink" title="哨兵模式"></a>哨兵模式</h4><p>在使用 Redis 主从服务的时候，会有一个问题，就是当 Redis 的主从服务器出现故障宕机时，需要手动进行恢复。</p><p>为了解决这个问题，Redis 增加了哨兵模式（<strong>Redis Sentinel</strong>），因为哨兵模式做到了可以监控主从服务器，并且提供<strong>主从节点故障转移的功能。</strong></p><h4 id="切片集群模式"><a href="#切片集群模式" class="headerlink" title="切片集群模式"></a>切片集群模式</h4><p>当 Redis 缓存数据量大到一台服务器无法缓存时，就需要使用 <strong>Redis 切片集群</strong>（Redis Cluster ）方案，它将数据分布在不同的服务器上，以此来降低系统对单主节点的依赖，从而提高 Redis 服务的读写性能。</p><h3 id="Redis-主从模式中，对过期键会如何处理？"><a href="#Redis-主从模式中，对过期键会如何处理？" class="headerlink" title="Redis 主从模式中，对过期键会如何处理？"></a>Redis 主从模式中，对过期键会如何处理？</h3><p>当 Redis 运行在主从模式下时，<strong>从库不会进行过期扫描，从库对过期的处理是被动的</strong>。也就是即使从库中的 key 过期了，如果有客户端访问从库时，依然可以得到 key 对应的值，像未过期的键值对一样返回。</p><p>从库的过期键处理依靠主服务器控制，<strong>主库在 key 到期时，会在 AOF 文件里增加一条 del 指令，同步到所有的从库</strong>，从库通过执行这条 del 指令来删除过期的 key。</p><h3 id="参考资料：小林coding"><a href="#参考资料：小林coding" class="headerlink" title="参考资料：小林coding"></a>参考资料：<a href="https://xiaolincoding.com/">小林coding</a></h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redis内存回收</title>
+      <link href="/2023/02/17/Redis%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/"/>
+      <url>/2023/02/17/Redis%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-Redis内存回收-过期key处理"><a href="#1-Redis内存回收-过期key处理" class="headerlink" title="1.Redis内存回收-过期key处理"></a>1.Redis内存回收-过期key处理</h3><p>Redis之所以性能强，最主要的原因就是基于内存存储。然而单节点的Redis其内存大小不宜过大，会影响持久化或主从同步性能。</p><h4 id="惰性删除"><a href="#惰性删除" class="headerlink" title="惰性删除"></a>惰性删除</h4><p>做法：<strong>不主动删除过期键，每次从数据库访问 key 时，都检测 key 是否过期，如果过期则删除该 key。</strong></p><p>优点：</p><ul><li>因为每次访问时，才会检查 key 是否过期，所以此策略只会使用很少的系统资源，因此，惰性删除策略对 CPU 时间最友好。</li></ul><p>缺点：</p><ul><li>如果一个 key 已经过期，而这个 key 又仍然保留在数据库中，那么只要这个过期 key 一直没有被访问，它所占用的内存就不会释放，造成了一定的内存空间浪费。所以，惰性删除策略对内存不友好。</li></ul><h4 id="周期删除"><a href="#周期删除" class="headerlink" title="周期删除"></a>周期删除</h4><p>通过一个定时任务，周期性的抽样部分过期的key，然后执行删除。</p><p>执行周期有两种：</p><ul><li>Redis服务初始化函数initServer()中设置定时任务，按照server.hz的频率来执行过期key清理，模式为SLOW</li><li>Redis的每个事件循环前会调用beforeSleep()函数，执行过期key清理，模式为FAST</li></ul><p>优点：</p><ul><li>通过限制删除操作执行的时长和频率，来减少删除操作对 CPU 的影响，同时也能删除一部分过期的数据减少了过期键对空间的无效占用。</li></ul><p>缺点：</p><ul><li>内存清理方面没有定时删除效果好，同时没有惰性删除使用的系统资源少。</li><li>难以确定删除操作执行的时长和频率。如果执行的太频繁，定期删除策略变得和定时删除策略一样，对CPU不友好；如果执行的太少，那又和惰性删除一样了，过期 key 占用的内存不会及时得到释放</li></ul><h4 id="小总结："><a href="#小总结：" class="headerlink" title="小总结："></a>小总结：</h4><p>​        RedisKey的TTL记录方式：</p><ul><li>在RedisDB中通过一个Dict记录每个Key的TTL时间</li></ul><p>​       过期key的删除策略：</p><ul><li><p>惰性清理：每次查找key时判断是否过期，如果过期则删除</p></li><li><p>定期清理：定期抽样部分key，判断是否过期，如果过期则删除</p><p>定期清理的两种模式：</p></li><li><p>SLOW模式执行频率默认为10，每次不超过25ms</p></li><li><p>FAST模式执行频率不固定，但两次间隔不低于2ms，每次耗时不超过1ms</p></li></ul><h3 id="2-Redis内存回收-内存淘汰策略"><a href="#2-Redis内存回收-内存淘汰策略" class="headerlink" title="2.Redis内存回收-内存淘汰策略"></a>2.Redis内存回收-内存淘汰策略</h3><p>内存淘汰：就是当Redis内存使用达到设置的上限时，主动挑选部分key删除以释放更多内存的流程。</p><h4 id="淘汰策略"><a href="#淘汰策略" class="headerlink" title="淘汰策略"></a>淘汰策略</h4><p>Redis支持8种不同策略来选择要删除的key：</p><ul><li>noeviction： 不淘汰任何key，但是内存满时不允许写入新数据，默认就是这种策略。</li><li>volatile-ttl： 对设置了TTL的key，比较key的剩余TTL值，TTL越小越先被淘汰</li><li>allkeys-random：对全体key ，随机进行淘汰。也就是直接从db-&gt;dict中随机挑选</li><li>volatile-random：对设置了TTL的key ，随机进行淘汰。也就是从db-&gt;expires中随机挑选。</li><li>allkeys-lru： 对全体key，基于LRU算法进行淘汰</li><li>volatile-lru： 对设置了TTL的key，基于LRU算法进行淘汰</li><li>allkeys-lfu： 对全体key，基于LFU算法进行淘汰</li><li>volatile-lfu： 对设置了TTL的key，基于LFI算法进行淘汰<br>比较容易混淆的有两个：<ul><li>LRU（Least Recently Used），最少最近使用。用当前时间减去最后一次访问时间，这个值越大则淘汰优先级越高。</li><li>LFU（Least Frequently Used），最少频率使用。会统计每个key的访问频率，值越小淘汰优先级越高。</li></ul></li></ul><p>Redis 内存淘汰策略共有八种，这八种策略大体分为<strong>不进行数据淘汰</strong>和<strong>进行数据淘汰</strong>两类策略。</p><p><em>1、不进行数据淘汰的策略</em></p><p><strong>noeviction</strong>（Redis3.0之后，默认的内存淘汰策略） ：它表示当运行内存超过最大设置内存时，不淘汰任何数据，这时如果有新的数据写入，则会触发 OOM，但是如果没用数据写入的话，只是单纯的查询或者删除操作的话，还是可以正常工作。</p><p><em>2、进行数据淘汰的策略</em></p><p>针对「进行数据淘汰」这一类策略，又可以细分为「在设置了过期时间的数据中进行淘汰」和「在所有数据范围内进行淘汰」这两类策略。</p><h4 id="参考资料：小林coding"><a href="#参考资料：小林coding" class="headerlink" title="参考资料：小林coding"></a>参考资料：<a href="https://www.xiaolincoding.com/">小林coding</a></h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode Hot100（39. 组合总和）</title>
       <link href="/2023/02/17/LeetCode%20Hot100%EF%BC%8839.%20%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%EF%BC%89/"/>
       <url>/2023/02/17/LeetCode%20Hot100%EF%BC%8839.%20%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%EF%BC%89/</url>
@@ -321,19 +384,6 @@
             <tag> 中等 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2023/02/17/Redis%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6-%E8%BF%87%E6%9C%9Fkey%E5%A4%84%E7%90%86/"/>
-      <url>/2023/02/17/Redis%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6-%E8%BF%87%E6%9C%9Fkey%E5%A4%84%E7%90%86/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
       
     </entry>
     
