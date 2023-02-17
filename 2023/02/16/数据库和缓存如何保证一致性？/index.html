@@ -367,12 +367,25 @@ A 请求先将数据库的数据">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Redis/">
+                                <span class="chip bg-color">Redis</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Redis/" class="post-category">
+                                Redis
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -422,7 +435,7 @@ A 请求先将数据库的数据">
 <p>A 请求先将缓存的数据更新为 1，然后在更新数据库前，B 请求来了， 将缓存的数据更新为 2，紧接着把数据库更新为 2，然后 A 请求将数据库的数据更新为 1。</p>
 <p>此时，数据库中的数据是 1，而缓存中的数据却是 2，<strong>出现了缓存和数据库中的数据不一致的现象</strong>。</p>
 <p><strong>无论是「先更新数据库，再更新缓存」，还是「先更新缓存，再更新数据库」，这两个方案都存在并发问题，当两个请求并发更新同一条数据的时候，可能会出现缓存和数据库中的数据不一致的现象</strong>。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+
                 
             </div>
             <hr/>
@@ -485,7 +498,11 @@ A 请求先将数据库的数据">
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Redis/">
+                                    <span class="chip bg-color">Redis</span>
+                                </a>
+                            
                         </div>
                     
                 </div>

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: Redis, zsc&#39;s Blog">
+    <meta name="keywords" content="分类: Hot100, zsc&#39;s Blog">
     <meta name="description" content="zsc&#39;s Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>分类: Redis | zsc&#39;s Blog</title>
+    <title>分类: Hot100 | zsc&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -439,7 +439,7 @@
                 
                 <a href="/categories/Redis/" title="Redis: 2">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
+                             chip-default "
                             style="background-color: #F8F9F9;">Redis
                         <span class="tag-length">2</span>
                     </span>
@@ -448,7 +448,7 @@
                 
                 <a href="/categories/Hot100/" title="Hot100: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
+                             chip-active "
                             style="background-color: #82E0AA;">Hot100
                         <span class="tag-length">1</span>
                     </span>
@@ -468,37 +468,36 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/02/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E7%BC%93%E5%AD%98%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%9F/">
+                    <a href="/2023/02/17/LeetCode%20Hot100%EF%BC%882.%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0%EF%BC%89/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="数据库和缓存如何保证一致性？">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="LeetCode Hot100（2.两数相加）">
                             
-                            <span class="card-title">数据库和缓存如何保证一致性？</span>
+                            <span class="card-title">LeetCode Hot100（2.两数相加）</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                先更新数据库，还是先更新缓存？由于引入了缓存，那么在数据更新时，不仅要更新数据库，而且要更新缓存，这两个更新操作存在前后的问题：
+                                2. 两数相加给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，
+并且每个节点只能存储 一位 数字。
 
-先更新数据库，再更新缓存；
-先更新缓存，再更新数据库；
+请你将两个数相加，并以相同形式返回一个表示和的链表。
 
-先更新数据库，再更新缓存
-A 请求先将数据库的数据
+你可以假设除了数字 0 之外，这两个数都不会
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-17
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Redis/" class="post-category">
-                                    Redis
+                                <a href="/categories/Hot100/" class="post-category">
+                                    Hot100
                                 </a>
                                 
                                 
@@ -509,54 +508,16 @@ A 请求先将数据库的数据
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Redis/">
-                            <span class="chip bg-color">Redis</span>
+                        <a href="/tags/%E9%93%BE%E8%A1%A8/">
+                            <span class="chip bg-color">链表</span>
                         </a>
                         
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/02/16/%E4%BB%80%E4%B9%88%E6%98%AF%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%EF%BC%8C%E5%87%BB%E7%A9%BF%EF%BC%8C%E7%A9%BF%E9%80%8F%EF%BC%9F/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="什么是缓存雪崩，击穿，穿透？">
-                            
-                            <span class="card-title">什么是缓存雪崩，击穿，穿透？</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1.缓存雪崩  为了保证缓存中的数据与数据库中的数据一致性，会给 Redis 里的数据设置过期时间，当缓存数据过期后，用户访问的数据如果不在缓存里，业务系统需要重新生成缓存，因此就会访问数据库，并将数据更新到 Redis 里，这样后续请求都
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-16
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Redis/" class="post-category">
-                                    Redis
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
+                        <a href="/tags/Hot100/">
+                            <span class="chip bg-color">Hot100</span>
+                        </a>
                         
-                        <a href="/tags/Redis/">
-                            <span class="chip bg-color">Redis</span>
+                        <a href="/tags/%E4%B8%AD%E7%AD%89/">
+                            <span class="chip bg-color">中等</span>
                         </a>
                         
                     </div>
