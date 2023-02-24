@@ -578,6 +578,29 @@ text&#x2F;x-vcard vcf;
 <h3 id="nginx配置文件"><a href="#nginx配置文件" class="headerlink" title="nginx配置文件"></a>nginx配置文件</h3><pre class="line-numbers language-\" data-language="\"><code class="language-\">&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
+
+<h1 id="Linux删除指定端口"><a href="#Linux删除指定端口" class="headerlink" title="Linux删除指定端口"></a>Linux删除指定端口</h1><h2 id="方式一：lsof命令"><a href="#方式一：lsof命令" class="headerlink" title="方式一：lsof命令"></a>方式一：lsof命令</h2><h3 id="1、查看占用端口进程的PID"><a href="#1、查看占用端口进程的PID" class="headerlink" title="1、查看占用端口进程的PID"></a>1、查看占用端口进程的PID</h3><blockquote>
+<p>lsof -i:{端口号}</p>
+<p>2、根据PID kill掉相关进程，直接使用kill无法删除时，再用kill -9进行删除</p>
+<blockquote>
+<p>kill -9 {PID}</p>
+<h2 id="方式二：netstat命令"><a href="#方式二：netstat命令" class="headerlink" title="方式二：netstat命令"></a>方式二：netstat命令</h2><p>1、查看占用端口进程的PID</p>
+<blockquote>
+<p>netstat -tunlp|grep {port}</p>
+</blockquote>
+<p>实例：</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost sbin]# netstat -tunpl |grep 80
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8197&#x2F;nginx: master  
+tcp6       0      0 :::80                   :::*                    LISTEN      8197&#x2F;nginx: master  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>实例所示的8197即是PID</p>
+<p>2、根据PID kill掉相关进程</p>
+<blockquote>
+<p>kill -9 {PID}</p>
+</blockquote>
+</blockquote>
+</blockquote>
+
                 
             </div>
             <hr/>
