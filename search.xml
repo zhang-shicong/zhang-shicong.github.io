@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>解决使用 screen -r 恢复会话出现错误</title>
+      <link href="/2023/02/24/%E8%A7%A3%E5%86%B3Screen%20-r%E5%9B%9E%E5%A4%8D%E4%BC%9A%E8%AF%9D%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/"/>
+      <url>/2023/02/24/%E8%A7%A3%E5%86%B3Screen%20-r%E5%9B%9E%E5%A4%8D%E4%BC%9A%E8%AF%9D%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://laowangblog.com/tag/screen">screen</a> 可以帮助我们在服务器上执行耗时操作（例如安装环境、FTP 等）时，防止因为意外断线导致任务中断的问题。今天老王在使用 screen -r 恢复会话时，出现了一个错误：There is a screen on: 2467.test (Attached) There is no screen to be resumed matching test.，本文分享下出现这个错误的原因和解决办法。</p><h2 id="一、问题描述与分析"><a href="#一、问题描述与分析" class="headerlink" title="一、问题描述与分析"></a>一、问题描述与分析</h2><p>在进行耗时操作时，我们可以用 <code>screen -S</code> 命令开启一个新的窗口，例如 <code>screen -S test</code>，之后如果因为意外断线导致连接中断时，我们只需要重新 SSH 到服务器，使用 <code>screen -r test</code> 恢复窗口即可。这里的 test 是窗口的名字。</p><p>在使用 <code>screen -r</code> 恢复会话时，出现了这个错误，没有恢复成功：</p><pre class="line-numbers language-none"><code class="language-none">There is a screen on:    2467.test (Attached)There is no screen to be resumed matching test.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>根据错误的提示，test 这个窗口确实是存在的，但是处于被占用的状态（attached），这种情况可能是因为其它人正使用这个会话，或者之前因为 SSH 超时等原因导致会话未正常退出，所以无法再次进入</p><h2 id="二、问题解决办法"><a href="#二、问题解决办法" class="headerlink" title="二、问题解决办法"></a>二、问题解决办法</h2><p>解决办法也很简单，我们需要使用 <code>-d</code> 来把这个 screen 窗口给 detach 掉就行，例如我这里的命令需要改成：</p><pre class="line-numbers language-none"><code class="language-none">screen -r -d 2467<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>其中 2467 是使用 <code>screen -r</code> 提示的窗口编号。这样就能正常恢复这个窗口了。</p><p><a href="https://laowangblog.com/screen-r-resume-problem.html"><strong>参考文章</strong></a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode每日一题（2023/2/24）</title>
+      <link href="/2023/02/24/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.24)/"/>
+      <url>/2023/02/24/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.24)/</url>
+      
+        <content type="html"><![CDATA[<h4 id="2357-使数组中所有元素都等于零"><a href="#2357-使数组中所有元素都等于零" class="headerlink" title="2357. 使数组中所有元素都等于零"></a><a href="https://leetcode.cn/problems/make-array-zero-by-subtracting-equal-amounts/">2357. 使数组中所有元素都等于零</a></h4><pre class="line-numbers language-none"><code class="language-none">给你一个非负整数数组 nums 。在一步操作中，你必须：选出一个正整数 x ，x 需要小于或等于 nums 中 最小 的 非零 元素。nums 中的每个正整数都减去 x。返回使 nums 中所有元素都等于 0 需要的 最少 操作数。示例 1：输入：nums &#x3D; [1,5,0,3,5]输出：3解释：第一步操作：选出 x &#x3D; 1 ，之后 nums &#x3D; [0,4,0,2,4] 。第二步操作：选出 x &#x3D; 2 ，之后 nums &#x3D; [0,2,0,0,2] 。第三步操作：选出 x &#x3D; 2 ，之后 nums &#x3D; [0,0,0,0,0] 。示例 2：输入：nums &#x3D; [0]输出：0解释：nums 中的每个元素都已经是 0 ，所以不需要执行任何操作。 提示：1 &lt;&#x3D; nums.length &lt;&#x3D; 1000 &lt;&#x3D; nums[i] &lt;&#x3D; 100<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>解答：哈希表统计非0元素的个数</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minimumOperations</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>       <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span>  set<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token operator">:</span>nums<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>           <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span>set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token punctuation">&#125;</span>       <span class="token keyword">return</span> set<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 哈希表 </tag>
+            
+            <tag> 每日一题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>NginxProxyManager一款使用超级简单的Nginx反向代理管理器+SSL证书申请</title>
       <link href="/2023/02/23/NginxProxyManager/"/>
       <url>/2023/02/23/NginxProxyManager/</url>
