@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="解决使用 screen -r 恢复会话出现错误, zsc&#39;s Blog">
-    <meta name="description" content="screen 可以帮助我们在服务器上执行耗时操作（例如安装环境、FTP 等）时，防止因为意外断线导致任务中断的问题。今天老王在使用 screen -r 恢复会话时，出现了一个错误：There is a screen on: 2467.tes">
+    <meta name="keywords" content="联机对战平台, zsc&#39;s Blog">
+    <meta name="description" content="1.导航栏 + 画蛇 + 键盘输入操作Navbar
+
+前端渲染 : 
+&amp;lt;router-link  class&amp;#x3D;&amp;quot;navbar-brand&amp;quot; :to&amp;#x3D;&amp;quot;&amp;#123; name: &amp;#39">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>解决使用 screen -r 恢复会话出现错误 | zsc&#39;s Blog</title>
+    <title>联机对战平台 | zsc&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -334,12 +337,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">解决使用 screen -r 恢复会话出现错误</h1>
+                    <h1 class="description center-align post-title">联机对战平台</h1>
                 </div>
             </div>
         </div>
@@ -363,8 +366,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/SpringBoot/">
+                                <span class="chip bg-color">SpringBoot</span>
                             </a>
                         
                     </div>
@@ -375,8 +378,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/SpringBoot/" class="post-category">
+                                SpringBoot
                             </a>
                         
                     </div>
@@ -417,19 +420,495 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://laowangblog.com/tag/screen">screen</a> 可以帮助我们在服务器上执行耗时操作（例如安装环境、FTP 等）时，防止因为意外断线导致任务中断的问题。今天老王在使用 screen -r 恢复会话时，出现了一个错误：There is a screen on: 2467.test (Attached) There is no screen to be resumed matching test.，本文分享下出现这个错误的原因和解决办法。</p>
-<h2 id="一、问题描述与分析"><a href="#一、问题描述与分析" class="headerlink" title="一、问题描述与分析"></a>一、问题描述与分析</h2><p>在进行耗时操作时，我们可以用 <code>screen -S</code> 命令开启一个新的窗口，例如 <code>screen -S test</code>，之后如果因为意外断线导致连接中断时，我们只需要重新 SSH 到服务器，使用 <code>screen -r test</code> 恢复窗口即可。这里的 test 是窗口的名字。</p>
-<p>在使用 <code>screen -r</code> 恢复会话时，出现了这个错误，没有恢复成功：</p>
-<pre class="line-numbers language-none"><code class="language-none">There is a screen on:
-    2467.test (Attached)
-There is no screen to be resumed matching test.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                <h3 id="1-导航栏-画蛇-键盘输入操作"><a href="#1-导航栏-画蛇-键盘输入操作" class="headerlink" title="1.导航栏 + 画蛇 + 键盘输入操作"></a>1.导航栏 + 画蛇 + 键盘输入操作</h3><p>Navbar</p>
+<ul>
+<li><p>前端渲染 : </p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;router-link  class&#x3D;&quot;navbar-brand&quot; :to&#x3D;&quot;&#123; name: &#39;home&#39; &#125;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>根据错误的提示，test 这个窗口确实是存在的，但是处于被占用的状态（attached），这种情况可能是因为其它人正使用这个会话，或者之前因为 SSH 超时等原因导致会话未正常退出，所以无法再次进入</p>
-<h2 id="二、问题解决办法"><a href="#二、问题解决办法" class="headerlink" title="二、问题解决办法"></a>二、问题解决办法</h2><p>解决办法也很简单，我们需要使用 <code>-d</code> 来把这个 screen 窗口给 detach 掉就行，例如我这里的命令需要改成：</p>
-<pre class="line-numbers language-none"><code class="language-none">screen -r -d 2467<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><code>:to=&quot;&#123;name : &#39;路由设置的名称&#39;&#125;&quot;</code></li>
+</ul>
+</li>
+<li><p>设置后半部分导航栏靠右</p>
+<ul>
+<li><code>class=&quot;navbar-nav me-auto mb-2 mb-lg-0&quot; -&gt; class=&quot;navbar-nav&quot;</code></li>
+</ul>
+</li>
+<li><p>点击导航栏,点哪亮哪 ~ 动态确认active</p>
+<ul>
+<li><code>const  route  =  useRoute();</code></li>
+<li><code>let  route_name  =  computed(() =&gt;  route.name);</code></li>
+<li><code>:class=&quot;route_name  ==  &#39;对应路由名称&#39;  ?  &#39;nav-link active&#39;  :  &#39;nav-link&#39;&quot;</code></li>
+</ul>
+</li>
+</ul>
+<p>router</p>
+<ul>
+<li>去除#<ul>
+<li><code>createWebHashHistory -&gt; createWebHistory</code></li>
+</ul>
+</li>
+<li>首先创建对应页面 : <code>pk、ranklist、record、bot、error、index(拓展使用)</code></li>
+<li>路由格式<ul>
+<li><code>&#123;path:&quot;路径&quot;, component:&quot;对应组件&quot;, name:&quot;自定义名字&quot;&#125;</code></li>
+</ul>
+</li>
+<li>404路径细节<ul>
+<li><code>path : &quot;/:catchAll(.*)&quot;</code></li>
+</ul>
+</li>
+</ul>
+<p>游戏基类 : AcGameObject</p>
+<p>游戏地图 : GameMap</p>
+<ul>
+<li>参数 <code>ctx : 画笔、 parent : 动态设置宽高</code></li>
+<li>确认单位长度L<ul>
+<li>min(parent.clientWidth &#x2F; cols, parent.clientHeight &#x2F; rows)</li>
+</ul>
+</li>
+<li>画地图, 通过奇偶确认格子颜色</li>
+</ul>
+<p>画障碍物 Wall</p>
+<ul>
+<li>封住四周</li>
+<li>随机封住中间位置<ul>
+<li>13行13列装换为13行14列?<ul>
+<li>13-13地图两条蛇的坐标分别是(11, 1)、(1, 11)相加为偶数, 之后的每一步可以确认<code>奇 -&gt; 偶 -&gt; 奇</code>有一定概率走到同一格中, 换成13-14两蛇的坐标分别是(11, 1)、(1, 12)之后的路径中不可能走到同一个格子</li>
+</ul>
+</li>
+<li>如何保证两条蛇是联通的?<ul>
+<li><strong>Flood Fill算法</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>随机并中心对称封路, 保证公平性<ul>
+<li><code>g[r][c] =  g[this.rows  -  1  -  r][this.cols  -  1  -  c] =  true;</code></li>
+</ul>
+</li>
+<li><code>const  copy_g  =  JSON.parse(JSON.stringify(g)) 深拷贝不影响原地图</code></li>
+</ul>
+<p>画蛇</p>
+<ul>
+<li><p>组成 : 多个圆圈 + 填充中间矩形</p>
+</li>
+<li><p>Cell</p>
+<ul>
+<li>传入r,c</li>
+<li>坐标转换, canvas坐标系向右为X轴、向下为Y轴<ul>
+<li><code>thix.r = r; thix.c = c; this.x = c + 0.5; this.y = r + 0.5</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>监听键盘, 判断是否运动</p>
+<ul>
+<li>canvas添加属性 tabIndex &#x3D; “0”<ul>
+<li>去除黑框 : <code>canvas:focus &#123;outline: none;&#125;</code></li>
+</ul>
+</li>
+<li>获取键盘输入事件<ul>
+<li><code>this.ctx.canvas.addEventListener(&quot;keydown&quot;, e  =&gt; &#123;处理逻辑, &#39;WASD&#39;左下角动, &#39;上下左右&#39;右上角动&#125;</code></li>
+</ul>
+</li>
+<li>当两个蛇<strong>都获取到可以运动的键盘输入</strong>时才可以动</li>
+</ul>
+</li>
+<li><p>如何运动</p>
+<ul>
+<li><ol>
+<li>获取到下一个点的位置</li>
+</ol>
+</li>
+<li><ol>
+<li>将蛇往后移一位, 多出一个蛇头</li>
+</ol>
+<ul>
+<li>让新蛇头向下一个点运动</li>
+<li>重合时, 将下一个点赋给蛇头</li>
+</ul>
+</li>
+<li><ol>
+<li>蛇尾的处理</li>
+</ol>
+<ul>
+<li><ol>
+<li>长度变化, 不需要处理蛇尾</li>
+</ol>
+</li>
+<li><ol>
+<li>长度不变</li>
+</ol>
+<ul>
+<li>蛇尾向前一个点运动</li>
+<li>重合时删除蛇尾</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>画身体</p>
+<ul>
+<li><p>方法 : 填充矩形</p>
+</li>
+<li><ol>
+<li>重合 : 跳过</li>
+</ol>
+</li>
+<li><ol>
+<li>竖直方向, x确定</li>
+</ol>
+<ul>
+<li>起点坐标<ul>
+<li>x &#x3D; x - 0.5 &#x3D;&gt; <strong>瘦身后</strong> : x &#x3D; x - 0.4</li>
+<li>y &#x3D; min(a.y, b.y)</li>
+<li><code>宽 : L </code> <strong>瘦身后</strong> <code>宽 : L * 0.8</code></li>
+<li>高 : abs(a.y - b.y)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ol>
+<li>水平方向, y确定</li>
+</ol>
+<ul>
+<li>起点坐标<ul>
+<li>x &#x3D; min(a.x, b.x)</li>
+<li>y &#x3D; y - 0.5 &#x3D;&gt; <strong>瘦身后</strong> : y &#x3D; y - 0.4</li>
+<li>宽 : abs(a.y - b.y)</li>
+<li><code>高 : L </code> <strong>瘦身后</strong> <code>高 : L * 0.8</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>碰撞检测</p>
+<ul>
+<li>墙</li>
+<li>蛇身<ul>
+<li>细节 : 如果蛇尾会前进的时候, 蛇尾不要判断<ul>
+<li><code>if(!snake.check_tail_increasing()) k--;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>画眼睛</p>
+<ul>
+<li>设置偏移量</li>
+<li>确定位置<ul>
+<li><code>eye_x  = (this.cells[0].x  +  this.eye_dx[this.eye_direction][i] *  0.15) *  L</code></li>
+<li><code>eye_y  = (this.cells[0].y  +  this.eye_dy[this.eye_direction][i] *  0.15) *  L</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>颜色</p>
+<ul>
+<li>蛇<ul>
+<li>#4876EC #F94847</li>
+<li>#877562 #becd94</li>
+<li>#90c9e2 #458d7b</li>
+<li>#90c9e2 #d08496</li>
+</ul>
+</li>
+<li>格子<ul>
+<li>#A2D149 #AAD751</li>
+<li>#a7aea7 #979e97</li>
+<li>#a5b7f0 #8da0e1</li>
+<li>#88aba1 #689386</li>
+</ul>
+</li>
+<li>墙<ul>
+<li>#B47225</li>
+<li>#46433f</li>
+<li>#1b263b</li>
+<li>#333837</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-登录注册模块-bot增删改查"><a href="#2-登录注册模块-bot增删改查" class="headerlink" title="2.登录注册模块 + bot增删改查"></a>2.登录注册模块 + bot增删改查</h3><p>后端</p>
+<ul>
+<li>spring-security<ul>
+<li>配置<ul>
+<li>实现UserDetailsService类</li>
+<li>实现UserDetails</li>
+<li>JwtAuthenticationTokenFilter</li>
+<li>SecurityConfig</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Account 登录注册</li>
+<li>Bot 增删改查</li>
+<li>@Validated + 实体类传参 <strong>注意导入依赖</strong></li>
+</ul>
+<p>前端</p>
+<ul>
+<li>集成登录注册页面</li>
+<li>刷新不修改登录状态</li>
+</ul>
+<h3 id="3-匹配系统"><a href="#3-匹配系统" class="headerlink" title="3.匹配系统"></a>3.匹配系统</h3><ol>
+<li>前后端通信</li>
+</ol>
+<ul>
+<li>两个用户的一局游戏单独开一个线程实现: Game<ul>
+<li>游戏玩法是回合制, 所以需要lock的信息就是两名玩家的<strong>下一步 nextStep</strong></li>
+<li><strong>Game中所有涉及nextStep变量的地方都需要加锁</strong></li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">lock<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">try</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// do someting</span>
+<span class="token punctuation">&#125;</span><span class="token keyword">finally</span><span class="token punctuation">&#123;</span>
+    lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>其中 2467 是使用 <code>screen -r</code> 提示的窗口编号。这样就能正常恢复这个窗口了。</p>
-<p><a target="_blank" rel="noopener" href="https://laowangblog.com/screen-r-resume-problem.html"><strong>参考文章</strong></a></p>
+<ul>
+<li><p>从run方法进行</p>
+<p>整体分析</p>
+<ul>
+<li>run方法中for循环1000次: <code>因为13 * 14的地图, 三步增长一次, 最多大概600步, 这里循环1000次保证正确</code></li>
+<li>nextStep函数, 返回一个boolean, 表示获取下一步成功或失败<ul>
+<li>进入直接sleep 200ms : <code>前端1s走5格. 200ms走1格, 这里保证了前端画完再去读取下一步操作</code></li>
+<li>for循环50次, 每次sleep100ms : <code>总时间5s, 如果5s内没有输入, 则判断获取下一步失败, 标记为finished</code></li>
+<li>sleep 100ms : <code>1s -&gt; 100ms, 优化用户体验</code></li>
+</ul>
+</li>
+<li>获取下一步成功<ul>
+<li>将前端**<code>judge函数</code>**放到后端</li>
+<li>judge后,<ul>
+<li>两条蛇运动都是正常的: <strong><code>sendMove函数</code></strong></li>
+<li>否则,  <strong><code>sendResult函数</code></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>获取下一步失败<ul>
+<li>结束游戏: <code>修改游戏状态</code></li>
+<li>通过nextStep判断平局, A输, B输</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">1000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">nextStep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 是否获取两条蛇下一操作</span>
+            <span class="token function">judge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"playing"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token function">sendMove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                <span class="token function">sendResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            status <span class="token operator">=</span> <span class="token string">"finished"</span><span class="token punctuation">;</span>
+            lock<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>nextStepA <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> nextStepB <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    loser <span class="token operator">=</span> <span class="token string">"all"</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>nextStepA <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    loser <span class="token operator">=</span> <span class="token string">"A"</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                    loser <span class="token operator">=</span> <span class="token string">"B"</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">finally</span> <span class="token punctuation">&#123;</span>
+                lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token function">sendResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>信息交互<ul>
+<li>发送<ul>
+<li>sendMove : 获取到两名玩家的nextStep -&gt;封装信息 -&gt; 通过WebSocketServer中的sendMessage发送给客户端</li>
+<li>sendResult : 封装信息 -&gt; 通过WebSocketServer中的sendMessage发送给客户端</li>
+</ul>
+</li>
+<li>接收信息<ul>
+<li>onMessage: 通过event处理对应信息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="新建微服务-MatchSystem-实现通过分值匹配玩家"><a href="#新建微服务-MatchSystem-实现通过分值匹配玩家" class="headerlink" title="新建微服务 - MatchSystem : 实现通过分值匹配玩家"></a>新建微服务 - MatchSystem : <strong><code>实现通过分值匹配玩家</code></strong></h3><ul>
+<li><p>创建匹配池</p>
+<ul>
+<li><p>包含参数</p>
+<ul>
+<li>players: <code>池中的玩家</code></li>
+<li>lock : <code>3000服务会通过路由向匹配池添加/删除玩家, 匹配池中也会对玩家进程读写操作, 所以需要加锁控制</code></li>
+<li>RestTemplate : <code>发送请求需要的类</code></li>
+</ul>
+</li>
+<li><p>添加addPlayer, removePlayer方法 : <code>使用lock.lock try&#123; .. &#125;finally&#123;lock.unlock&#125; 控制</code></p>
+</li>
+<li><p>实现匹配策略: </p>
+<pre class="line-numbers language-none"><code class="language-none">通过分值 + 时间匹配, 每增加一秒分值差距提升10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>increaseWaitingTime : <code>增加所有人的等待时间</code></li>
+<li>matchPlayers: <code>匹配玩家</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>匹配池run函数</p>
+<ul>
+<li>while(true) + sleep(1000): <code>实现每隔一秒匹配一次</code></li>
+<li>lock.lock : <code>increaseWaitingTime与matchPlayers都对player有操作, 需要加锁</code></li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+            lock<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+                <span class="token function">increaseWaitingTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">matchPlayers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">finally</span> <span class="token punctuation">&#123;</span>
+                lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>MatchSystem添加API: <code>addPlayer与removePlayer</code>供3000服务添加与移除匹配玩家</li>
+<li>3000服务接收匹配系统匹配玩家信息</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">startGame</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> aId<span class="token punctuation">,</span> <span class="token class-name">Integer</span> aBotId<span class="token punctuation">,</span> <span class="token class-name">Integer</span> bId<span class="token punctuation">,</span> <span class="token class-name">Integer</span> bBotId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"start game: "</span> <span class="token operator">+</span> aId <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> bId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">WebSocketServer</span><span class="token punctuation">.</span><span class="token function">startGame</span><span class="token punctuation">(</span>aId<span class="token punctuation">,</span> aBotId<span class="token punctuation">,</span> bId<span class="token punctuation">,</span> bBotId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"start game success"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-Bot代码执行"><a href="#4-Bot代码执行" class="headerlink" title="4.Bot代码执行"></a>4.Bot代码执行</h3><h3 id="修改前端-传递bot信息"><a href="#修改前端-传递bot信息" class="headerlink" title="修改前端, 传递bot信息"></a>修改前端, 传递bot信息</h3><ul>
+<li>传递路径:<ul>
+<li><code>前端选择人或Bot开始匹配 -&gt; </code></li>
+<li><code>3000服务websocket中startMatching函数 -&gt;</code></li>
+<li><code>匹配系统添加玩家 -&gt;</code></li>
+<li><code>匹配池添加玩家(Player类添加botId信息), 进行匹配 -&gt;</code></li>
+<li><code>匹配成功, 发送信息添加BotId -&gt;</code></li>
+<li><code>3000服务接收匹配系统传递的数据, 调用startGame(添加botId参数) -&gt;</code></li>
+<li><code>Game类中添加相应玩家的bot信息, 在nextStep中判断是人工操作还是机器人操作向BotRunning服务发送信息</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="添加BotRunning服务"><a href="#添加BotRunning服务" class="headerlink" title="添加BotRunning服务"></a>添加BotRunning服务</h3><ul>
+<li><p>设计:</p>
+<ul>
+<li><p>Bot池: </p>
+<pre class="line-numbers language-none"><code class="language-none">单独的线程, 存储3000服务发送的bot信息, 使用自制消息队列控制池中bot<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>run方法中循环方式: <code>只有当队列不为空时, 去执行相应方法, 其他时间阻塞; 使用Condition进行控制</code></li>
+</ul>
+</li>
+<li><p>Consumer: <code>单独的线程, 用来执行Bot代码</code></p>
+</li>
+<li><p>Controller + Service : <code>提供相应的接口添加Bot信息</code></p>
+</li>
+</ul>
+</li>
+<li><p>Bot池: </p>
+<pre class="line-numbers language-none"><code class="language-none">生产者消费者模型, 在对bot的操作时需要加锁, 因为涉及多个线程<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><p>addBot方法: </p>
+<pre class="line-numbers language-none"><code class="language-none">提供给外界添加任务的方法<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><strong>condition.signalAll(): 当有任务进来时, 唤醒所有线程即当前阻塞的BOT_POOL, 会自己释放锁</strong></li>
+</ul>
+</li>
+<li><p>consume: <code>消费bot, 即开启线程去执行Bot代码</code></p>
+</li>
+<li><p>run方法:</p>
+<ul>
+<li>池为空时: <code>condition.await(), 释放当前锁, 阻塞当前线程; 异常需要手动释放锁</code></li>
+<li>不为空: <code>拿出bot并进行消费, consume; 先释放锁再去消费, 因为执行代码比较耗时</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Consumer: </p>
+<pre class="line-numbers language-none"><code class="language-none">执行代码, 单独开启线程<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><p>startTimeout(timeout, bot): </p>
+<pre class="line-numbers language-none"><code class="language-none">设置代码执行最长时间对线程进行控制, 当超出时间或者执行完毕中断当前线程<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>进来开启线程this.start(), 设置bot信息</li>
+<li>如何进行控制: <code>join(timeout)方法: 线程执行完毕或timeout时间后, 执行join后面的代码(this.interrpt())</code></li>
+</ul>
+</li>
+<li><p>run方法: </p>
+<pre class="line-numbers language-none"><code class="language-none">执行代码<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Reflect.compile(“package name”, “code”).create.get(); : <code>需要保证类名不一致, 即在类名后添加随机Id</code></li>
+<li>生成的实例去执行接口响应的方法: <code>nextMove(当前局面)</code>, 将返回值发送给3000服务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>3000服务接收下一步信息</p>
+<ul>
+<li>我们已经中断了从前端获取输入进行移动, 需要重新调用之前进行移动的方法 <code>game.setNextStepA(direction);</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="游戏完整的流程"><a href="#游戏完整的流程" class="headerlink" title="游戏完整的流程"></a>游戏完整的流程</h3><ul>
+<li>client1, client2点击开始匹配</li>
+<li>3000服务通过websocket接受玩家信息, 发送给matching服务</li>
+<li>matching服务匹配池接收3000服务发送的玩家信息, 通过相应的策略匹配两名玩家, 发送给3000服务</li>
+<li>3000服务接收对战玩家信息, 开启游戏startGame</li>
+<li>startGame创建Game线程(创建地图即相关信息), 通过nextStep获取输入</li>
+<li>nextStep<ul>
+<li>用户手动输入<ul>
+<li>判断输入合法性<ul>
+<li>合法: 发送信息给前端, 继续获取下一步输入</li>
+<li>不合法: 结束游戏, 判断输赢</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Bot执行<ul>
+<li>发送bot信息给BotRunning服务</li>
+<li>BotRunning服务通过BOT_POOL接收bot信息进行处理</li>
+<li>Consumer消费bot, 生成下一步走向</li>
+<li>发送给3000服务<ul>
+<li>判断输入合法性<ul>
+<li>合法: 发送信息给前端, 继续获取下一步输入</li>
+<li>不合法: 结束游戏, 判断输赢</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -456,7 +935,7 @@ There is no screen to be resumed matching test.<span aria-hidden="true" class="l
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/02/24/%E8%A7%A3%E5%86%B3Screen%20-r%E5%9B%9E%E5%A4%8D%E4%BC%9A%E8%AF%9D%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/">http://example.com/2023/02/24/%E8%A7%A3%E5%86%B3Screen%20-r%E5%9B%9E%E5%A4%8D%E4%BC%9A%E8%AF%9D%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/</a>
+                    <a href="http://example.com/2023/02/24/%E8%81%94%E6%9C%BA%E5%AF%B9%E6%88%98%E5%B9%B3%E5%8F%B0/">http://example.com/2023/02/24/%E8%81%94%E6%9C%BA%E5%AF%B9%E6%88%98%E5%B9%B3%E5%8F%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -494,8 +973,8 @@ There is no screen to be resumed matching test.<span aria-hidden="true" class="l
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/SpringBoot/">
+                                    <span class="chip bg-color">SpringBoot</span>
                                 </a>
                             
                         </div>
@@ -573,7 +1052,7 @@ There is no screen to be resumed matching test.<span aria-hidden="true" class="l
         repo: 'zhang-shicong.github.io',
         owner: 'zhang-shicong',
         admin: ["zhang-shicong"],
-        id: '2023-02-24T13-14-05',
+        id: '2023-02-24T19-37-21',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -601,9 +1080,10 @@ There is no screen to be resumed matching test.<span aria-hidden="true" class="l
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/02/24/%E8%81%94%E6%9C%BA%E5%AF%B9%E6%88%98%E5%B9%B3%E5%8F%B0/">
                     <div class="card-image">
@@ -621,9 +1101,9 @@ There is no screen to be resumed matching test.<span aria-hidden="true" class="l
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -636,6 +1116,7 @@ There is no screen to be resumed matching test.<span aria-hidden="true" class="l
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -654,13 +1135,13 @@ There is no screen to be resumed matching test.<span aria-hidden="true" class="l
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/24/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.2.24)/">
+                <a href="/2023/02/24/%E8%A7%A3%E5%86%B3Screen%20-r%E5%9B%9E%E5%A4%8D%E4%BC%9A%E8%AF%9D%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="LeetCode每日一题（2023/2/24）">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="解决使用 screen -r 恢复会话出现错误">
                         
-                        <span class="card-title">LeetCode每日一题（2023/2/24）</span>
+                        <span class="card-title">解决使用 screen -r 恢复会话出现错误</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -677,8 +1158,8 @@ There is no screen to be resumed matching test.<span aria-hidden="true" class="l
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -688,12 +1169,8 @@ There is no screen to be resumed matching test.<span aria-hidden="true" class="l
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
-                        <span class="chip bg-color">哈希表</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
-                        <span class="chip bg-color">每日一题</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
