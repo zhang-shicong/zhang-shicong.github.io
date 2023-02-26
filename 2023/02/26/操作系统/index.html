@@ -508,6 +508,12 @@
 <li><p><strong>优先级调度</strong>：为每个进程分配一个优先级，按优先级进行调度。为了防止低优先级的进程永远等 不到调度，可以随着时间的推移增加等待进程的优先级。</p>
 </li>
 </ul>
+<h3 id="10-select、poll-和-epoll-之间的区别"><a href="#10-select、poll-和-epoll-之间的区别" class="headerlink" title="10.select、poll 和 epoll 之间的区别"></a>10.select、poll 和 epoll 之间的区别</h3><ul>
+<li>select 和 poll 都是同步I&#x2F;O多路复用技术，而 epoll 是异步I&#x2F;O多路复用技术。 </li>
+<li>select 和 poll 都需要遍历所有的文件描述符，而 epoll 只需要遍历就绪的文件描述符。 </li>
+<li>select 和 poll 都存在最大文件描述符数量的限制，而 epoll 没有这个限制。 </li>
+<li>select 和 poll 都不支持水平触发，而 epoll 支持水平触发。</li>
+</ul>
 
                 
             </div>
