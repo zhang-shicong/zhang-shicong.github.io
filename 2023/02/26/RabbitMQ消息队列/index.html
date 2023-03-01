@@ -445,7 +445,7 @@
 <li><strong>扩展性</strong>:多个RabbitMQ节点可以组成一个集群，也可以根据实际业务情况动态地扩展 集群中节点。 </li>
 <li><strong>高可用性</strong> : 队列可以在集群中的机器上设置镜像，使得在部分节点出现问题的情况下队 列仍然可用。 </li>
 <li><strong>多种协议</strong>: RabbitMQ除了原生支持AMQP协议，还支持STOMP， MQTT等多种消息中间件协议。 </li>
-<li>**多语言客户端 **:RabbitMQ 几乎支持所有常用语言，比如 Java、 Python、 Ruby、 PHP、 C#、  JavaScript 等。</li>
+<li><strong>多语言客户端</strong>:RabbitMQ 几乎支持所有常用语言，比如 Java、 Python、 Ruby、 PHP、 C#、  JavaScript 等。</li>
 <li><strong>管理界面</strong> : RabbitMQ 提供了一个易用的用户界面，使得用户可以监控和管理消息、集 群中的节点等。</li>
 <li><strong>令插件机制</strong>: RabbitMQ 提供了许多插件 ， 以实现从多方面进行扩展，当然也可以编写自 己的插件。</li>
 </ul>
@@ -498,7 +498,7 @@
 <p>\2. Client得到消息并做完业务逻辑</p>
 <p>\3. Client发送Ack消息给MQ，通知MQ删除该消息，此处有可能因为网络问题导致Ack失败，那么Client会重复消息，这里就引出消费幂等的问题；</p>
 <p>\4. MQ将已消费的消息删除。</p>
-<h4 id="11-如何保证RabbitMQ消息队列的高可用"><a href="#11-如何保证RabbitMQ消息队列的高可用" class="headerlink" title="11.如何保证RabbitMQ消息队列的高可用?"></a>11.如何保证RabbitMQ消息队列的高可用?</h4><p>RabbitMQ 有三种模式：<strong>单机模式</strong> ， **普通集群模式 **， **镜像集群模式 **。</p>
+<h4 id="11-如何保证RabbitMQ消息队列的高可用"><a href="#11-如何保证RabbitMQ消息队列的高可用" class="headerlink" title="11.如何保证RabbitMQ消息队列的高可用?"></a>11.如何保证RabbitMQ消息队列的高可用?</h4><p>RabbitMQ 有三种模式：<strong>单机模式</strong> ， <strong>普通集群模式</strong>， <strong>镜像集群模式</strong>。</p>
 <ul>
 <li><p>单机模式：就是demo级别的，一般就是你本地启动了玩玩儿的，没人生产用单机模式</p>
 </li>
