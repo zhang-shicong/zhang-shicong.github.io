@@ -4,12 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="谷粒商城项目重点, zsc&#39;s Blog">
-    <meta name="description" content="1. session在分布式下的问题1.同一个服务，多个实例，每次的session分布不一样
-解决办法：
+    <meta name="keywords" content="LeetCode每日一题（2023/3/17）, zsc&#39;s Blog">
+    <meta name="description" content="2389. 和有限的最长子序列给你一个长度为 n 的整数数组 nums ，和一个长度为 m 的整数数组 queries 。
 
-第一种解决方案：session复制（同步），存在带宽，占用很多内存
-第二种解决方案：客户端存储，浏览器cookie有有长度限制，不安">
+返回一个长度为 m 的数组 answer ，其中 answer[i] 是 nums 中 元素之和小于等于 quer">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>谷粒商城项目重点 | zsc&#39;s Blog</title>
+    <title>LeetCode每日一题（2023/3/17） | zsc&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -338,12 +336,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">谷粒商城项目重点</h1>
+                    <h1 class="description center-align post-title">LeetCode每日一题（2023/3/17）</h1>
                 </div>
             </div>
         </div>
@@ -367,12 +365,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SpringBoot/">
-                                <span class="chip bg-color">SpringBoot</span>
-                            </a>
-                        
-                            <a href="/tags/SpringCloud/">
-                                <span class="chip bg-color">SpringCloud</span>
+                            <a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
+                                <span class="chip bg-color">每日一题</span>
                             </a>
                         
                     </div>
@@ -383,8 +377,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/SpringCloud/" class="post-category">
-                                SpringCloud
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -396,7 +390,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-03-16
+                    2023-03-18
                 </div>
                 
 
@@ -420,88 +414,62 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-session在分布式下的问题"><a href="#1-session在分布式下的问题" class="headerlink" title="1. session在分布式下的问题"></a>1. session在分布式下的问题</h3><p>1.同一个服务，多个实例，每次的session分布不一样</p>
-<p>解决办法：</p>
-<ul>
-<li>第一种解决方案：session复制（同步），存在带宽，占用很多内存</li>
-<li>第二种解决方案：客户端存储，浏览器cookie有有长度限制，不安全</li>
-<li>第三种解决方案：iphash一致性，水平扩展会有问题</li>
-<li>第四种：统一存储到数据库，使用了springsession，将用户的信息存储到了redis缓存中</li>
-</ul>
-<p>2.不同服务，跨域名不能共享session</p>
-<p>解决办法：<br>将域名范围扩大为父域名</p>
-<p>springsession的原理：<br>通过过滤器来拦截请求，将request和response包装成wrappedRequest和wrappedResponse，做了功能增强，这样request.getSession就是从SessionRepository获取得到的，做到从redis获取session。</p>
-<h3 id="2-ThreadLocal"><a href="#2-ThreadLocal" class="headerlink" title="2. ThreadLocal"></a>2. ThreadLocal</h3><p>添加商品到购物车，要判断用户有没有登录，没有登录就操作临时购物车，登录了就操作登录购物车并且还要合并临时购物车</p>
-<p>然后通过拦截器来拦截判断用户是否登录，然后将用户的信息封装起来，放到threadlocal中</p>
-<h3 id="3-缓存数据一致性的解决方案"><a href="#3-缓存数据一致性的解决方案" class="headerlink" title="3.缓存数据一致性的解决方案"></a>3.缓存数据一致性的解决方案</h3><p><strong>1.双写模式</strong> </p>
-<p> 解决方案：</p>
-<ul>
-<li>1）给缓存数据设置过期时间，数据最终一致性（看用户是否可以忍受）</li>
-<li>2）加读写锁</li>
-</ul>
-<p>失效模式</p>
-<p>解决方案：加读写锁</p>
-<ul>
-<li><p>3.)延时双删</p>
-</li>
-<li><p>4).canal来监听mysql的binlog日志，然后更新redis</p>
-</li>
-<li><p>5).分布式的读写锁</p>
-</li>
-</ul>
-<h3 id="4-微博登录的流程"><a href="#4-微博登录的流程" class="headerlink" title="4.微博登录的流程"></a>4.微博登录的流程</h3><p>首先去微博开放平台去申请一个应用，申请成功就会有对应的App Key和App Secret，设置授权成功页的回调地址和授权失败的回调地址。然后你在页面上点击微博登录会跳到微博提供的授权页，输入账号密码，如果成功就会跳到成功回调页，并且它携带了一个code，通过code来获取token，拿得token就可以访问微博提供的一些接口来访问用户信息</p>
-<h3 id="5-单点登录流程"><a href="#5-单点登录流程" class="headerlink" title="5.单点登录流程"></a>5.单点登录流程</h3><p>环境：一台登录认证服务（server），两台客户端（client1，client2）</p>
-<p>浏览器从client1访问受保护的资源，判断session中有没有用户信息，如果没有去认证服务器登录，可以携带一个登录成功要跳转的地址（redirect_url）,登录成功可以把用户信息放入redis中，然后跳转地址的使用携带一个token，说明token是从认证服务登录返回的，判断如果token不为空，根据token查询用户信息放入session中，以后登录session有数据就可以直接访问了，client2访问受保护的资源，client1已经登录过了，所以client2就不需要登录了，就是服务器返回token的时候会往浏览器放一个cookie，下次登录判断cookie是否为null，如果不为null就说明以前有人登录过了，就不需要登录了</p>
-<h3 id="6-购物车的实现"><a href="#6-购物车的实现" class="headerlink" title="6.购物车的实现"></a>6.购物车的实现</h3><p>购物车分为临时购物车和登录购物车，使用了redis的hash结构</p>
-<p>整个存放结构：登录购物车key&#x3D;gulimall:cart:userId field:skuId value:skuId对应的商品id</p>
-<p>临时购物车key&#x3D;gulimall:cart:uuid field:skuId value:skuId对应的商品id</p>
-<p>添加商品到购物车都需要判断用户的登录状态，通过拦截器将用户的登录信息放到Threadlocal中，如果第一次使用购物车默认会为用户添加一个uuid</p>
-<p>获取购物车：首先判断用户有没有登录，没有登录展示临时购物车，登录了首先要看临时购物车有没有数据，如果有数据就要合并到登录购物中去，合并完成删除临时购物车</p>
-<h3 id="7-下单流程"><a href="#7-下单流程" class="headerlink" title="7.下单流程"></a>7.下单流程</h3><p>选中商品添加到购物车，点击去结算，来到结算详情页，需要查询会员的收货地址列表、所有选中的购物项、优惠信息（会员的积分），查询库存信息（有货无货），商品总金额，应付金额，商品总数，最重要的就是防重令牌，确认号商品信息就可以点击去支付，这样的话库存就会锁定，订单如果出现异常或者不支付就会通过消息队列进行通知，让库存解锁.</p>
-<h3 id="8-幂等性的解决方案"><a href="#8-幂等性的解决方案" class="headerlink" title="8.幂等性的解决方案"></a>8.幂等性的解决方案</h3><ul>
-<li><p>1.使用令牌机制（token）</p>
-</li>
-<li><p>2.各种锁机制（乐观锁，悲观锁，分布式锁）</p>
-</li>
-<li><p>3.唯一约束（数据库唯一约束，set nx）</p>
-</li>
-<li><p>4.防重表</p>
-</li>
-<li><p>5.全局请求唯一id</p>
-</li>
-</ul>
-<h3 id="9-RabbitMQ项目中怎么使用的"><a href="#9-RabbitMQ项目中怎么使用的" class="headerlink" title="9.RabbitMQ项目中怎么使用的"></a>9.RabbitMQ项目中怎么使用的</h3><p>解锁库存和定时关单</p>
-<ul>
-<li>1）那说一下消息丢失是怎么解决的？</li>
-</ul>
-<p>大致分为3个阶段：</p>
-<p>生产者发送消息给mq消息丢失：开启事务（同步效率低）或者开启confirm机制（异步效率高）</p>
-<p>mq自己内部出现了问题：开启持久化机制</p>
-<p>消费者处理消息时丢失：取消自动Ack模式，开启手动Ack模式</p>
-<ul>
-<li>2）说一下消息积压怎么解决的吧？</li>
-</ul>
-<p>现在生产者发送的流量</p>
-<p>多增加几台消费者实例进行消费</p>
-<p>将消息保存到数据库，离线慢慢处理</p>
-<ul>
-<li>3）消息重复消费怎么解决？</li>
-</ul>
-<p>保证业务接口的幂等性</p>
-<p>使用防重表，发送的每一个消息都有唯一标识，处理过了就不用处理了，比如redis，</p>
-<p>可以配合set nx命令保存消息id，保存如果key已经存在，获取它的值（比如成功是1，正在执行是0），如果是1表示已经成功处理，直接ack，如果是0就什么都不做，为了防止死锁，加一个key的过期时间</p>
-<h3 id="10-秒杀功能"><a href="#10-秒杀功能" class="headerlink" title="10.秒杀功能"></a>10.秒杀功能</h3><p>限流+异步+缓存+独立部署</p>
-<h5 id="限流方式："><a href="#限流方式：" class="headerlink" title="限流方式："></a>限流方式：</h5><p>1）前端限流，抢购的时候可以设置一个验证码，通过手速快慢可以降低一些请求，还有一个好处就是可以识别是人还是机器</p>
-<p>2）nginx限流，直接将部分请求负载到错误的静态页面</p>
-<p>3）网关限流</p>
-<p>4）分布式信号量（本项目使用的这个）</p>
-<p>5）rabbitmq限流</p>
-<h5 id="秒杀思路"><a href="#秒杀思路" class="headerlink" title="秒杀思路:"></a>秒杀思路:</h5><p>1）项目独立部署，独立秒杀模块gulimall-seckill</p>
-<p>2）使用定时任务每天三点上架最新秒杀商品，削减高峰期压力</p>
-<p>3）秒杀链接加密，为秒杀商品添加唯一商品随机码，在开始秒杀时才暴露接口</p>
-<p>4）库存预热，先从数据库中扣除一部分库存以redisson信号量的形式存储在redis中</p>
-<p>5）队列削峰，秒杀成功后立即返回，然后以发送消息的形式创建订单</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_57869541/article/details/127186286?spm=1001.2014.3001.5502"><strong>参考博客</strong></a></p>
+                <h4 id="2389-和有限的最长子序列"><a href="#2389-和有限的最长子序列" class="headerlink" title="2389. 和有限的最长子序列"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-subsequence-with-limited-sum/">2389. 和有限的最长子序列</a></h4><pre class="line-numbers language-none"><code class="language-none">给你一个长度为 n 的整数数组 nums ，和一个长度为 m 的整数数组 queries 。
+
+返回一个长度为 m 的数组 answer ，其中 answer[i] 是 nums 中 元素之和小于等于 queries[i] 的 子序列 的 最大 长度  。
+
+子序列 是由一个数组删除某些元素（也可以不删除）但不改变剩余元素顺序得到的一个数组。
+
+示例 1：
+
+输入：nums &#x3D; [4,5,2,1], queries &#x3D; [3,10,21]
+输出：[2,3,4]
+解释：queries 对应的 answer 如下：
+- 子序列 [2,1] 的和小于或等于 3 。可以证明满足题目要求的子序列的最大长度是 2 ，所以 answer[0] &#x3D; 2 。
+- 子序列 [4,5,1] 的和小于或等于 10 。可以证明满足题目要求的子序列的最大长度是 3 ，所以 answer[1] &#x3D; 3 。
+- 子序列 [4,5,2,1] 的和小于或等于 21 。可以证明满足题目要求的子序列的最大长度是 4 ，所以 answer[2] &#x3D; 4 。
+示例 2：
+
+输入：nums &#x3D; [2,3,4,5], queries &#x3D; [1]
+输出：[0]
+解释：空子序列是唯一一个满足元素和小于或等于 1 的子序列，所以 answer[0] &#x3D; 0 。
+
+提示：
+
+n &#x3D;&#x3D; nums.length
+m &#x3D;&#x3D; queries.length
+1 &lt;&#x3D; n, m &lt;&#x3D; 1000
+1 &lt;&#x3D; nums[i], queries[i] &lt;&#x3D; 10^6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>解答：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">answerQueries</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> queries<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 记录 nums 数组的长度和 queries 数组的长度</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">,</span> m <span class="token operator">=</span> queries<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token comment">// 对nums数组进行排序</span>
+        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 创建一个长度为m的整型数组保存结果</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> queries<span class="token punctuation">.</span>length<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 查询x值</span>
+            <span class="token keyword">int</span> x <span class="token operator">=</span> queries<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment">// r记录能凑成多少个数字</span>
+            <span class="token keyword">int</span> r <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 每次减去当前数组下标对应的值，如果大于等于零，记录进位数，并从x中减去该数值</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">>=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    x <span class="token operator">-=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    r<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">// 将结果存入res中</span>
+            res<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> r<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 返回结果</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -528,7 +496,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/03/16/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E9%87%8D%E7%82%B9%E6%80%BB%E7%BB%93/">http://example.com/2023/03/16/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E9%87%8D%E7%82%B9%E6%80%BB%E7%BB%93/</a>
+                    <a href="http://example.com/2023/03/18/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.3.17)/">http://example.com/2023/03/18/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.3.17)/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -566,12 +534,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SpringBoot/">
-                                    <span class="chip bg-color">SpringBoot</span>
-                                </a>
-                            
-                                <a href="/tags/SpringCloud/">
-                                    <span class="chip bg-color">SpringCloud</span>
+                                <a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
+                                    <span class="chip bg-color">每日一题</span>
                                 </a>
                             
                         </div>
@@ -654,13 +618,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/03/18/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.3.17)/">
+                <a href="/2023/03/18/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.3.18)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="LeetCode每日一题（2023/3/17）">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="LeetCode每日一题（2023/3/18）">
                         
-                        <span class="card-title">LeetCode每日一题（2023/3/17）</span>
+                        <span class="card-title">LeetCode每日一题（2023/3/18）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -688,8 +652,16 @@
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                        <span class="chip bg-color">双指针</span>
+                    </a>
+                    
                     <a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
                         <span class="chip bg-color">每日一题</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%80%92%E5%BD%92/">
+                        <span class="chip bg-color">递归</span>
                     </a>
                     
                 </div>
@@ -703,13 +675,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/16/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.3.16)/">
+                <a href="/2023/03/16/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E9%87%8D%E7%82%B9%E6%80%BB%E7%BB%93/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="LeetCode每日一题（2023/3/16）">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="谷粒商城项目重点">
                         
-                        <span class="card-title">LeetCode每日一题（2023/3/16）</span>
+                        <span class="card-title">谷粒商城项目重点</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -726,8 +698,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/SpringCloud/" class="post-category">
+                                    SpringCloud
                                 </a>
                             
                             
@@ -737,16 +709,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">
-                        <span class="chip bg-color">前缀和</span>
+                    <a href="/tags/SpringBoot/">
+                        <span class="chip bg-color">SpringBoot</span>
                     </a>
                     
-                    <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
-                        <span class="chip bg-color">哈希表</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
-                        <span class="chip bg-color">每日一题</span>
+                    <a href="/tags/SpringCloud/">
+                        <span class="chip bg-color">SpringCloud</span>
                     </a>
                     
                 </div>
