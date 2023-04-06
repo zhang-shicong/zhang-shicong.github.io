@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>v2rayN使用教程之hysteria</title>
+      <link href="/2023/04/06/v2rayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B9%8Bhysteria/"/>
+      <url>/2023/04/06/v2rayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B9%8Bhysteria/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-下载v2rayN"><a href="#1-下载v2rayN" class="headerlink" title="1.下载v2rayN"></a>1.下载v2rayN</h3><h3 id="2-解压并打开v2rayN-exe"><a href="#2-解压并打开v2rayN-exe" class="headerlink" title="2.解压并打开v2rayN.exe"></a>2.解压并打开v2rayN.exe</h3><h3 id="3-下载并安装-net"><a href="#3-下载并安装-net" class="headerlink" title="3.下载并安装.net"></a>3.下载并安装.net</h3><p>在打开v2rayN.exe时，会提示安装.net，只需要去网页下载并安装好之后就可以正常打开v2rayN.exe。</p><h3 id="4-配置v2rayN"><a href="#4-配置v2rayN" class="headerlink" title="4..配置v2rayN"></a>4..配置v2rayN</h3><p> 添加自定义配置服务器</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230331210121150.png" alt="image-20230331210121150"></p><p>浏览选择你的Json文件</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230331210219000.png" alt="image-20230331210219000"></p><p>配置选hysteria,端口0.</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230406185751236.png" alt="image-20230406185751236"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> v2rayN </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> v2rayN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>匹配系统</title>
+      <link href="/2023/04/06/%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E7%AC%94%E8%AE%B0/%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F/"/>
+      <url>/2023/04/06/%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E7%AC%94%E8%AE%B0/%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F/</url>
+      
+        <content type="html"><![CDATA[<p>1.匹配战斗力最接近的对手，这是一个异步的过程</p><p>2.http请求无法实现，一问一答访问速度快，无延迟</p><p>3.websocket，双向通讯，客户端和服务端互相通讯</p><p>4.在本地生成地图，导致生成地图信息不一样，需要将生成地图的在服务器端完成</p><p>5.FPS游戏在本地判断较多，就越容易有外挂</p><p>6.将服务器生成的地图发给用户</p><p>7.服务器等待用户输入（wating）或者bot输入</p><p>8.websocket，每来一个链接，就会在后端生成一个websocketServer实例</p><p>9.websocket使用ConcurrentHashMap来建立保证线程安全</p><p>10.websocket使用的是单例模式，</p><p>11.安全框架放行&#x2F;websocket&#x2F;**</p><p>websocket连接验证，带上token</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode每日一题（2023/4/1）</title>
       <link href="/2023/04/05/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.4.1)/"/>
       <url>/2023/04/05/LeetCode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A1%8C(2023.4.1)/</url>
@@ -209,9 +247,9 @@
     
     
     <entry>
-      <title>v2rayN使用教程</title>
-      <link href="/2023/03/31/v2rayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-      <url>/2023/03/31/v2rayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+      <title>v2rayN使用教程之naiveproxy</title>
+      <link href="/2023/03/31/v2rayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B9%8Bnaiveproxy/"/>
+      <url>/2023/03/31/v2rayN%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B9%8Bnaiveproxy/</url>
       
         <content type="html"><![CDATA[<h3 id="1-下载v2rayN和naiveproxy协议"><a href="#1-下载v2rayN和naiveproxy协议" class="headerlink" title="1.下载v2rayN和naiveproxy协议"></a>1.下载v2rayN和naiveproxy协议</h3><h3 id="2-将解压的的naiveproxy文件的naive-exe文件放到v2rayN-exe目录下"><a href="#2-将解压的的naiveproxy文件的naive-exe文件放到v2rayN-exe目录下" class="headerlink" title="2.将解压的的naiveproxy文件的naive.exe文件放到v2rayN.exe目录下"></a>2.将解压的的naiveproxy文件的naive.exe文件放到v2rayN.exe目录下</h3><p>naive.exe目录</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230331210534486.png" alt="image-20230331210534486"></p><p>v2rayN.exe目录</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230331210711286.png" alt="image-20230331210711286"></p><h3 id="3-下载并安装-net"><a href="#3-下载并安装-net" class="headerlink" title="3.下载并安装.net"></a>3.下载并安装.net</h3><p>在打开v2rayN.exe时，会提示安装.net，只需要去网页下载并安装好之后就可以正常打开v2rayN.exe。</p><h3 id="4-配置v2rayN"><a href="#4-配置v2rayN" class="headerlink" title="4..配置v2rayN"></a>4..配置v2rayN</h3><p> 添加自定义配置服务器</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230331210121150.png" alt="image-20230331210121150"></p><p>浏览选择你的Json文件</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230331210219000.png" alt="image-20230331210219000"></p><p>配置选naiveproxy，端口1080</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230331210246973.png" alt="image-20230331210246973"></p>]]></content>
       
