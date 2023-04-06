@@ -33,7 +33,7 @@
       <link href="/2023/04/06/%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E7%AC%94%E8%AE%B0/%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F/"/>
       <url>/2023/04/06/%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E7%AC%94%E8%AE%B0/%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F/</url>
       
-        <content type="html"><![CDATA[<p>1.匹配战斗力最接近的对手，这是一个异步的过程</p><p>2.http请求无法实现，一问一答访问速度快，无延迟</p><p>3.websocket，双向通讯，客户端和服务端互相通讯</p><p>4.在本地生成地图，导致生成地图信息不一样，需要将生成地图的在服务器端完成</p><p>5.FPS游戏在本地判断较多，就越容易有外挂</p><p>6.将服务器生成的地图发给用户</p><p>7.服务器等待用户输入（wating）或者bot输入</p><p>8.websocket，每来一个链接，就会在后端生成一个websocketServer实例</p><p>9.websocket使用ConcurrentHashMap来建立保证线程安全</p><p>10.websocket使用的是单例模式，</p><p>11.安全框架放行&#x2F;websocket&#x2F;**</p><p>websocket连接验证，带上token</p>]]></content>
+        <content type="html"><![CDATA[<p>1.匹配战斗力最接近的对手，这是一个异步的过程</p><p>2.http请求无法实现，一问一答访问速度快，无延迟</p><p>3.websocket，双向通讯，客户端和服务端互相通讯</p><p>4.在本地生成地图，导致生成地图信息不一样，需要将生成地图的在服务器端完成</p><p>5.FPS游戏在本地判断较多，就越容易有外挂</p><p>6.将服务器生成的地图发给用户</p><p>7.服务器等待用户输入（wating）或者bot输入</p><p>8.websocket，每来一个链接，就会在后端生成一个websocketServer实例</p><p>9.websocket使用ConcurrentHashMap来建立保证线程安全</p><p>10.websocket使用的是单例模式，</p><p>11.安全框架放行&#x2F;websocket&#x2F;**</p><p>websocket连接验证，使用JWT验证，解析token，如果能解析出来，就合法，否则不合法.</p><p>刚开始匹配速度太快，看不到对手是谁，可以设置两秒延迟，</p><p>创建游戏地图</p><p>2.匹配系统</p>]]></content>
       
       
       
