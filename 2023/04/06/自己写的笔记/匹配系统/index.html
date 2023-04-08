@@ -4,12 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="匹配系统, zsc&#39;s Blog">
-    <meta name="description" content="1.匹配战斗力最接近的对手，这是一个异步的过程
+    <meta name="keywords" content="匹配系统和bot运行系统, zsc&#39;s Blog">
+    <meta name="description" content="1.匹配系统1.01.匹配战斗力最接近的对手，这是一个异步的过程
 2.http请求无法实现，一问一答访问速度快，无延迟
 3.websocket，双向通讯，客户端和服务端互相通讯
-4.在本地生成地图，导致生成地图信息不一样，需要将生成地图的在服务器端完成
-5.">
+4.在本地生成地图，导致生成地图信息不一样，需要将生成地图的在">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>匹配系统 | zsc&#39;s Blog</title>
+    <title>匹配系统和bot运行系统 | zsc&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -338,12 +337,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">匹配系统</h1>
+                    <h1 class="description center-align post-title">匹配系统和bot运行系统</h1>
                 </div>
             </div>
         </div>
@@ -403,7 +402,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>1.匹配战斗力最接近的对手，这是一个异步的过程</p>
+                <h3 id="1-匹配系统1-0"><a href="#1-匹配系统1-0" class="headerlink" title="1.匹配系统1.0"></a>1.匹配系统1.0</h3><p>1.匹配战斗力最接近的对手，这是一个异步的过程</p>
 <p>2.http请求无法实现，一问一答访问速度快，无延迟</p>
 <p>3.websocket，双向通讯，客户端和服务端互相通讯</p>
 <p>4.在本地生成地图，导致生成地图信息不一样，需要将生成地图的在服务器端完成</p>
@@ -417,7 +416,23 @@
 <p>websocket连接验证，使用JWT验证，解析token，如果能解析出来，就合法，否则不合法.</p>
 <p>刚开始匹配速度太快，看不到对手是谁，可以设置两秒延迟，</p>
 <p>创建游戏地图</p>
-<p>2.匹配系统</p>
+<p>只要bot不为空，就赋值给botcode，和botid，否则默认的botcode等于空，botid&#x3D;-1；</p>
+<p>nextStep需要判断是bot还是亲自出马，</p>
+<p>12.Matching Pool</p>
+<h3 id="2-bot运行系统"><a href="#2-bot运行系统" class="headerlink" title="2.bot运行系统"></a>2.bot运行系统</h3><p>目前使用java代码来编写bot的代码，调用joor-java-8，可以扩展为任何语言，用docker实现。</p>
+<p>实现一个botPool线程池来一个个的运行代码。</p>
+<p>使用restTemplate来实现微服务之间的通讯</p>
+<pre class="line-numbers language-none"><code class="language-none">RestTemplate是Spring框架提供的一个HTTP客户端，可以方便地进行HTTP请求和响应的处理。在微服务架构中，可以使用RestTemplate来实现不同服务之间的通信。
+
+当一个微服务需要调用另一个微服务时，它会使用RestTemplate创建一个HTTP请求，并发送给目标微服务的HTTP服务端点。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>botId等于-1就是人工出马，否则是亲自出马；</p>
+<p><strong>整个流程：</strong></p>
+<p><strong>1.从客户端发送请求，然后到服务端，服务端将请求发送到匹配系统，匹配系统运行匹配池，匹配成功后返回到服务端，</strong></p>
+<p><strong>2.然后发送到游戏地图，下一步操作来判断是人还是机器操作，</strong></p>
+<p><strong>如果是机器，就直接到bot运行系统的botPool里运行代码，将结果返回到下一步操作，如果是人，等待用户键盘输入命令。</strong></p>
+<p><strong>3.最后判断是否合法。</strong></p>
+<p>botPool继承Thread线程</p>
 
                 
             </div>
