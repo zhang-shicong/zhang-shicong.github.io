@@ -8,21 +8,9 @@
     <meta name="description" content="第一题：
 
 
-&amp;#x2F;&amp;#x2F;
-
-
-
-第二题：
-
-
-&amp;#x2F;&amp;#x2F;
-
-
-
-第三题：
-
-
-
+class Solution &amp;#123;
+    public int countNumbers(int L, int R, int X, int Y) &amp;#123;
+        int count &amp;#x3D; 0;
 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -433,14 +421,35 @@
                 <p>第一题：</p>
 <p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230412211139118.png" alt="image-20230412211139118"></p>
 <p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230412211315751.png" alt="image-20230412211315751"></p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">class Solution &#123;
+    public int countNumbers(int L, int R, int X, int Y) &#123;
+        int count &#x3D; 0;
+        
+        &#x2F;&#x2F; 遍历所有可能的数字，注意边界条件，因为Y是上限，所以遍历到Y+1
+        for (int i &#x3D; 0; i &lt;&#x3D; Y; i++) &#123;
+            &#x2F;&#x2F; 检查数字i是否满足条件3和条件4
+            if ((i &amp; X) &#x3D;&#x3D; X &amp;&amp; (i | Y) &#x3D;&#x3D; Y) &#123;
+                &#x2F;&#x2F; 计算数字i的二进制表示中1的个数
+                int numOfOnes &#x3D; Integer.bitCount(i);
+                &#x2F;&#x2F; 检查数字i是否满足条件1和条件2
+                if (numOfOnes &gt;&#x3D; L &amp;&amp; numOfOnes &lt;&#x3D; R) &#123;
+                    count++;
+                &#125;
+            &#125;
+        &#125;
+
+        return count;
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <p>第二题：</p>
 <p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230412211440879.png" alt="image-20230412211440879"></p>
 <p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230412211605874.png" alt="image-20230412211605874"></p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">动态规划，dp【i】表示以i结尾的最小子串和，min【i】表示左边的最小连续子串和，右边再来一个dp和min走一遍
+然后遍历，将这两个加起来取最小就行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 
@@ -448,6 +457,8 @@
 <p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230412211657126.png" alt="image-20230412211657126"></p>
 <p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230412211927866.png" alt="image-20230412211927866"></p>
 <p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230412212002351.png" alt="image-20230412212002351"></p>
+<pre class="line-numbers language-none"><code class="language-none">贪心，将数组排个序，依次从小开始取，但是只过了45%，不知道为啥。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
@@ -592,18 +603,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/04/12/2023%E5%B9%B44%E6%9C%8812-%E5%BE%AE%E4%BC%97%E9%93%B6%E8%A1%8C%E7%AC%94%E8%AF%95/">
+                <a href="/2023/04/15/2023415-1000%E7%BE%8E%E5%9B%A2%E7%AC%94%E8%AF%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="2023/4/12 微众银行笔试">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="2023/4/15 10:00美团笔试">
                         
-                        <span class="card-title">2023/4/12 微众银行笔试</span>
+                        <span class="card-title">2023/4/15 10:00美团笔试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -613,27 +623,22 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-12
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-15
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%BE%AE%E4%BC%97%E9%93%B6%E8%A1%8C%E7%AC%94%E8%AF%95/" class="post-category">
-                                    微众银行笔试
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zhang-shicong
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BE%AE%E4%BC%97%E9%93%B6%E8%A1%8C%E7%AC%94%E8%AF%95/">
-                        <span class="chip bg-color">微众银行笔试</span>
+                    <a href="/tags/%E7%AC%94%E8%AF%95/">
+                        <span class="chip bg-color">笔试</span>
                     </a>
                     
                 </div>
