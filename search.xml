@@ -4,9 +4,22 @@
   
     
     <entry>
-      <title>AI绘画教程</title>
-      <link href="/2023/05/02/AI%E7%BB%98%E7%94%BB%E6%95%99%E7%A8%8B/"/>
-      <url>/2023/05/02/AI%E7%BB%98%E7%94%BB%E6%95%99%E7%A8%8B/</url>
+      <title>AI绘画教程(网页部署)</title>
+      <link href="/2023/05/02/AI%E7%BB%98%E7%94%BB%E6%95%99%E7%A8%8B(%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2)/"/>
+      <url>/2023/05/02/AI%E7%BB%98%E7%94%BB%E6%95%99%E7%A8%8B(%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2)/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-进入谷歌云端页面"><a href="#1-进入谷歌云端页面" class="headerlink" title="1.进入谷歌云端页面"></a>1.进入谷歌云端页面</h3><p><a href="https://drive.google.com/drive/quota">https://drive.google.com/drive/quota</a></p><h3 id="2-代码执行页面"><a href="#2-代码执行页面" class="headerlink" title="2.代码执行页面"></a>2.代码执行页面</h3><p><a href="https://github.com/camenduru/stable-diffusion-webui-colab/tree/drive">https://github.com/camenduru/stable-diffusion-webui-colab/tree/drive</a></p><h3 id="3-Install-the-WebUI-Colab-to-Google-Drive"><a href="#3-Install-the-WebUI-Colab-to-Google-Drive" class="headerlink" title="3.Install the WebUI Colab to Google Drive"></a>3.Install the WebUI Colab to Google Drive</h3><p>在新的页面打开并安装</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230502213510421.png" alt="image-20230502213510421"></p><p>这个过程大约十几分钟。</p><p>然后同理运行第二个，也需要十多分钟</p><p>出现Public WebUI Colab URL：你的路径</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230503001240670.png" alt="image-20230503001240670"></p><p>说明成功了，可以直接访问路径。</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230503001333378.png" alt="image-20230503001333378"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>AI绘画教程(本地部署)</title>
+      <link href="/2023/05/02/AI%E7%BB%98%E7%94%BB%E6%95%99%E7%A8%8B(%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2)/"/>
+      <url>/2023/05/02/AI%E7%BB%98%E7%94%BB%E6%95%99%E7%A8%8B(%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2)/</url>
       
         <content type="html"><![CDATA[<p><strong>1.Git： 【<a href="https://git-scm.com/">官网</a>】</strong></p><p><strong>2.Python：【<a href="https://www.python.org/">官网</a>】</strong></p><p><strong>3.安装命令：</strong></p><p>在你的指定文件夹在打开cmd命令行，运行下面代码</p><pre class="line-numbers language-none"><code class="language-none">git clone https:&#x2F;&#x2F;github.com&#x2F;AUTOMATIC1111&#x2F;stable-diffusion-webui.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>打开文件D:\0-chatGPT\AI\stable-diffusion-webui</p><p>编辑webui-user.bat文件</p><p>更改前:</p><pre class="line-numbers language-none"><code class="language-none">@echo offset PYTHON&#x3D;set GIT&#x3D;set VENV_DIR&#x3D;set COMMANDLINE_ARGS&#x3D;call webui.bat<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>更改后:‪D:\1-JAVA\python3.10\python.exe</p><pre class="line-numbers language-none"><code class="language-none">@echo offset PYTHON&#x3D;D:\1-JAVA\python3.10\python.exe &#x2F;&#x2F;添加python的安装路径set GIT&#x3D;set VENV_DIR&#x3D;zsc    &#x2F;&#x2F;自定义名称随便定义,注意不能有空格set COMMANDLINE_ARGS&#x3D;call webui.bat<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>双击打这个文件D:\1-JAVA\python3.10\python.exe\webui-user.bat</p><p>自动安装依赖，这个过程比较漫长</p><p><strong>4.Model下载：【<a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Dependencies">点击前往</a>】</strong></p><p>最新版的stable-diffusion-v1.5模型下载：【**<a href="https://huggingface.co/runwayml/stable-diffusion-v1-5">获取</a>**】</p>]]></content>
       
