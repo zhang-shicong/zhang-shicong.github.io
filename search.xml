@@ -4,6 +4,71 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2023/05/17/%E7%94%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E6%A0%BC/"/>
+      <url>/2023/05/17/%E7%94%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E6%A0%BC/</url>
+      
+        <content type="html"><![CDATA[<p>画数据库表</p><table><thead><tr><th>学生姓名</th><th>年龄</th><th>成绩</th></tr></thead><tbody><tr><td>张三</td><td>18</td><td>85</td></tr><tr><td>李四</td><td>17</td><td>92</td></tr><tr><td>王五</td><td>19</td><td>78</td></tr><tr><td>赵六</td><td>20</td><td>89</td></tr></tbody></table>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Docker命令，一键shell脚本部署Linux项目</title>
+      <link href="/2023/05/14/Docker%E5%91%BD%E4%BB%A4%EF%BC%8C%E4%B8%80%E9%94%AEshell%E8%84%9A%E6%9C%AC%E9%83%A8%E7%BD%B2Linux%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2023/05/14/Docker%E5%91%BD%E4%BB%A4%EF%BC%8C%E4%B8%80%E9%94%AEshell%E8%84%9A%E6%9C%AC%E9%83%A8%E7%BD%B2Linux%E9%A1%B9%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<h3 id="要将这些Docker命令编写到一个Shell脚本中，以实现一键执行，您可以按照以下步骤进行操作："><a href="#要将这些Docker命令编写到一个Shell脚本中，以实现一键执行，您可以按照以下步骤进行操作：" class="headerlink" title="要将这些Docker命令编写到一个Shell脚本中，以实现一键执行，您可以按照以下步骤进行操作："></a>要将这些Docker命令编写到一个Shell脚本中，以实现一键执行，您可以按照以下步骤进行操作：</h3><ol><li><p>打开任何文本编辑器，并创建一个新的文件，例如<code>docker.sh</code>。</p></li><li><p>添加Shebang（解释器指令），指定要使用的Shell解释器，如Bash：</p><pre class="line-numbers language-none"><code class="language-none">#!&#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>在脚本文件中，按顺序添加每个Docker命令，每个命令占据一行。确保在每个命令之间添加适当的注释，以提供命令的说明。（最好不要空行，会报错）</p><pre class="line-numbers language-none"><code class="language-none">bashCopy code# Pull Minio imagedocker pull minio&#x2F;minio# Run Minio containerdocker run -p 9000:9000 --name Minio -v &#x2F;mydata&#x2F;miniodata:&#x2F;data -d minio&#x2F;minio server &#x2F;data# Pull Redis imagedocker pull redis# Run Redis containerdocker run -p 6379:6379 --name Redis -v &#x2F;mydata&#x2F;redisdata:&#x2F;data -d redis redis-server --appendonly yes# Pull Elasticsearch imagedocker pull elasticsearch:7.16.2# Run Elasticsearch containerdocker run --name Elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type&#x3D;single-node&quot; \-e &quot;cluster.name&#x3D;elasticsearch&quot; -v &#x2F;mydata&#x2F;elasticsearch&#x2F;plugins:&#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins \-v &#x2F;mydata&#x2F;elasticsearch&#x2F;data:&#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;data -d elasticsearch:7.16.2# Enter Elasticsearch container and install IK plugindocker exec -it Elasticsearch &#x2F;bin&#x2F;bash -c &quot;elasticsearch-plugin install \https:&#x2F;&#x2F;github.com&#x2F;medcl&#x2F;elasticsearch-analysis-ik&#x2F;releases&#x2F;download&#x2F;v7.16.2&#x2F;elasticsearch-analysis-ik-7.16.2.zip&quot;# Restart Elasticsearch containerdocker restart Elasticsearch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>保存并关闭脚本文件。</p></li><li><p>在终端中，使用<code>chmod</code>命令为脚本文件添加执行权限：</p><pre class="line-numbers language-none"><code class="language-none">chmod +x docker.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>最后，运行脚本文件：</p><pre class="line-numbers language-none"><code class="language-none">.&#x2F;docker.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li></ol><p>脚本将依次执行每个Docker命令，并设置所需的容器和服务。确保在运行脚本之前，Docker已正确安装和配置，并且您拥有所需的目录和权限。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+            <tag> shell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Docker命令</title>
+      <link href="/2023/05/14/Docker%E5%91%BD%E4%BB%A4/"/>
+      <url>/2023/05/14/Docker%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-docker删除所有镜像"><a href="#1-docker删除所有镜像" class="headerlink" title="1.docker删除所有镜像"></a>1.docker删除所有镜像</h3><p>要删除Docker中的所有镜像，您可以执行以下步骤：</p><p><strong>警告：执行此操作将删除您计算机上的所有Docker镜像。请谨慎操作，并确保您了解后果。</strong></p><ol><li><p>打开终端或命令提示符窗口。</p></li><li><p>运行以下命令以列出所有本地镜像：</p><pre class="line-numbers language-none"><code class="language-none">docker images -a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>您将看到一个镜像列表，其中包含仓库名称、标签和镜像ID等信息。确保您不需要保留任何镜像。</p></li><li><p>如果确定要删除所有镜像，请运行以下命令：</p><pre class="line-numbers language-none"><code class="language-none">docker rmi $(docker images -a -q)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>此命令使用<code>docker images -a -q</code>列出所有镜像的ID，并将其作为参数传递给<code>docker rmi</code>命令来删除镜像。</p></li><li><p>Docker将逐个删除每个镜像，并在终端上显示删除的结果。</p></li></ol><p>请注意，这些命令将删除您计算机上的所有Docker镜像，并且这些镜像将无法恢复。在执行之前，请确保已备份重要的镜像或数据。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>java环境配置Idea+jdk+maven+mysql+nodejs+vue</title>
       <link href="/2023/05/13/java%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEIdea+jdk+maven+mysql+nodejs+vue/"/>
       <url>/2023/05/13/java%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEIdea+jdk+maven+mysql+nodejs+vue/</url>
