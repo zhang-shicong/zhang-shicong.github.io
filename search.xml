@@ -73,7 +73,7 @@
       <link href="/2023/05/13/java%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEIdea+jdk+maven+mysql+nodejs+vue/"/>
       <url>/2023/05/13/java%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEIdea+jdk+maven+mysql+nodejs+vue/</url>
       
-        <content type="html"><![CDATA[<h3 id="1-idea"><a href="#1-idea" class="headerlink" title="1.idea"></a>1.idea</h3><p><a href="mailto:&#x32;&#x30;&#x32;&#x31;&#x32;&#x31;&#49;&#49;&#54;&#x30;&#x31;&#x33;&#49;&#55;&#48;&#64;&#x73;&#x74;&#x75;&#x2e;&#x68;&#117;&#98;&#x75;&#46;&#101;&#x64;&#117;&#x2e;&#x63;&#110;">&#x32;&#x30;&#x32;&#x31;&#x32;&#x31;&#49;&#49;&#54;&#x30;&#x31;&#x33;&#49;&#55;&#48;&#64;&#x73;&#x74;&#x75;&#x2e;&#x68;&#117;&#98;&#x75;&#46;&#101;&#x64;&#117;&#x2e;&#x63;&#110;</a><br>Fanxing2015</p><p>激活流程(我是用的是2021.2.2)</p><p>打开后在help里的Edit Custom VM Options…编辑配置</p><p>下面的路径不要照抄，填你自己的Jet-code.jar文件的路径</p><pre class="line-numbers language-none"><code class="language-none">-javaagent:D:\code\jet-code\jet-code.jar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="2-jdk"><a href="#2-jdk" class="headerlink" title="2.jdk"></a>2.jdk</h3><pre class="line-numbers language-none"><code class="language-none">JAVA_HOME<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">%JAVA_HOME%\bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><a href="https://blog.csdn.net/qq_41436122/article/details/82620080?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168395009416800226577825%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168395009416800226577825&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-82620080-null-null.142%5Ev87%5Econtrol_2,239%5Ev2%5Einsert_chatgpt&utm_term=Java%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F&spm=1018.2226.3001.4187">链接</a></p><pre class="line-numbers language-none"><code class="language-none">ClassPath<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>配置完毕,查看版本号</p><pre class="line-numbers language-none"><code class="language-none">java -version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="3-mysql"><a href="#3-mysql" class="headerlink" title="3.mysql"></a>3.mysql</h3><p><a href="https://blog.csdn.net/qq_59636442/article/details/123058454"><strong>下载</strong></a><br><a href="https://edu.csdn.net/skill/mysql/mysql-95d0b7e5493e478f85ca49a77a13d194?typeId=81247&ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168395046116800226588934%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=168395046116800226588934&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-123760428-null-null.142%5Ev87%5Econtrol_2,239%5Ev2%5Einsert_chatgpt&utm_term=mysql%E5%AE%89%E8%A3%85%E5%90%8E%E8%AF%A5%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187">配置环境</a></p><p>默认安装目录<br>C:\Program Files\MySQL\MySQL Server</p><p>配置环境变量(Path)：</p><pre class="line-numbers language-none"><code class="language-none">C:\Program Files\MySQL\MySQL Server\bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="4-maven"><a href="#4-maven" class="headerlink" title="4.maven"></a>4.maven</h3><pre class="line-numbers language-none"><code class="language-none">MAVEN_HOME<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">自己的maven安装目录<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="5-nodejs-vue"><a href="#5-nodejs-vue" class="headerlink" title="5.nodejs+vue"></a>5.nodejs+vue</h3><p><a href="https://blog.csdn.net/weixin_42216142/article/details/84258095">链接</a></p><p>1.官网下载nodejs14版本</p><pre class="line-numbers language-none"><code class="language-none">node -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>2.配置淘宝镜像站</p><pre class="line-numbers language-none"><code class="language-none">npm config set registry&#x3D;http:&#x2F;&#x2F;registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>3.安装vue</p><pre class="line-numbers language-none"><code class="language-none">npm install vue -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="1-idea"><a href="#1-idea" class="headerlink" title="1.idea"></a>1.idea</h3><p><a href="mailto:&#50;&#x30;&#50;&#49;&#50;&#49;&#49;&#49;&#54;&#48;&#x31;&#x33;&#x31;&#55;&#x30;&#x40;&#x73;&#x74;&#117;&#46;&#x68;&#x75;&#x62;&#117;&#46;&#101;&#100;&#117;&#46;&#99;&#110;">&#50;&#x30;&#50;&#49;&#50;&#49;&#49;&#49;&#54;&#48;&#x31;&#x33;&#x31;&#55;&#x30;&#x40;&#x73;&#x74;&#117;&#46;&#x68;&#x75;&#x62;&#117;&#46;&#101;&#100;&#117;&#46;&#99;&#110;</a><br>Fanxing2015</p><p>激活流程(我是用的是2021.2.2)</p><p>打开后在help里的Edit Custom VM Options…编辑配置</p><p>下面的路径不要照抄，填你自己的Jet-code.jar文件的路径</p><pre class="line-numbers language-none"><code class="language-none">-javaagent:D:\code\jet-code\jet-code.jar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="2-jdk"><a href="#2-jdk" class="headerlink" title="2.jdk"></a>2.jdk</h3><pre class="line-numbers language-none"><code class="language-none">JAVA_HOME<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">%JAVA_HOME%\bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><a href="https://blog.csdn.net/qq_41436122/article/details/82620080?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168395009416800226577825%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168395009416800226577825&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-82620080-null-null.142%5Ev87%5Econtrol_2,239%5Ev2%5Einsert_chatgpt&utm_term=Java%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F&spm=1018.2226.3001.4187">链接</a></p><pre class="line-numbers language-none"><code class="language-none">ClassPath<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>配置完毕,查看版本号</p><pre class="line-numbers language-none"><code class="language-none">java -version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="3-mysql"><a href="#3-mysql" class="headerlink" title="3.mysql"></a>3.mysql</h3><p><a href="https://blog.csdn.net/qq_59636442/article/details/123058454"><strong>下载</strong></a><br><a href="https://edu.csdn.net/skill/mysql/mysql-95d0b7e5493e478f85ca49a77a13d194?typeId=81247&ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168395046116800226588934%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=168395046116800226588934&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-123760428-null-null.142%5Ev87%5Econtrol_2,239%5Ev2%5Einsert_chatgpt&utm_term=mysql%E5%AE%89%E8%A3%85%E5%90%8E%E8%AF%A5%E6%80%8E%E4%B9%88%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187">配置环境</a></p><p>默认安装目录<br>C:\Program Files\MySQL\MySQL Server</p><p>配置环境变量(Path)：</p><pre class="line-numbers language-none"><code class="language-none">C:\Program Files\MySQL\MySQL Server\bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="4-maven"><a href="#4-maven" class="headerlink" title="4.maven"></a>4.maven</h3><pre class="line-numbers language-none"><code class="language-none">MAVEN_HOME<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">自己的maven安装目录<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="5-nodejs-vue"><a href="#5-nodejs-vue" class="headerlink" title="5.nodejs+vue"></a>5.nodejs+vue</h3><p><a href="https://blog.csdn.net/weixin_42216142/article/details/84258095">链接</a></p><p>1.官网下载nodejs14版本</p><pre class="line-numbers language-none"><code class="language-none">node -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>2.配置淘宝镜像站</p><pre class="line-numbers language-none"><code class="language-none">npm config set registry&#x3D;http:&#x2F;&#x2F;registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>3.安装vue</p><pre class="line-numbers language-none"><code class="language-none">npm install vue -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
       
       
       <categories>
@@ -110,9 +110,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> docker </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -152,7 +152,7 @@
       <link href="/2023/05/11/GitHub%E4%B8%8A%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2/"/>
       <url>/2023/05/11/GitHub%E4%B8%8A%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2/</url>
       
-        <content type="html"><![CDATA[<h3 id="1-安装Node-js和Git："><a href="#1-安装Node-js和Git：" class="headerlink" title="1.安装Node.js和Git："></a>1.<strong>安装Node.js和Git：</strong></h3><p>Hexo是基于Node.js的，所以你需要在你的电脑上安装Node.js和npm(Node.js包管理器)。你也需要安装Git，因为GitHub Pages是基于Git的。</p><p>   在使用Git与GitHub交互之前，你需要在本地机器上配置Git，并且在GitHub上创建一个账户。</p><p>以下是步骤：</p><ol><li><p><strong>安装Git</strong></p><p>首先，你需要在本地计算机上安装Git。不同的操作系统安装Git的方法有所不同，你可以访问Git的官方下载页面（<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> ）进行安装。</p></li><li><p><strong>配置Git</strong></p><p>安装完Git之后，你需要配置你的用户名和邮箱地址，因为每次Git提交都会使用这些信息。打开命令行或终端，然后输入以下命令：</p><pre class="line-numbers language-none"><code class="language-none">arduinoCopy codegit config --global user.name &quot;Your Name&quot;git config --global user.email &quot;youremail@domain.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>这里请将”Your Name”替换为你的名字，将”<a href="mailto:youremail@domain.com">youremail@domain.com</a>“替换为你的邮件地址。</p></li><li><p><strong>创建GitHub账户</strong></p><p>访问GitHub官网（<a href="https://github.com/">https://github.com/</a> ）并注册一个新账户。</p></li><li><p><strong>在GitHub上创建新仓库</strong></p><p>登录到你的GitHub账户，然后在右上角点击”+”按钮，选择”New repository”，为仓库命名为 <code>&lt;yourusername&gt;.github.io</code>，然后点击”Create repository”。这里<code>&lt;yourusername&gt;</code>应该是你的GitHub用户名。</p></li><li><p><strong>连接本地Git与GitHub</strong></p><p>在你的本地计算机上，你需要生成一个SSH密钥对，并将公钥添加到你的GitHub账户中。首先，在终端中输入以下命令生成新的SSH密钥对：</p><pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在提示你输入文件位置时，直接按Enter接受默认位置。然后在提示你输入密码时，可以选择输入一个密码或者直接按Enter跳过。</p><p>然后在终端中输入以下命令，将SSH公钥复制到剪贴板：</p><pre class="line-numbers language-none"><code class="language-none">clip &lt; ~&#x2F;.ssh&#x2F;id_ed25519.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>接下来，登录到你的GitHub账户，点击右上角的头像，然后选择”Settings”。在左侧菜单中选择”SSH and GPG keys”，然后点击”New SSH key”，在”Title”中输入一个描述，然后在”Key”中粘贴你的公钥，然后点击”Add SSH key”。</p><p>最后，你可以测试你的SSH连接。在终端中输入以下命令：</p><pre class="line-numbers language-none"><code class="language-none">ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>如果一切配置正确，你应该会看到一条消息说你已经成功连接到GitHub。</p></li></ol><p>现在你已经完成了Git和GitHub的基本设置，可以开始使用Git来管理你的项目，并且将你的项目推送到GitHub上了。</p><h3 id="2-安装Hexo："><a href="#2-安装Hexo：" class="headerlink" title="2.安装Hexo："></a>2.<strong>安装Hexo：</strong></h3><p>打开命令行窗口，输入以下命令来全局安装Hexo：</p><pre class="line-numbers language-none"><code class="language-none">npm install -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="3-创建一个Hexo项目："><a href="#3-创建一个Hexo项目：" class="headerlink" title="3.创建一个Hexo项目："></a>3.<strong>创建一个Hexo项目：</strong></h3><p>在你想要创建博客的地方，输入以下命令：</p><pre class="line-numbers language-none"><code class="language-none">hexo init blogcd blognpm install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这将在<code>myblog</code>文件夹中创建一个新的Hexo项目。</p><h3 id="4-生成静态文件："><a href="#4-生成静态文件：" class="headerlink" title="4.生成静态文件："></a>4.<strong>生成静态文件：</strong></h3><p>使用以下命令生成静态文件：</p><pre class="line-numbers language-none"><code class="language-none">hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="5-创建GitHub仓库："><a href="#5-创建GitHub仓库：" class="headerlink" title="5.创建GitHub仓库："></a>5.<strong>创建GitHub仓库：</strong></h3><p>在GitHub上创建一个新的仓库，仓库名应该为<code>&lt;yourusername&gt;.github.io</code>，其中<code>&lt;yourusername&gt;</code>应该是你的GitHub用户名。</p><h3 id="6-安装部署插件："><a href="#6-安装部署插件：" class="headerlink" title="6.安装部署插件："></a>6.<strong>安装部署插件：</strong></h3><p>你需要安装一个Hexo插件来帮助你将你的网站部署到GitHub Pages上。你可以使用以下命令来安装这个插件：</p><pre class="line-numbers language-none"><code class="language-none">npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="7-配置部署插件："><a href="#7-配置部署插件：" class="headerlink" title="7.配置部署插件："></a>7.<strong>配置部署插件：</strong></h3><p>打开你Hexo项目中的<code>_config.yml</code>文件，找到<code>deploy</code>部分，将其修改为以下内容：</p><pre class="line-numbers language-none"><code class="language-none">deploy:  type: git  repo: git@github.com:&lt;yourusername&gt;&#x2F;&lt;yourusername&gt;.github.io.git  branch: main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="8-部署你的网站："><a href="#8-部署你的网站：" class="headerlink" title="8.部署你的网站："></a>8.<strong>部署你的网站：</strong></h3><pre class="line-numbers language-none"><code class="language-none">hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="1-安装Node-js和Git："><a href="#1-安装Node-js和Git：" class="headerlink" title="1.安装Node.js和Git："></a>1.<strong>安装Node.js和Git：</strong></h3><p>Hexo是基于Node.js的，所以你需要在你的电脑上安装Node.js和npm(Node.js包管理器)。你也需要安装Git，因为GitHub Pages是基于Git的。</p><p>   在使用Git与GitHub交互之前，你需要在本地机器上配置Git，并且在GitHub上创建一个账户。</p><p>以下是步骤：</p><ol><li><p><strong>安装Git</strong></p><p>首先，你需要在本地计算机上安装Git。不同的操作系统安装Git的方法有所不同，你可以访问Git的官方下载页面（<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> ）进行安装。</p></li><li><p><strong>配置Git</strong></p><p>安装完Git之后，你需要配置你的用户名和邮箱地址，因为每次Git提交都会使用这些信息。打开命令行或终端，然后输入以下命令：</p><pre class="line-numbers language-none"><code class="language-none">git config --global user.name &quot;root&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">git config --global user.email &quot;root@qq.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p><strong>创建GitHub账户</strong></p><p>访问GitHub官网（<a href="https://github.com/">https://github.com/</a> ）并注册一个新账户。</p></li><li><p><strong>在GitHub上创建新仓库</strong></p><p>登录到你的GitHub账户，然后在右上角点击”+”按钮，选择”New repository”，为仓库命名为 <code>&lt;yourusername&gt;.github.io</code>，然后点击”Create repository”。这里<code>&lt;yourusername&gt;</code>应该是你的GitHub用户名。</p></li><li><p><strong>连接本地Git与GitHub</strong></p><p>在你的本地计算机上，你需要生成一个SSH密钥对，并将公钥添加到你的GitHub账户中。首先，在终端中输入以下命令生成新的SSH密钥对：</p><pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t ed25519 -C &quot;root@qq.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在提示你输入文件位置时，直接按Enter接受默认位置。然后在提示你输入密码时，可以选择输入一个密码或者直接按Enter跳过。</p><p>然后在终端中输入以下命令，将SSH公钥复制到剪贴板：</p><pre class="line-numbers language-none"><code class="language-none">clip &lt; ~&#x2F;.ssh&#x2F;id_ed25519.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>接下来，登录到你的GitHub账户，点击右上角的头像，然后选择”Settings”。在左侧菜单中选择”SSH and GPG keys”，然后点击”New SSH key”，在”Title”中输入一个描述，然后在”Key”中粘贴你的公钥，然后点击”Add SSH key”。</p><p>最后，你可以测试你的SSH连接。在终端中输入以下命令：</p><pre class="line-numbers language-none"><code class="language-none">ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>如果一切配置正确，你应该会看到一条消息说你已经成功连接到GitHub。</p></li></ol><p>现在你已经完成了Git和GitHub的基本设置，可以开始使用Git来管理你的项目，并且将你的项目推送到GitHub上了。</p><h3 id="2-安装Hexo："><a href="#2-安装Hexo：" class="headerlink" title="2.安装Hexo："></a>2.<strong>安装Hexo：</strong></h3><p>打开命令行窗口，输入以下命令来全局安装Hexo：</p><pre class="line-numbers language-none"><code class="language-none">npm install -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="3-创建一个Hexo项目："><a href="#3-创建一个Hexo项目：" class="headerlink" title="3.创建一个Hexo项目："></a>3.<strong>创建一个Hexo项目：</strong></h3><p>在你想要创建博客的地方，输入以下命令：</p><pre class="line-numbers language-none"><code class="language-none">hexo init blogcd blognpm install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这将在<code>myblog</code>文件夹中创建一个新的Hexo项目。</p><h3 id="4-生成静态文件："><a href="#4-生成静态文件：" class="headerlink" title="4.生成静态文件："></a>4.<strong>生成静态文件：</strong></h3><p>使用以下命令生成静态文件：</p><pre class="line-numbers language-none"><code class="language-none">hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="5-创建GitHub仓库："><a href="#5-创建GitHub仓库：" class="headerlink" title="5.创建GitHub仓库："></a>5.<strong>创建GitHub仓库：</strong></h3><p>在GitHub上创建一个新的仓库，仓库名应该为<code>&lt;yourusername&gt;.github.io</code>，其中<code>&lt;yourusername&gt;</code>应该是你的GitHub用户名。</p><p>启用 GitHub Pages 功能</p><ol><li>打开您的 GitHub 仓库页面。</li><li>点击仓库页面上方的 “Settings”（设置）选项卡。</li><li>在设置页面的左侧菜单中，向下滚动找到 “Pages”（页面）选项。</li><li>在 “Source”（源）部分，您可以选择用于发布 GitHub Pages 的源代码。通常，选择 “main” 或 “master” 分支作为源。</li><li>选择正确的分支作为源后，点击 “Save”（保存）按钮。</li></ol><p>GitHub 将会自动保存您的选择，并在几秒钟内开始构建和部署您的 GitHub Pages 网站。构建完成后，您将在设置页面的 “Pages” 部分看到您的 GitHub Pages 网站的链接。您可以单击链接访问您的网站。</p><h3 id="6-安装部署插件："><a href="#6-安装部署插件：" class="headerlink" title="6.安装部署插件："></a>6.<strong>安装部署插件：</strong></h3><p>你需要安装一个Hexo插件来帮助你将你的网站部署到GitHub Pages上。你可以使用以下命令来安装这个插件：</p><pre class="line-numbers language-none"><code class="language-none">npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="7-配置部署插件："><a href="#7-配置部署插件：" class="headerlink" title="7.配置部署插件："></a>7.<strong>配置部署插件：</strong></h3><p>打开你Hexo项目中的<code>_config.yml</code>文件，找到<code>deploy</code>部分，将其修改为以下内容：</p><pre class="line-numbers language-none"><code class="language-none">deploy:  type: git  repo: git@github.com:&lt;yourusername&gt;&#x2F;&lt;yourusername&gt;.github.io.git  branch: main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="8-部署你的网站："><a href="#8-部署你的网站：" class="headerlink" title="8.部署你的网站："></a>8.<strong>部署你的网站：</strong></h3><pre class="line-numbers language-none"><code class="language-none">hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
       
       
       <categories>
@@ -228,9 +228,9 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 哈希表 </tag>
             
         </tags>
       
@@ -330,9 +330,9 @@
       
         <tags>
             
-            <tag> 优先队列 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 优先队列 </tag>
             
         </tags>
       
@@ -409,9 +409,9 @@
       
         <tags>
             
-            <tag> 前缀和 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 前缀和 </tag>
             
         </tags>
       
@@ -463,9 +463,9 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 哈希表 </tag>
             
             <tag> dp </tag>
             
@@ -1399,9 +1399,9 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 哈希表 </tag>
             
         </tags>
       
@@ -1776,11 +1776,11 @@
       
         <tags>
             
+            <tag> 每日一题 </tag>
+            
             <tag> 前缀和 </tag>
             
             <tag> 哈希表 </tag>
-            
-            <tag> 每日一题 </tag>
             
         </tags>
       
@@ -1907,11 +1907,11 @@
       
         <tags>
             
+            <tag> 每日一题 </tag>
+            
             <tag> 前缀和 </tag>
             
             <tag> 哈希表 </tag>
-            
-            <tag> 每日一题 </tag>
             
         </tags>
       
@@ -1936,9 +1936,9 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 哈希表 </tag>
             
         </tags>
       
@@ -1963,9 +1963,9 @@
       
         <tags>
             
-            <tag> 滑动窗口 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 滑动窗口 </tag>
             
         </tags>
       
@@ -2191,9 +2191,9 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 哈希表 </tag>
             
         </tags>
       
@@ -2268,9 +2268,9 @@
       
         <tags>
             
-            <tag> 面试 </tag>
-            
             <tag> SpringCloud </tag>
+            
+            <tag> 面试 </tag>
             
         </tags>
       
@@ -2295,9 +2295,9 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 哈希表 </tag>
             
         </tags>
       
@@ -2626,9 +2626,9 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 哈希表 </tag>
             
         </tags>
       
@@ -2730,9 +2730,9 @@
       
         <tags>
             
-            <tag> 前缀和 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 前缀和 </tag>
             
             <tag> dp </tag>
             
@@ -2836,9 +2836,9 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 哈希表 </tag>
             
         </tags>
       
@@ -2894,9 +2894,9 @@
             
             <tag> 贪心 </tag>
             
-            <tag> 优先队列 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 优先队列 </tag>
             
         </tags>
       
@@ -3403,11 +3403,11 @@
             
             <tag> 双指针 </tag>
             
-            <tag> 滑动窗口 </tag>
-            
             <tag> Hot100 </tag>
             
             <tag> 中等 </tag>
+            
+            <tag> 滑动窗口 </tag>
             
         </tags>
       
@@ -3461,9 +3461,9 @@
       
         <tags>
             
-            <tag> 二维前缀和 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 二维前缀和 </tag>
             
         </tags>
       
@@ -3588,9 +3588,9 @@
       
         <tags>
             
-            <tag> 哈希表 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 哈希表 </tag>
             
         </tags>
       
@@ -3694,11 +3694,11 @@
       
         <tags>
             
+            <tag> 每日一题 </tag>
+            
             <tag> 前缀和 </tag>
             
             <tag> 哈希表 </tag>
-            
-            <tag> 每日一题 </tag>
             
         </tags>
       
@@ -3789,9 +3789,9 @@
             
             <tag> 双指针 </tag>
             
-            <tag> 滑动窗口 </tag>
-            
             <tag> 每日一题 </tag>
+            
+            <tag> 滑动窗口 </tag>
             
         </tags>
       

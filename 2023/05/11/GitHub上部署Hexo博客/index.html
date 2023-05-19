@@ -152,9 +152,9 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/zhang-shicong.github.io/en" class="waves-effect waves-light">
       
-      <span>languages</span>
+      <span>English Site</span>
     </a>
     
   </li>
@@ -267,11 +267,11 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/" class="waves-effect waves-light">
+		<a href="/zhang-shicong.github.io/en" class="waves-effect waves-light">
 			
 				<i class="fas fa-fw fa-link"></i>
 			
-			languages
+			English Site
 		</a>
           
         </li>
@@ -442,10 +442,9 @@
 </li>
 <li><p><strong>配置Git</strong></p>
 <p>安装完Git之后，你需要配置你的用户名和邮箱地址，因为每次Git提交都会使用这些信息。打开命令行或终端，然后输入以下命令：</p>
-<pre class="line-numbers language-none"><code class="language-none">arduinoCopy codegit config --global user.name &quot;Your Name&quot;
-git config --global user.email &quot;youremail@domain.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">git config --global user.name &quot;root&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>这里请将”Your Name”替换为你的名字，将”<a href="mailto:youremail@domain.com">youremail@domain.com</a>“替换为你的邮件地址。</p>
+<pre class="line-numbers language-none"><code class="language-none">git config --global user.email &quot;root@qq.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p><strong>创建GitHub账户</strong></p>
 <p>访问GitHub官网（<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a> ）并注册一个新账户。</p>
@@ -455,7 +454,7 @@ git config --global user.email &quot;youremail@domain.com&quot;<span aria-hidden
 </li>
 <li><p><strong>连接本地Git与GitHub</strong></p>
 <p>在你的本地计算机上，你需要生成一个SSH密钥对，并将公钥添加到你的GitHub账户中。首先，在终端中输入以下命令生成新的SSH密钥对：</p>
-<pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t ed25519 -C &quot;root@qq.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在提示你输入文件位置时，直接按Enter接受默认位置。然后在提示你输入密码时，可以选择输入一个密码或者直接按Enter跳过。</p>
 <p>然后在终端中输入以下命令，将SSH公钥复制到剪贴板：</p>
@@ -482,8 +481,19 @@ npm install<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <pre class="line-numbers language-none"><code class="language-none">hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="5-创建GitHub仓库："><a href="#5-创建GitHub仓库：" class="headerlink" title="5.创建GitHub仓库："></a>5.<strong>创建GitHub仓库：</strong></h3><p>在GitHub上创建一个新的仓库，仓库名应该为<code>&lt;yourusername&gt;.github.io</code>，其中<code>&lt;yourusername&gt;</code>应该是你的GitHub用户名。</p>
+<p>启用 GitHub Pages 功能</p>
+<ol>
+<li>打开您的 GitHub 仓库页面。</li>
+<li>点击仓库页面上方的 “Settings”（设置）选项卡。</li>
+<li>在设置页面的左侧菜单中，向下滚动找到 “Pages”（页面）选项。</li>
+<li>在 “Source”（源）部分，您可以选择用于发布 GitHub Pages 的源代码。通常，选择 “main” 或 “master” 分支作为源。</li>
+<li>选择正确的分支作为源后，点击 “Save”（保存）按钮。</li>
+</ol>
+<p>GitHub 将会自动保存您的选择，并在几秒钟内开始构建和部署您的 GitHub Pages 网站。构建完成后，您将在设置页面的 “Pages” 部分看到您的 GitHub Pages 网站的链接。您可以单击链接访问您的网站。</p>
 <h3 id="6-安装部署插件："><a href="#6-安装部署插件：" class="headerlink" title="6.安装部署插件："></a>6.<strong>安装部署插件：</strong></h3><p>你需要安装一个Hexo插件来帮助你将你的网站部署到GitHub Pages上。你可以使用以下命令来安装这个插件：</p>
 <pre class="line-numbers language-none"><code class="language-none">npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
 
 <h3 id="7-配置部署插件："><a href="#7-配置部署插件：" class="headerlink" title="7.配置部署插件："></a>7.<strong>配置部署插件：</strong></h3><p>打开你Hexo项目中的<code>_config.yml</code>文件，找到<code>deploy</code>部分，将其修改为以下内容：</p>
 <pre class="line-numbers language-none"><code class="language-none">deploy:
