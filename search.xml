@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>docker安装卸载运行</title>
+      <link href="/2023/05/30/docker%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E8%BF%90%E8%A1%8C/"/>
+      <url>/2023/05/30/docker%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E8%BF%90%E8%A1%8C/</url>
+      
+        <content type="html"><![CDATA[<h3 id="docker安装原文链接"><a href="#docker安装原文链接" class="headerlink" title="docker安装原文链接"></a>docker安装<a href="https://juejin.cn/post/7160320826535837732">原文链接</a></h3><pre class="line-numbers language-none"><code class="language-none">#查看内核版本（docker要求centos系统的内核版本高于3.10）uname -r#更新yum包yum update#安装yum-utilsyum install -y yum -utils device-mapper-persistent-data lvm2#为yum源添加docker仓库位置（由于国内的访问不到官方的，使用aliyun的）##docker官方镜像yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo##aliyun的源yum-config-manager --add-repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;docker-ce&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo#查看仓库的docker版本yum list docker-ce --showduplicates | sort -r#安装dockeryum install docker-ce#启动docker（启动不成功，重启下服务器）systemctl start docker#设置开机启动systemctl enable docker#关闭dockersystemctl stop docker#查看版本docker version#检查是否成功，可以使用searchdocker search mysql#查看日志状态systemctl status docker.service#验证是否安装成功（如果没有hello-world镜像，执行命令会自动下载）docker run hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="启动、查看和停止Docker镜像，您可以使用以下命令："><a href="#启动、查看和停止Docker镜像，您可以使用以下命令：" class="headerlink" title="启动、查看和停止Docker镜像，您可以使用以下命令："></a>启动、查看和停止Docker镜像，您可以使用以下命令：</h3><ol><li><p>启动镜像：</p><pre class="line-numbers language-none"><code class="language-none">docker run -d --name my_container image_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>其中，<code>my_container</code> 是您为容器指定的名称，<code>image_name</code> 是您要启动的镜像的名称。</p></li><li><p>查看正在运行的容器：</p><pre class="line-numbers language-none"><code class="language-none">docker ps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这将列出所有正在运行的容器，包括容器的ID、名称、使用的镜像、运行时间等信息。</p></li><li><p>查看所有容器（包括已停止的）：</p><pre class="line-numbers language-none"><code class="language-none">docker ps -a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这将列出所有容器，无论其是否正在运行。</p></li><li><p>停止容器：</p><pre class="line-numbers language-none"><code class="language-none">docker stop my_container<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>其中，<code>my_container</code> 是您要停止的容器的名称或容器的ID。运行此命令将停止指定的容器。</p></li><li><p>删除容器：</p><pre class="line-numbers language-none"><code class="language-none">docker rm my_container<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这将删除指定的容器。请注意，您必须先停止容器，然后才能删除它。</p></li></ol><p>请替换上述命令中的<code>my_container</code>和<code>image_name</code>为您实际使用的容器名称和镜像名称</p><h3 id="docker安装redis"><a href="#docker安装redis" class="headerlink" title="docker安装redis"></a>docker安装redis</h3><ul><li><p>拉取Redis镜像：运行以下命令从Docker Hub上拉取Redis镜像：</p><pre class="line-numbers language-none"><code class="language-none">docker pull redis<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>运行Redis容器：使用以下命令启动Redis容器：</p><pre class="line-numbers language-none"><code class="language-none">docker run -d --name redis_container -p 6379:6379 redis<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这将在后台运行一个名为 “redis_container” 的Redis容器，并将主机的6379端口映射到容器的6379端口。</p></li><li><p>验证Redis是否正在运行：运行以下命令来验证Redis是否正在运行：</p><pre class="line-numbers language-none"><code class="language-none">docker ps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>如果Redis容器正在运行，您将看到相应的容器信息。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker基本命令</title>
+      <link href="/2023/05/30/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
+      <url>/2023/05/30/docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<p>docker安装<a href="https://juejin.cn/post/7160320826535837732">原文链接</a></p><pre class="line-numbers language-none"><code class="language-none">#查看内核版本（docker要求centos系统的内核版本高于3.10）uname -r#更新yum包yum update#安装yum-utilsyum install -y yum -utils device-mapper-persistent-data lvm2#为yum源添加docker仓库位置（由于国内的访问不到官方的，使用aliyun的）##docker官方镜像yum-config-manager --add-repo https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo##aliyun的源yum-config-manager --add-repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;docker-ce&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo#查看仓库的docker版本yum list docker-ce --showduplicates | sort -r#安装dockeryum install docker-ce#启动docker（启动不成功，重启下服务器）systemctl start docker#设置开机启动systemctl enable docker#关闭dockersystemctl stop docker#查看版本docker version#检查是否成功，可以使用searchdocker search mysql#查看日志状态systemctl status docker.service#验证是否安装成功（如果没有hello-world镜像，执行命令会自动下载）docker run hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>要启动、查看和停止Docker镜像，您可以使用以下命令：</p><ol><li><p>启动镜像：</p><pre class="line-numbers language-none"><code class="language-none">docker run -d --name my_container image_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>其中，<code>my_container</code> 是您为容器指定的名称，<code>image_name</code> 是您要启动的镜像的名称。</p></li><li><p>查看正在运行的容器：</p><pre class="line-numbers language-none"><code class="language-none">docker ps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这将列出所有正在运行的容器，包括容器的ID、名称、使用的镜像、运行时间等信息。</p></li><li><p>查看所有容器（包括已停止的）：</p><pre class="line-numbers language-none"><code class="language-none">docker ps -a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这将列出所有容器，无论其是否正在运行。</p></li><li><p>停止容器：</p><pre class="line-numbers language-none"><code class="language-none">docker stop my_container<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>其中，<code>my_container</code> 是您要停止的容器的名称或容器的ID。运行此命令将停止指定的容器。</p></li><li><p>删除容器：</p><pre class="line-numbers language-none"><code class="language-none">docker rm my_container<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这将删除指定的容器。请注意，您必须先停止容器，然后才能删除它。</p></li></ol><p>请替换上述命令中的<code>my_container</code>和<code>image_name</code>为您实际使用的容器名称和镜像名称</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode 346周赛</title>
       <link href="/2023/05/22/LeetCode%20346%E5%91%A8%E8%B5%9B/"/>
       <url>/2023/05/22/LeetCode%20346%E5%91%A8%E8%B5%9B/</url>
