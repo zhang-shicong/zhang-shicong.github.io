@@ -5,10 +5,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="联机对战平台, zsc&#39;s Blog">
-    <meta name="description" content="1.导航栏 + 画蛇 + 键盘输入操作Navbar
+    <meta name="description" content="
 
-前端渲染 : 
-&amp;lt;router-link  class&amp;#x3D;&amp;quot;navbar-brand&amp;quot; :to&amp;#x3D;&amp;quot;&amp;#123; name: &amp;#39">
+
+匹配系统
+整个匹配系统
+Bot代码运行系统
+整体架构图
+
+整个项目的思路：简单来说就是我们在前端把匹配信息传到ws后端服务器——&amp;gt; 再传到Matching System服务器——&amp;gt;把玩家放到匹配池去匹配——&amp;gt;把匹配成">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -435,217 +440,90 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-导航栏-画蛇-键盘输入操作"><a href="#1-导航栏-画蛇-键盘输入操作" class="headerlink" title="1.导航栏 + 画蛇 + 键盘输入操作"></a>1.导航栏 + 画蛇 + 键盘输入操作</h3><p>Navbar</p>
-<ul>
-<li><p>前端渲染 : </p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;router-link  class&#x3D;&quot;navbar-brand&quot; :to&#x3D;&quot;&#123; name: &#39;home&#39; &#125;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <ol start="12">
+<li></li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/6422245/">匹配系统</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/6664414/">整个匹配系统</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/6461939/">Bot代码运行系统</a></p>
+<p>整体架构图</p>
+<p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/167993_f9ac04161f-608c69b9dc7f8d616e5546bc45db894.jpg" alt="608c69b9dc7f8d616e5546bc45db894.jpg"></p>
+<h3 id="整个项目的思路："><a href="#整个项目的思路：" class="headerlink" title="整个项目的思路："></a>整个项目的思路：</h3><p>简单来说就是我们在前端把匹配信息传到ws后端服务器——&gt; 再传到Matching System服务器——&gt;把玩家放到匹配池去匹配——&gt;把匹配成功信息再返回给ws后端服务器——&gt;ws后端服务器会调用Game——&gt;Game里面会Create Map产生对战地图——&gt;玩家可以开始玩游戏(bot or yourself)——&gt;把每一步信息传到Next Step判断是否合法——&gt;若是bot玩则把每一步信息传到微服务Bot Running System将代码跑一遍(放到Bot Pool里)——&gt;consumer(bot)函数运行代码（通过joor）——&gt; 返回结果给ws端——&gt; 最后判断对局结果</p>
+<h3 id="Bot代码Java模板"><a href="#Bot代码Java模板" class="headerlink" title="Bot代码Java模板"></a>Bot代码Java模板</h3><pre class="line-numbers language-none"><code class="language-none">package com.kob.botrunningsystem.utils;
 
-<ul>
-<li><code>:to=&quot;&#123;name : &#39;路由设置的名称&#39;&#125;&quot;</code></li>
-</ul>
-</li>
-<li><p>设置后半部分导航栏靠右</p>
-<ul>
-<li><code>class=&quot;navbar-nav me-auto mb-2 mb-lg-0&quot; -&gt; class=&quot;navbar-nav&quot;</code></li>
-</ul>
-</li>
-<li><p>点击导航栏,点哪亮哪 ~ 动态确认active</p>
-<ul>
-<li><code>const  route  =  useRoute();</code></li>
-<li><code>let  route_name  =  computed(() =&gt;  route.name);</code></li>
-<li><code>:class=&quot;route_name  ==  &#39;对应路由名称&#39;  ?  &#39;nav-link active&#39;  :  &#39;nav-link&#39;&quot;</code></li>
-</ul>
-</li>
-</ul>
-<p>router</p>
-<ul>
-<li>去除#<ul>
-<li><code>createWebHashHistory -&gt; createWebHistory</code></li>
-</ul>
-</li>
-<li>首先创建对应页面 : <code>pk、ranklist、record、bot、error、index(拓展使用)</code></li>
-<li>路由格式<ul>
-<li><code>&#123;path:&quot;路径&quot;, component:&quot;对应组件&quot;, name:&quot;自定义名字&quot;&#125;</code></li>
-</ul>
-</li>
-<li>404路径细节<ul>
-<li><code>path : &quot;/:catchAll(.*)&quot;</code></li>
-</ul>
-</li>
-</ul>
-<p>游戏基类 : AcGameObject</p>
-<p>游戏地图 : GameMap</p>
-<ul>
-<li>参数 <code>ctx : 画笔、 parent : 动态设置宽高</code></li>
-<li>确认单位长度L<ul>
-<li>min(parent.clientWidth &#x2F; cols, parent.clientHeight &#x2F; rows)</li>
-</ul>
-</li>
-<li>画地图, 通过奇偶确认格子颜色</li>
-</ul>
-<p>画障碍物 Wall</p>
-<ul>
-<li>封住四周</li>
-<li>随机封住中间位置<ul>
-<li>13行13列装换为13行14列?<ul>
-<li>13-13地图两条蛇的坐标分别是(11, 1)、(1, 11)相加为偶数, 之后的每一步可以确认<code>奇 -&gt; 偶 -&gt; 奇</code>有一定概率走到同一格中, 换成13-14两蛇的坐标分别是(11, 1)、(1, 12)之后的路径中不可能走到同一个格子</li>
-</ul>
-</li>
-<li>如何保证两条蛇是联通的?<ul>
-<li><strong>Flood Fill算法</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>随机并中心对称封路, 保证公平性<ul>
-<li><code>g[r][c] =  g[this.rows  -  1  -  r][this.cols  -  1  -  c] =  true;</code></li>
-</ul>
-</li>
-<li><code>const  copy_g  =  JSON.parse(JSON.stringify(g)) 深拷贝不影响原地图</code></li>
-</ul>
-<p>画蛇</p>
-<ul>
-<li><p>组成 : 多个圆圈 + 填充中间矩形</p>
-</li>
-<li><p>Cell</p>
-<ul>
-<li>传入r,c</li>
-<li>坐标转换, canvas坐标系向右为X轴、向下为Y轴<ul>
-<li><code>thix.r = r; thix.c = c; this.x = c + 0.5; this.y = r + 0.5</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>监听键盘, 判断是否运动</p>
-<ul>
-<li>canvas添加属性 tabIndex &#x3D; “0”<ul>
-<li>去除黑框 : <code>canvas:focus &#123;outline: none;&#125;</code></li>
-</ul>
-</li>
-<li>获取键盘输入事件<ul>
-<li><code>this.ctx.canvas.addEventListener(&quot;keydown&quot;, e  =&gt; &#123;处理逻辑, &#39;WASD&#39;左下角动, &#39;上下左右&#39;右上角动&#125;</code></li>
-</ul>
-</li>
-<li>当两个蛇<strong>都获取到可以运动的键盘输入</strong>时才可以动</li>
-</ul>
-</li>
-<li><p>如何运动</p>
-<ul>
-<li><ol>
-<li>获取到下一个点的位置</li>
-</ol>
-</li>
-<li><ol>
-<li>将蛇往后移一位, 多出一个蛇头</li>
-</ol>
-<ul>
-<li>让新蛇头向下一个点运动</li>
-<li>重合时, 将下一个点赋给蛇头</li>
-</ul>
-</li>
-<li><ol>
-<li>蛇尾的处理</li>
-</ol>
-<ul>
-<li><ol>
-<li>长度变化, 不需要处理蛇尾</li>
-</ol>
-</li>
-<li><ol>
-<li>长度不变</li>
-</ol>
-<ul>
-<li>蛇尾向前一个点运动</li>
-<li>重合时删除蛇尾</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>画身体</p>
-<ul>
-<li><p>方法 : 填充矩形</p>
-</li>
-<li><ol>
-<li>重合 : 跳过</li>
-</ol>
-</li>
-<li><ol>
-<li>竖直方向, x确定</li>
-</ol>
-<ul>
-<li>起点坐标<ul>
-<li>x &#x3D; x - 0.5 &#x3D;&gt; <strong>瘦身后</strong> : x &#x3D; x - 0.4</li>
-<li>y &#x3D; min(a.y, b.y)</li>
-<li><code>宽 : L </code> <strong>瘦身后</strong> <code>宽 : L * 0.8</code></li>
-<li>高 : abs(a.y - b.y)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ol>
-<li>水平方向, y确定</li>
-</ol>
-<ul>
-<li>起点坐标<ul>
-<li>x &#x3D; min(a.x, b.x)</li>
-<li>y &#x3D; y - 0.5 &#x3D;&gt; <strong>瘦身后</strong> : y &#x3D; y - 0.4</li>
-<li>宽 : abs(a.y - b.y)</li>
-<li><code>高 : L </code> <strong>瘦身后</strong> <code>高 : L * 0.8</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>碰撞检测</p>
-<ul>
-<li>墙</li>
-<li>蛇身<ul>
-<li>细节 : 如果蛇尾会前进的时候, 蛇尾不要判断<ul>
-<li><code>if(!snake.check_tail_increasing()) k--;</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>画眼睛</p>
-<ul>
-<li>设置偏移量</li>
-<li>确定位置<ul>
-<li><code>eye_x  = (this.cells[0].x  +  this.eye_dx[this.eye_direction][i] *  0.15) *  L</code></li>
-<li><code>eye_y  = (this.cells[0].y  +  this.eye_dy[this.eye_direction][i] *  0.15) *  L</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>颜色</p>
-<ul>
-<li>蛇<ul>
-<li>#4876EC #F94847</li>
-<li>#877562 #becd94</li>
-<li>#90c9e2 #458d7b</li>
-<li>#90c9e2 #d08496</li>
-</ul>
-</li>
-<li>格子<ul>
-<li>#A2D149 #AAD751</li>
-<li>#a7aea7 #979e97</li>
-<li>#a5b7f0 #8da0e1</li>
-<li>#88aba1 #689386</li>
-</ul>
-</li>
-<li>墙<ul>
-<li>#B47225</li>
-<li>#46433f</li>
-<li>#1b263b</li>
-<li>#333837</li>
-</ul>
-</li>
-</ul>
+import java.util.ArrayList;
+import java.util.List;
+
+public class Bot implements BotInterface &#123;
+
+    static class Cell &#123;
+        public int x, y;
+        public Cell(int x, int y) &#123;
+            this.x &#x3D; x;
+            this.y &#x3D; y;
+        &#125;
+    &#125;
+
+    &#x2F;&#x2F; 检查当前回合，蛇的长度是否会增加
+    private boolean check_tail_increasing(int step) &#123;
+        if(step &lt;&#x3D; 10) return true;
+        return step % 3 &#x3D;&#x3D; 1;
+    &#125;
+
+    public List&lt;Cell&gt; getCells(int sx, int sy, String steps) &#123;
+        steps &#x3D; steps.substring(1, steps.length() - 1);
+        List&lt;Cell&gt; res &#x3D; new ArrayList&lt;&gt;();
+
+        int[] dx &#x3D; &#123;-1, 0, 1, 0&#125;, dy &#x3D; &#123;0, 1, 0, -1&#125;;
+        int x &#x3D; sx, y &#x3D; sy;
+        int step &#x3D; 0;
+        res.add(new Cell(x, y));
+        for(int i &#x3D; 0; i &lt; steps.length(); i++) &#123;
+            int d &#x3D; steps.charAt(i) - &#39;0&#39;;
+            x +&#x3D; dx[d];
+            y +&#x3D; dy[d];
+            res.add(new Cell(x, y));
+            if(!check_tail_increasing(++step)) &#123;
+                res.remove(0);
+            &#125;
+        &#125;
+        return res;
+    &#125;
+
+    @Override
+    public Integer nextMove(String input) &#123;
+        &#x2F;&#x2F; 地图#my.sx#my.sy#(my操作)#you.sx#you.sy#(you操作)
+        String[] strs &#x3D; input.split(&quot;#&quot;);
+        int[][] g &#x3D; new int[13][14];
+        for(int i &#x3D; 0, k &#x3D; 0; i &lt; 13; i++) &#123;
+            for(int j &#x3D; 0; j &lt; 14; j++, k++) &#123;
+                if(strs[0].charAt(k) &#x3D;&#x3D; &#39;1&#39;) &#123;
+                    g[i][j] &#x3D; 1;
+                &#125;
+            &#125;
+        &#125;
+
+        int aSx &#x3D; Integer.parseInt(strs[1]), aSy &#x3D; Integer.parseInt(strs[2]);
+        int bSx &#x3D; Integer.parseInt(strs[4]), bSy &#x3D; Integer.parseInt(strs[5]);
+
+        List&lt;Cell&gt; aCells &#x3D; getCells(aSx, aSy, strs[3]);
+        List&lt;Cell&gt; bCells &#x3D; getCells(bSx, bSy, strs[6]);
+
+        for(Cell c : aCells) g[c.x][c.y] &#x3D; 1;
+        for(Cell c : bCells) g[c.x][c.y] &#x3D; 1;
+
+        int[] dx &#x3D; &#123;-1, 0, 1, 0&#125;, dy &#x3D; &#123;0, 1, 0, -1&#125;;
+        for(int i &#x3D; 0; i &lt; 4; i++) &#123;
+            int x &#x3D; aCells.get(aCells.size() - 1).x + dx[i];
+            int y &#x3D; aCells.get(aCells.size() - 1).y + dy[i];
+            if(x &gt;&#x3D; 0 &amp;&amp; x &lt; 13 &amp;&amp; y &gt;&#x3D; 0 &amp;&amp; y &lt; 14 &amp;&amp; g[x][y] &#x3D;&#x3D; 0) &#123;
+                return i;
+            &#125;
+        &#125;
+        return 0;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="2-登录注册模块-bot增删改查"><a href="#2-登录注册模块-bot增删改查" class="headerlink" title="2.登录注册模块 + bot增删改查"></a>2.登录注册模块 + bot增删改查</h3><p>后端</p>
 <ul>
 <li>spring-security<ul>
