@@ -5,15 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="联机对战平台, zsc&#39;s Blog">
-    <meta name="description" content="
-
-
-匹配系统
-整个匹配系统
-Bot代码运行系统
-整体架构图
-
-整个项目的思路：简单来说就是我们在前端把匹配信息传到ws后端服务器——&amp;gt; 再传到Matching System服务器——&amp;gt;把玩家放到匹配池去匹配——&amp;gt;把匹配成">
+    <meta name="description" content="MatchingPool使用了ReentrantLock来保证线程安全
+重写run方法，等待1s，时常+1，后面会优先匹配
+解决突然取消匹配出现的bug（玩家为空）,解决bug:加判断语句，每次需要判断userId是否为空即可解决异常.
+匹">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -440,10 +435,28 @@ Bot代码运行系统
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol start="12">
-<li></li>
-</ol>
+                <p>MatchingPool使用了ReentrantLock来保证线程安全</p>
+<p>重写run方法，等待1s，时常+1，后面会优先匹配</p>
+<p>解决突然取消匹配出现的bug（玩家为空）,解决bug:加判断语句，每次需要判断userId是否为空即可解决异常.</p>
+<p>匹配公式：</p>
+<pre class="line-numbers language-none"><code class="language-none">对于checkMatch判断两个玩家是否能成功匹配，还要考虑其等待时间，要判断分差能不能小于等于a与b的等待时间的最小值*10即 ratingDelta&lt;&#x3D;min(waitingTimea,waitingTimeb)∗10
+
+  private boolean checkMatched(Player a, Player b) &#123; &#x2F;&#x2F;判断两名玩家是否匹配
+        int ratingDelta &#x3D; Math.abs(a.getRating() - b.getRating());
+        int waitingTime &#x3D; Math.min(a.getWaitingTime(), b.getWaitingTime());
+        return ratingDelta &lt;&#x3D; waitingTime * 10;
+    &#125;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/6422245/">匹配系统</a></p>
+<h3 id="实现微服务-Bot-Running-System"><a href="#实现微服务-Bot-Running-System" class="headerlink" title="实现微服务 Bot Running System"></a>实现微服务 Bot Running System</h3><p>功能：不断接收用户的输入，当接收的代码比较多时，要把代码放到一个队列里(Bot Pool)，用队列存储每一个代码任务信息。<br>本质：生产者消费者模型<br>生产者发送一个任务过来，我们会把他存到队列里面，<br>消费者是一个单独的线程，会不断等待任务的到来，每完成一个任务会检查任务队列是否为空，若不为空则从队头取一个任务过来执行，以此为例，循环往复。</p>
+<p>特别的，虽然这里的Bot Pool与匹配系统里的Match Pool类似，都是一个单独的线程，但是实现方法与MatchingPool<br>有所不同。我们Match Pool每次去匹配的时候都是通过不断地sleep1s来让用户等待匹配，这是用户可以接受的。但是若我们Bot Pool里也按照这种方式，则用户在玩游戏的过程中延迟会太高，游戏体验不好，在游戏过程中让用户等待太长时间是无法接受的。因此，我们实现Bot Pool时要改用Condition Variable条件变量。如果空的话就阻塞线程，一旦有消息要处理则发一个信号量唤醒线程！</p>
+<h3 id="实现消费者线程Bot-Pool"><a href="#实现消费者线程Bot-Pool" class="headerlink" title="实现消费者线程Bot Pool"></a>实现消费者线程Bot Pool</h3><p>这是一个多线程任务，要继承自Thread<br>记得重写run函数<br>定义：锁，条件变量，队列(Bot类)<br>新建Bot类：userId，botCode，input<br>队列不需要定义成线程安全的队列，普通队列即可，我们可以通过加锁与解锁来维护他的安全性<br>涉及到读写冲突的都要先加锁再工作后面再解锁<br>Queue涉及到两边的操作，一边是生产者给他不断加入任务，另一边是消费者不断取出任务，因此要先上锁后解锁<br>有关Queue的都要想到锁<br>在启动springboot前启动线程BotPool: BotRunningServiceImpl.botPool.start();<br>线程有关：每次start()后会开一个新的线程执行run()里面的内容</p>
+<p>使用joor包动态执行Java代码，上线到云端可以更改为docker容器，并且增加C++,python，java代码.</p>
+<p>在执行遇到类名相同时的解决方案，解决方案：在每一个bot名称前面加上UUID，保证id不唯一</p>
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/6664414/">整个匹配系统</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/6461939/">Bot代码运行系统</a></p>
 <p>整体架构图</p>
@@ -524,6 +537,13 @@ public class Bot implements BotInterface &#123;
     &#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>websocket:</p>
+<p>1.地图需要在服务端生成地图，然后发送给两个玩家（解决同步问题）</p>
+<p>2.判断蛇的输赢也需要在服务端同意完成，防止作弊。</p>
+<p>3.每次启动一个websocke连接时，如果切换到其他页面需要自动关闭连接，否则就会建立多余的冗余链接</p>
+<p>4.使用user.token的JWT验证</p>
+<p>再来一局的业务逻辑:判断输赢的逻辑(none ，all，A，B)如果等于none就不显示页面，如果等于all，平局</p>
+<p>增加录像功能:将对局的回放放在对局列表(查看回放)</p>
 <h3 id="2-登录注册模块-bot增删改查"><a href="#2-登录注册模块-bot增删改查" class="headerlink" title="2.登录注册模块 + bot增删改查"></a>2.登录注册模块 + bot增删改查</h3><p>后端</p>
 <ul>
 <li>spring-security<ul>
@@ -802,6 +822,8 @@ public class Bot implements BotInterface &#123;
 </ul>
 </li>
 </ul>
+<h3 id="实现第三方登录-qq"><a href="#实现第三方登录-qq" class="headerlink" title="实现第三方登录(qq)"></a>实现第三方登录(qq)</h3><p><a target="_blank" rel="noopener" href="https://wiki.connect.qq.com/%e4%bd%bf%e7%94%a8authorization_code%e8%8e%b7%e5%8f%96access_token">qq登录网址链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zimei.fun/">在线项目链接</a></p>
 
                 
             </div>

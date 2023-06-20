@@ -457,6 +457,11 @@
 <pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t ed25519 -C &quot;root@qq.com&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在提示你输入文件位置时，直接按Enter接受默认位置。然后在提示你输入密码时，可以选择输入一个密码或者直接按Enter跳过。</p>
+<pre class="line-numbers language-none"><code class="language-none">将ssh命令生成到指定位置
+ssh-keygen -t rsa -C &quot;root@qq.com&quot; -f C:\\Users\\dadam\\.ssh\\id_rsa<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
 <p>然后在终端中输入以下命令，将SSH公钥复制到剪贴板：</p>
 <pre class="line-numbers language-none"><code class="language-none">clip &lt; ~&#x2F;.ssh&#x2F;id_ed25519.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 

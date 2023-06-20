@@ -725,15 +725,10 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
-
-
-匹配系统
-整个匹配系统
-Bot代码运行系统
-整体架构图
-
-整个项目的思路：简单来说就是我们在前端把匹配信息传到ws后端服务器——&gt; 再传到Matching System服务器——&gt;把玩家放到匹配池去匹配——&gt;把匹配成
+                                MatchingPool使用了ReentrantLock来保证线程安全
+重写run方法，等待1s，时常+1，后面会优先匹配
+解决突然取消匹配出现的bug（玩家为空）,解决bug:加判断语句，每次需要判断userId是否为空即可解决异常.
+匹
                             
                         </div>
                         <div class="publish-info">
