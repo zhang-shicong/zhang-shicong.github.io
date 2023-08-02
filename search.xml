@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>hexo博客隐藏或者自定义图片名</title>
+      <link href="/2023/08/03/hexo%E5%8D%9A%E5%AE%A2%E9%9A%90%E8%97%8F%E6%88%96%E8%80%85%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E7%89%87%E5%90%8D/"/>
+      <url>/2023/08/03/hexo%E5%8D%9A%E5%AE%A2%E9%9A%90%E8%97%8F%E6%88%96%E8%80%85%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E7%89%87%E5%90%8D/</url>
+      
+        <content type="html"><![CDATA[<p>我是使用PicGo:来把图片上传到github图床的，然后使用picgol时候会自动生成一个url,直接粘贴到markdown.里面即可，如下：</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230803022013193.png" alt="image-20230803022013193"></p><p>开头会有一个[***]这个方括号里面填写的是默认的图片名称。<br>如果你不修改的话，显示就是下面这样，下方会自带时间戳：</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230803021956309.png"></p><p>将括号[]里面的内容删除就是无名称，否则是自带时间戳名称</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2023/07/16/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/2023/07/16/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前端学习笔记"><a href="#前端学习笔记" class="headerlink" title="前端学习笔记"></a>前端学习笔记</h3><h5 id="1-路由重定向"><a href="#1-路由重定向" class="headerlink" title="1.路由重定向"></a>1.路由重定向</h5><pre class="line-numbers language-none"><code class="language-none">&#123;path:&#39;&#x2F;catchAll(.*)&#39;,     &#x2F;&#x2F;.表示匹配任意字符，*匹配任意长度redirect:&#39;404&#39;,&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>金山云暑期实训笔试 2023/6/20 19:00</title>
       <link href="/2023/06/20/%E9%87%91%E5%B1%B1%E4%BA%91%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AF%95%202023620%201900categeries%20%E7%AE%97%E6%B3%95tags%20%20-%20%E7%AC%94%E8%AF%95/"/>
       <url>/2023/06/20/%E9%87%91%E5%B1%B1%E4%BA%91%E6%9A%91%E6%9C%9F%E5%AE%9E%E8%AE%AD%E7%AC%94%E8%AF%95%202023620%201900categeries%20%E7%AE%97%E6%B3%95tags%20%20-%20%E7%AC%94%E8%AF%95/</url>
