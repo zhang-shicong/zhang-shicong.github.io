@@ -620,9 +620,277 @@ private void unlock(String key)&#123;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230805001242075.png"></p>
-<h5 id="逻辑过期方式解决缓存击穿"><a href="#逻辑过期方式解决缓存击穿" class="headerlink" title="逻辑过期方式解决缓存击穿"></a>逻辑过期方式解决缓存击穿</h5><pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="逻辑过期方式解决缓存击穿"><a href="#逻辑过期方式解决缓存击穿" class="headerlink" title="逻辑过期方式解决缓存击穿"></a>逻辑过期方式解决缓存击穿</h5><pre class="line-numbers language-none"><code class="language-none">&#96;&#96;&#96;
 
-<p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230805001321944.png" alt="image-20230805001321944"></p>
+![](https:&#x2F;&#x2F;zscblog.oss-cn-hangzhou.aliyuncs.com&#x2F;img&#x2F;image-20230805001321944.png)
+
+### P46实战篇-商户查询缓存-12.封装Redis工具类
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>@Data<br>public class RedisData {<br>    private LocalDateTime expireTime;<br>    private Object data;<br>}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+逻辑过期
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>public void setWithLogicalExpire(String key, Object value, Long time, TimeUnit unit) &#123;
+    // 设置逻辑过期
+    RedisData redisData = new RedisData();
+    redisData.setData(value);
+    redisData.setExpireTime(LocalDateTime.now().plusSeconds(unit.toSeconds(time)));
+    // 写入Redis
+    stringRedisTemplate.opsForValue().set(key, JSONUtil.toJsonStr(redisData));
+&#125;
+</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">
+&#x2F;&#x2F; 解决缓存穿透
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p> public &lt;R,ID&gt; R queryWithPassThrough(<br>            String keyPrefix, ID id, Class<R> type, Function&lt;ID, R&gt; dbFallback, Long time, TimeUnit unit){<br>        String key &#x3D; keyPrefix + id;<br>        &#x2F;&#x2F; 1.从redis查询商铺缓存<br>        String json &#x3D; stringRedisTemplate.opsForValue().get(key);<br>        &#x2F;&#x2F; 2.判断是否存在<br>        if (StrUtil.isNotBlank(json)) {<br>            &#x2F;&#x2F; 3.存在，直接返回<br>            return JSONUtil.toBean(json, type);<br>        }<br>        &#x2F;&#x2F; 判断命中的是否是空值<br>        if (json !&#x3D; null) {<br>            &#x2F;&#x2F; 返回一个错误信息<br>            return null;<br>        }</p>
+<pre><code>    // 4.不存在，根据id查询数据库
+    R r = dbFallback.apply(id);
+    // 5.不存在，返回错误
+    if (r == null) &#123;
+        // 将空值写入redis
+        stringRedisTemplate.opsForValue().set(key, &quot;&quot;, CACHE_NULL_TTL, TimeUnit.MINUTES);
+        // 返回错误信息
+        return null;
+    &#125;
+    // 6.存在，写入redis
+    this.set(key, r, time, unit);
+    return r;
+&#125;
+</code></pre>
+<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>&#x2F;&#x2F; 逻辑过期解决缓存击穿<br>    public &lt;R, ID&gt; R queryWithLogicalExpire(<br>            String keyPrefix, ID id, Class<R> type, Function&lt;ID, R&gt; dbFallback, Long time, TimeUnit unit) {<br>        String key &#x3D; keyPrefix + id;<br>        &#x2F;&#x2F; 1.从redis查询商铺缓存<br>        String json &#x3D; stringRedisTemplate.opsForValue().get(key);<br>        &#x2F;&#x2F; 2.判断是否存在<br>        if (StrUtil.isBlank(json)) {<br>            &#x2F;&#x2F; 3.存在，直接返回<br>            return null;<br>        }<br>        &#x2F;&#x2F; 4.命中，需要先把json反序列化为对象<br>        RedisData redisData &#x3D; JSONUtil.toBean(json, RedisData.class);<br>        R r &#x3D; JSONUtil.toBean((JSONObject) redisData.getData(), type);<br>        LocalDateTime expireTime &#x3D; redisData.getExpireTime();<br>        &#x2F;&#x2F; 5.判断是否过期<br>        if(expireTime.isAfter(LocalDateTime.now())) {<br>            &#x2F;&#x2F; 5.1.未过期，直接返回店铺信息<br>            return r;<br>        }<br>        &#x2F;&#x2F; 5.2.已过期，需要缓存重建<br>        &#x2F;&#x2F; 6.缓存重建<br>        &#x2F;&#x2F; 6.1.获取互斥锁<br>        String lockKey &#x3D; LOCK_SHOP_KEY + id;<br>        boolean isLock &#x3D; tryLock(lockKey);<br>        &#x2F;&#x2F; 6.2.判断是否获取锁成功<br>        if (isLock){<br>            &#x2F;&#x2F; 6.3.成功，开启独立线程，实现缓存重建<br>            CACHE_REBUILD_EXECUTOR.submit(() -&gt; {<br>                try {<br>                    &#x2F;&#x2F; 查询数据库<br>                    R newR &#x3D; dbFallback.apply(id);<br>                    &#x2F;&#x2F; 重建缓存<br>                    this.setWithLogicalExpire(key, newR, time, unit);<br>                } catch (Exception e) {<br>                    throw new RuntimeException(e);<br>                }finally {<br>                    &#x2F;&#x2F; 释放锁<br>                    unlock(lockKey);<br>                }<br>            });<br>        }<br>        &#x2F;&#x2F; 6.4.返回过期的商铺信息<br>        return r;<br>    }</p>
+<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>&#x2F;&#x2F; 互斥锁解决缓存击穿<br>public &lt;R, ID&gt; R queryWithMutex(<br>            String keyPrefix, ID id, Class<R> type, Function&lt;ID, R&gt; dbFallback, Long time, TimeUnit unit) {<br>        String key &#x3D; keyPrefix + id;<br>        &#x2F;&#x2F; 1.从redis查询商铺缓存<br>        String shopJson &#x3D; stringRedisTemplate.opsForValue().get(key);<br>        &#x2F;&#x2F; 2.判断是否存在<br>        if (StrUtil.isNotBlank(shopJson)) {<br>            &#x2F;&#x2F; 3.存在，直接返回<br>            return JSONUtil.toBean(shopJson, type);<br>        }<br>        &#x2F;&#x2F; 判断命中的是否是空值<br>        if (shopJson !&#x3D; null) {<br>            &#x2F;&#x2F; 返回一个错误信息<br>            return null;<br>        }</p>
+<pre><code>    // 4.实现缓存重建
+    // 4.1.获取互斥锁
+    String lockKey = LOCK_SHOP_KEY + id;
+    R r = null;
+    try &#123;
+        boolean isLock = tryLock(lockKey);
+        // 4.2.判断是否获取成功
+        if (!isLock) &#123;
+            // 4.3.获取锁失败，休眠并重试
+            Thread.sleep(50);
+            return queryWithMutex(keyPrefix, id, type, dbFallback, time, unit);
+        &#125;
+        // 4.4.获取锁成功，根据id查询数据库
+        r = dbFallback.apply(id);
+        // 5.不存在，返回错误
+        if (r == null) &#123;
+            // 将空值写入redis
+            stringRedisTemplate.opsForValue().set(key, &quot;&quot;, CACHE_NULL_TTL, TimeUnit.MINUTES);
+            // 返回错误信息
+            return null;
+        &#125;
+        // 6.存在，写入redis
+        this.set(key, r, time, unit);
+    &#125; catch (InterruptedException e) &#123;
+        throw new RuntimeException(e);
+    &#125;finally &#123;
+        // 7.释放锁
+        unlock(lockKey);
+    &#125;
+    // 8.返回
+    return r;
+&#125;
+
+private boolean tryLock(String key) &#123;
+    Boolean flag = stringRedisTemplate.opsForValue().setIfAbsent(key, &quot;1&quot;, 10, TimeUnit.SECONDS);
+    return BooleanUtil.isTrue(flag);
+&#125;
+
+private void unlock(String key) &#123;
+    stringRedisTemplate.delete(key);
+&#125;
+</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">
+### 全局ID生成器
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>@Component<br>public class RedisIdWorker {<br>    &#x2F;**<br>     * 开始时间戳<br>     <em>&#x2F;<br>    private static final long BEGIN_TIMESTAMP &#x3D; 1640995200L;<br>    &#x2F;</em>*<br>     * 序列号的位数<br>     *&#x2F;<br>    private static final int COUNT_BITS &#x3D; 32;</p>
+<pre><code>private StringRedisTemplate stringRedisTemplate;
+
+public RedisIdWorker(StringRedisTemplate stringRedisTemplate) &#123;
+    this.stringRedisTemplate = stringRedisTemplate;
+&#125;
+
+public long nextId(String keyPrefix) &#123;
+    // 1.生成时间戳
+    LocalDateTime now = LocalDateTime.now();
+    long nowSecond = now.toEpochSecond(ZoneOffset.UTC);
+    long timestamp = nowSecond - BEGIN_TIMESTAMP;
+
+    // 2.生成序列号
+    // 2.1.获取当前日期，精确到天
+    String date = now.format(DateTimeFormatter.ofPattern(&quot;yyyy:MM:dd&quot;));
+    // 2.2.自增长
+    long count = stringRedisTemplate.opsForValue().increment(&quot;icr:&quot; + keyPrefix + &quot;:&quot; + date);
+
+    // 3.拼接并返回
+    return timestamp &lt;&lt; COUNT_BITS | count;
+&#125;
+</code></pre>
+<p>}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+### 实现优惠券秒杀下单
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>  private void createVoucherOrder(VoucherOrder voucherOrder) {<br>        Long userId &#x3D; voucherOrder.getUserId();<br>        Long voucherId &#x3D; voucherOrder.getVoucherId();<br>        &#x2F;&#x2F; 创建锁对象<br>        RLock redisLock &#x3D; redissonClient.getLock(“lock:order:” + userId);<br>        &#x2F;&#x2F; 尝试获取锁<br>        boolean isLock &#x3D; redisLock.tryLock();<br>        &#x2F;&#x2F; 判断<br>        if (!isLock) {<br>            &#x2F;&#x2F; 获取锁失败，直接返回失败或者重试<br>            log.error(“不允许重复下单！”);<br>            return;<br>        }</p>
+<pre><code>    try &#123;
+        // 5.1.查询订单
+        int count = query().eq(&quot;user_id&quot;, userId).eq(&quot;voucher_id&quot;, voucherId).count();
+        // 5.2.判断是否存在
+        if (count &gt; 0) &#123;
+            // 用户已经购买过了
+            log.error(&quot;不允许重复下单！&quot;);
+            return;
+        &#125;
+
+        // 6.扣减库存
+        boolean success = seckillVoucherService.update()
+                .setSql(&quot;stock = stock - 1&quot;) // set stock = stock - 1
+                .eq(&quot;voucher_id&quot;, voucherId).gt(&quot;stock&quot;, 0) // where id = ? and stock &gt; 0
+                .update();
+        if (!success) &#123;
+            // 扣减失败
+            log.error(&quot;库存不足！&quot;);
+            return;
+        &#125;
+
+        // 7.创建订单
+        save(voucherOrder);
+    &#125; finally &#123;
+        // 释放锁
+        redisLock.unlock();
+    &#125;
+&#125;
+</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">
+![](https:&#x2F;&#x2F;zscblog.oss-cn-hangzhou.aliyuncs.com&#x2F;img&#x2F;image-20230805171054030.png)
+
+### 超卖问题
+
+使用乐观锁解决超卖问题
+
+            &#x2F;&#x2F; 6.扣减库存
+            boolean success &#x3D; seckillVoucherService.update()
+                    .setSql(&quot;stock &#x3D; stock - 1&quot;) &#x2F;&#x2F; set stock &#x3D; stock - 1
+                    .eq(&quot;voucher_id&quot;, voucherId).gt(&quot;stock&quot;, 0) &#x2F;&#x2F; where id &#x3D; ? and stock &gt; 0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> private void createVoucherOrder(VoucherOrder voucherOrder) {<br>        Long userId &#x3D; voucherOrder.getUserId();<br>        Long voucherId &#x3D; voucherOrder.getVoucherId();<br>        &#x2F;&#x2F; 创建锁对象<br>        RLock redisLock &#x3D; redissonClient.getLock(“lock:order:” + userId);<br>        &#x2F;&#x2F; 尝试获取锁<br>        boolean isLock &#x3D; redisLock.tryLock();<br>        &#x2F;&#x2F; 判断<br>        if (!isLock) {<br>            &#x2F;&#x2F; 获取锁失败，直接返回失败或者重试<br>            log.error(“不允许重复下单！”);<br>            return;<br>        }</p>
+<pre><code>    try &#123;
+        // 5.1.查询订单
+        int count = query().eq(&quot;user_id&quot;, userId).eq(&quot;voucher_id&quot;, voucherId).count();
+        // 5.2.判断是否存在
+        if (count &gt; 0) &#123;
+            // 用户已经购买过了
+            log.error(&quot;不允许重复下单！&quot;);
+            return;
+        &#125;
+
+        // 6.扣减库存
+        boolean success = seckillVoucherService.update()
+                .setSql(&quot;stock = stock - 1&quot;) // set stock = stock - 1
+                .eq(&quot;voucher_id&quot;, voucherId).gt(&quot;stock&quot;, 0) // where id = ? and stock &gt; 0
+                .update();
+        if (!success) &#123;
+            // 扣减失败
+            log.error(&quot;库存不足！&quot;);
+            return;
+        &#125;
+
+        // 7.创建订单
+        save(voucherOrder);
+    &#125; finally &#123;
+        // 释放锁
+        redisLock.unlock();
+    &#125;
+&#125;
+</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">
+### 一人一单
+
+先获取锁再下订单
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Long userId UserHolder.getUser().getId();<br>synchronized (userId.tostring().intern()){<br>  return createVoucherorder(voucherId);<br>}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+下单
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>@Transactional
+public Result createVoucherOrder(Long voucherId) &#123;
+    // 5.一人一单
+    Long userId = UserHolder.getUser().getId();
+
+    synchronized (userId.toString().intern()) &#123;
+        // 5.1.查询订单
+        int count = query().eq(&quot;user_id&quot;, userId).eq(&quot;voucher_id&quot;, voucherId).count();
+        // 5.2.判断是否存在
+        if (count &gt; 0) &#123;
+            // 用户已经购买过了
+            return Result.fail(&quot;用户已经购买过一次！&quot;);
+        &#125;
+
+        // 6.扣减库存
+        boolean success = seckillVoucherService.update()
+                .setSql(&quot;stock = stock - 1&quot;) // set stock = stock - 1
+                .eq(&quot;voucher_id&quot;, voucherId).gt(&quot;stock&quot;, 0) // where id = ? and stock &gt; 0
+                .update();
+        if (!success) &#123;
+            // 扣减失败
+            return Result.fail(&quot;库存不足！&quot;);
+        &#125;
+
+        // 7.创建订单
+        VoucherOrder voucherOrder = new VoucherOrder();
+        // 7.1.订单id
+        long orderId = redisIdWorker.nextId(&quot;order&quot;);
+        voucherOrder.setId(orderId);
+        // 7.2.用户id
+        voucherOrder.setUserId(userId);
+        // 7.3.代金券id
+        voucherOrder.setVoucherId(voucherId);
+        save(voucherOrder);
+
+        // 7.返回订单id
+        return Result.ok(orderId);
+    &#125;
+&#125;
+</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">
+但是在高并发情况下会出现安全问题
+
+
+
+### 使用分布式锁实现一人一单
+
+
+
+
+
+### 使用Redis实现分布式锁
+
+![](https:&#x2F;&#x2F;zscblog.oss-cn-hangzhou.aliyuncs.com&#x2F;img&#x2F;image-20230805200850006.png)
+
+- 获取锁
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>#添加锁，NX是互斥、EX是设置超时时间<br>SET lock thread1 NX EX 10</p>
+<pre class="line-numbers language-none"><code class="language-none">
+- 释放锁
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>#释放锁，删除即可<br>DEL key</p>
+<pre class="line-numbers language-none"><code class="language-none">
+### 基于Redis实现分布式锁初级版本
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p> @Override<br>    public Result seckillVoucher(Long voucherId) {<br>        &#x2F;&#x2F; 1.查询优惠券<br>        SeckillVoucher voucher &#x3D; seckillVoucherService.getById(voucherId);<br>        &#x2F;&#x2F; 2.判断秒杀是否开始<br>        if (voucher.getBeginTime().isAfter(LocalDateTime.now())) {<br>            &#x2F;&#x2F; 尚未开始<br>            return Result.fail(“秒杀尚未开始！”);<br>        }<br>        &#x2F;&#x2F; 3.判断秒杀是否已经结束<br>        if (voucher.getEndTime().isBefore(LocalDateTime.now())) {<br>            &#x2F;&#x2F; 尚未开始<br>            return Result.fail(“秒杀已经结束！”);<br>        }<br>        &#x2F;&#x2F; 4.判断库存是否充足<br>        if (voucher.getStock() &lt; 1) {<br>            &#x2F;&#x2F; 库存不足<br>            return Result.fail(“库存不足！”);<br>        }<br>        Long userId &#x3D; UserHolder.getUser().getId();<br>        &#x2F;&#x2F;创建锁对象(新增代码)<br>        SimpleRedisLock lock &#x3D; new SimpleRedisLock(“order:” + userId, stringRedisTemplate);<br>        &#x2F;&#x2F;获取锁对象<br>        boolean isLock &#x3D; lock.tryLock(1200);<br>        &#x2F;&#x2F;加锁失败<br>        if (!isLock) {<br>            return Result.fail(“不允许重复下单”);<br>        }<br>        try {<br>            &#x2F;&#x2F;获取代理对象(事务)<br>            IVoucherOrderService proxy &#x3D; (IVoucherOrderService) AopContext.currentProxy();<br>            return proxy.createVoucherOrder(voucherId);<br>        } finally {<br>            &#x2F;&#x2F;释放锁<br>            lock.unlock();<br>        }<br>    }</p>
+<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>private static final String KEY_PREFIX&#x3D;”lock:”<br>@Override<br>public boolean tryLock(long timeoutSec) {<br>    &#x2F;&#x2F; 获取线程标示<br>    String threadId &#x3D; Thread.currentThread().getId()<br>    &#x2F;&#x2F; 获取锁<br>    Boolean success &#x3D; stringRedisTemplate.opsForValue()<br>            .setIfAbsent(KEY_PREFIX + name, threadId + “”, timeoutSec, TimeUnit.SECONDS);<br>    return Boolean.TRUE.equals(success);<br>}</p>
+<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>public void unlock() {<br>    &#x2F;&#x2F;通过del删除锁<br>    stringRedisTemplate.delete(KEY_PREFIX + name);<br>}</p>
+<pre class="line-numbers language-none"><code class="language-none">
+###  利用Java代码调用Lua脚本改造分布式锁
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>private static final DefaultRedisScript<Long> UNLOCK_SCRIPT;<br>    static {<br>        UNLOCK_SCRIPT &#x3D; new DefaultRedisScript&lt;&gt;();<br>        UNLOCK_SCRIPT.setLocation(new ClassPathResource(“unlock.lua”));<br>        UNLOCK_SCRIPT.setResultType(Long.class);<br>    }</p>
+<p>public void unlock() {<br>    &#x2F;&#x2F; 调用lua脚本<br>    stringRedisTemplate.execute(<br>            UNLOCK_SCRIPT,<br>            Collections.singletonList(KEY_PREFIX + name),<br>            ID_PREFIX + Thread.currentThread().getId());<br>}</p>
+<pre><code>
+</code></pre>
 
                 
             </div>
@@ -767,18 +1035,17 @@ private void unlock(String key)&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/08/04/Redis%E7%AC%94%E8%AE%B0/">
+                <a href="/2023/08/12/%E6%97%A0%E4%BA%BA%E7%9B%B4%E6%92%AD%E4%BB%A3%E7%A0%81/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Redis笔记(黑马点评)">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="无人直播代码">
                         
-                        <span class="card-title">Redis笔记(黑马点评)</span>
+                        <span class="card-title">无人直播代码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -788,27 +1055,26 @@ private void unlock(String key)&#123;
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-04
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-12
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Redis/" class="post-category">
-                                    Redis
+                            <a href="/categories/%E6%97%A0%E4%BA%BA%E7%9B%B4%E6%92%AD/" class="post-category">
+                                    无人直播
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/%E6%97%A0%E4%BA%BA%E7%9B%B4%E6%92%AD/">
+                        <span class="chip bg-color">无人直播</span>
                     </a>
                     
                 </div>
