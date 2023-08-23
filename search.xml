@@ -4,6 +4,52 @@
   
     
     <entry>
+      <title>多益网络笔试 2023/8/23</title>
+      <link href="/2023/08/23/%E5%A4%9A%E7%9B%8A%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AF%95-2023823/"/>
+      <url>/2023/08/23/%E5%A4%9A%E7%9B%8A%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AF%95-2023823/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230823152514065.png"></p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230823152609525.png"></p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230823152640426.png"></p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230823152700069.png"></p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230823152738809.png"></p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230823152818764.png"></p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230823152840817.png"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 笔试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>谷粒商城基础篇</title>
+      <link href="/2023/08/21/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
+      <url>/2023/08/21/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E5%9F%BA%E7%A1%80%E7%AF%87/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-商品三级分类-递归树形"><a href="#1-商品三级分类-递归树形" class="headerlink" title="1.商品三级分类(递归树形)"></a>1.商品三级分类(递归树形)</h3><p>CategoryEntity实体类加一个children字段来展示子树</p><pre class="line-numbers language-none"><code class="language-none">public class CategoryEntity implements Serializable &#123;private static final long serialVersionUID &#x3D; 1L;&#x2F;** * 所有子分类 *&#x2F;@JsonInclude(JsonInclude.Include.NON_EMPTY)@TableField(exist &#x3D; false)private List&lt;CategoryEntity&gt; children;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>商品实现类使用stream流实现三级分类</p><pre class="line-numbers language-none"><code class="language-none">@Overridepublic List&lt;CategoryEntity&gt; listWithTree() &#123;    &#x2F;&#x2F;1、查询出所有分类    List&lt;CategoryEntity&gt; entities &#x3D; super.baseMapper.selectList(null);    &#x2F;&#x2F;2、组装成父子的树形结构    &#x2F;&#x2F;2.1)、找到所有一级分类    List&lt;CategoryEntity&gt; levelMenus &#x3D; entities.stream()            .filter(e -&gt; e.getParentCid() &#x3D;&#x3D; 0)            .map((menu) -&gt; &#123;                menu.setChildren(getChildrens(menu, entities));                return menu;            &#125;)            .sorted((menu, menu2) -&gt; &#123;                return (menu.getSort() &#x3D;&#x3D; null ? 0 : menu.getSort()) - (menu2.getSort() &#x3D;&#x3D; null ? 0 : menu2.getSort());            &#125;)            .collect(Collectors.toList());    return levelMenus;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;递归查找所有菜单的子菜单private List&lt;CategoryEntity&gt; getChildrens(CategoryEntity root, List&lt;CategoryEntity&gt; all) &#123;    List&lt;CategoryEntity&gt; children &#x3D; all.stream().filter(categoryEntity -&gt; &#123;        return categoryEntity.getParentCid().equals(root.getCatId());    &#125;).map(categoryEntity -&gt; &#123;        &#x2F;&#x2F;1、找到子菜单(递归)        categoryEntity.setChildren(getChildrens(categoryEntity, all));        return categoryEntity;    &#125;).sorted((menu, menu2) -&gt; &#123;        &#x2F;&#x2F;2、菜单的排序        return (menu.getSort() &#x3D;&#x3D; null ? 0 : menu.getSort()) - (menu2.getSort() &#x3D;&#x3D; null ? 0 : menu2.getSort());    &#125;).collect(Collectors.toList());    return children;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> SpringCloud </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> SpringCloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode 359周赛</title>
       <link href="/2023/08/20/LeetCode%20359%E5%91%A8%E8%B5%9B/"/>
       <url>/2023/08/20/LeetCode%20359%E5%91%A8%E8%B5%9B/</url>
