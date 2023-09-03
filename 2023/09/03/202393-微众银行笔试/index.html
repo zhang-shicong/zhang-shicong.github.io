@@ -522,14 +522,20 @@ public class Main6&#123;
         int v &#x3D; cin.nextInt();
         int[] res&#x3D;new int[n];
         for(int i&#x3D;0;i&lt;n;i++) res[i]&#x3D;cin.nextInt();
-        double ans&#x3D;(double) u&#x2F;(double) v;
         long[] presum&#x3D;new long[n+1];
         for (int i &#x3D; 1 ;i &lt;&#x3D;n ; i++) &#123;
             presum[i]&#x3D;presum[i-1]+res[i-1];
         &#125;
-        System.out.println(n);
+        int count&#x3D;0;
+        for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#123;
+            for(int j&#x3D;i;j&lt;&#x3D;n;j++)&#123;
+                long sun&#x3D;pre[j]-pre[i];
+                if(1L*(i-j+1)*u&#x3D;&#x3D;1L*v*sum)count++;
+            &#125;
+        &#125;
+        System.out.println(count);
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
