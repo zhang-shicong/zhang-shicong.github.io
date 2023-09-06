@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>2023/9/6 广联达笔试</title>
+      <link href="/2023/09/06/202396-%E5%B9%BF%E8%81%94%E8%BE%BE%E7%AC%94%E8%AF%95/"/>
+      <url>/2023/09/06/202396-%E5%B9%BF%E8%81%94%E8%BE%BE%E7%AC%94%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h3 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h3><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230906180903243.png"></p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230906180934330.png"></p><pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;通过18%public class Main7 &#123;    public static void main(String args[]) throws Exception &#123;    Scanner cin&#x3D;new Scanner(System.in);    int n&#x3D; cin.nextInt();    int[] arr1&#x3D;new int[n];    int[] arr2&#x3D;new int[n];    int[] arr3&#x3D;new int[n];    for(int i&#x3D;0;i&lt;n;i++)arr1[i]&#x3D;cin.nextInt();    for(int i&#x3D;0;i&lt;n;i++)arr2[i]&#x3D;cin.nextInt();    for(int i&#x3D;0;i&lt;n;i++)arr3[i]&#x3D;cin.nextInt();    int res&#x3D;0;        Arrays.sort(arr3);        for (int i &#x3D; n-1; i &gt;&#x3D;(n+1)&#x2F;2 ; i--) &#123;            res+&#x3D;arr3[i];        &#125;     System.out.println(res);&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230906181028070.png"></p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230906181049038.png"></p><pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;27%public class Main8 &#123;    public static void main(String args[]) throws Exception &#123;        Scanner cin&#x3D;new Scanner(System.in);        int n&#x3D; cin.nextInt();        int[] arr1&#x3D;new int[n];        for(int i&#x3D;0;i&lt;n;i++)arr1[i]&#x3D;cin.nextInt();        int sum&#x3D;0;        for (int i &#x3D; 0; i &lt; n; i++) &#123;            sum+&#x3D;arr1[i];        &#125;        System.out.println(sum&#x2F;n);    &#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 广联达笔试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 广联达笔试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>synchronized的锁升级</title>
+      <link href="/2023/09/05/synchronized%E7%9A%84%E9%94%81%E5%8D%87%E7%BA%A7/"/>
+      <url>/2023/09/05/synchronized%E7%9A%84%E9%94%81%E5%8D%87%E7%BA%A7/</url>
+      
+        <content type="html"><![CDATA[<p>锁状态</p><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/image-20230905113853073.png"></p><p>无锁:001</p><p>偏向锁:记录线程ID,末尾101</p><h3 id="锁升级的流程"><a href="#锁升级的流程" class="headerlink" title="锁升级的流程"></a>锁升级的流程</h3><p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/775136-20220111112403663-1390941402.jpg"></p><p>自适应自旋锁</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JUC </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JUC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AQS的概述 体系架构 源码解读(非公平锁) 源码总结</title>
       <link href="/2023/09/04/AQS%E7%9A%84%E6%A6%82%E8%BF%B0-%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB(%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81)-%E6%BA%90%E7%A0%81%E6%80%BB%E7%BB%93/"/>
       <url>/2023/09/04/AQS%E7%9A%84%E6%A6%82%E8%BF%B0-%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB(%E9%9D%9E%E5%85%AC%E5%B9%B3%E9%94%81)-%E6%BA%90%E7%A0%81%E6%80%BB%E7%BB%93/</url>
