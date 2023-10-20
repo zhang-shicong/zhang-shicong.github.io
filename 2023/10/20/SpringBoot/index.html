@@ -1,0 +1,1687 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SpringBoot, zsc&#39;s Blog">
+    <meta name="description" content="1.SpringBoot解决跨域问题package com.kob.backend.config;
+import org.springframework.context.annotation.Configuration;
+import ja">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>SpringBoot | zsc&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">zsc&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/zhang-shicong.github.io/en" class="waves-effect waves-light">
+      
+      <span>English Site</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">zsc&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/zhang-shicong.github.io/en" class="waves-effect waves-light">
+			
+				<i class="fas fa-fw fa-link"></i>
+			
+			English Site
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">SpringBoot</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/SpringBoot/">
+                                <span class="chip bg-color">SpringBoot</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/SpringBoot/" class="post-category">
+                                SpringBoot
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-10-20
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="1-SpringBoot解决跨域问题"><a href="#1-SpringBoot解决跨域问题" class="headerlink" title="1.SpringBoot解决跨域问题"></a>1.SpringBoot解决跨域问题</h3><pre class="line-numbers language-none"><code class="language-none">package com.kob.backend.config;
+import org.springframework.context.annotation.Configuration;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@Configuration
+public class CorsConfig implements Filter &#123;
+    @Override
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException &#123;
+        HttpServletResponse response &#x3D; (HttpServletResponse) res;
+        HttpServletRequest request &#x3D; (HttpServletRequest) req;
+
+        String origin &#x3D; request.getHeader(&quot;Origin&quot;);
+        if(origin!&#x3D;null) &#123;
+            response.setHeader(&quot;Access-Control-Allow-Origin&quot;, origin);
+        &#125;
+
+        String headers &#x3D; request.getHeader(&quot;Access-Control-Request-Headers&quot;);
+        if(headers!&#x3D;null) &#123;
+            response.setHeader(&quot;Access-Control-Allow-Headers&quot;, headers);
+            response.setHeader(&quot;Access-Control-Expose-Headers&quot;, headers);
+        &#125;
+
+        response.setHeader(&quot;Access-Control-Allow-Methods&quot;, &quot;*&quot;);
+        response.setHeader(&quot;Access-Control-Max-Age&quot;, &quot;3600&quot;);
+        response.setHeader(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;);
+
+        chain.doFilter(request, response);
+    &#125;
+
+    @Override
+    public void init(FilterConfig filterConfig) &#123;
+
+    &#125;
+
+    @Override
+    public void destroy() &#123;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-SpringBoot配置Spring-Security"><a href="#2-SpringBoot配置Spring-Security" class="headerlink" title="2.SpringBoot配置Spring Security"></a>2.SpringBoot配置Spring Security</h3><p>是用户认证操作，一种授权机制，目的是<strong>安全</strong>。</p>
+<h5 id="1-添加依赖："><a href="#1-添加依赖：" class="headerlink" title="(1)添加依赖："></a>(1)添加依赖：</h5><p>spring-boot-starter-security</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-security&lt;&#x2F;artifactId&gt;
+    &lt;version&gt;2.7.0&lt;&#x2F;version&gt;
+&lt;&#x2F;dependency&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>刷新之后显示登陆：</p>
+<p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302181731717.png" alt="image-20230218173026959"></p>
+<p>默认的叫 **Username **是 <strong>user</strong> ，密码自动生成。</p>
+<p><img src="https://zscblog.oss-cn-hangzhou.aliyuncs.com/img/202302181733708.png" alt="image-20230218173311657"></p>
+<p>(2)Spring Security使用密文添加用户</p>
+<pre class="line-numbers language-none"><code class="language-none">@GetMapping(&quot;&#x2F;user&#x2F;add&#x2F;&#123;userId&#125;&#x2F;&#123;username&#125;&#x2F;&#123;password&#125;&#x2F;&quot;)
+    public String addUser(
+            @PathVariable int userId,
+            @PathVariable String username,
+            @PathVariable String password) &#123;
+        PasswordEncoder passwordEncoder &#x3D; new BCryptPasswordEncoder();
+        String encodedPassword &#x3D; passwordEncoder.encode(password);
+        User user &#x3D; new User(userId, username, encodedPassword);
+        userMapper.insert(user);
+        return &quot;Add User Successfully&quot;;
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-SpringBoot实现JwtToken验证"><a href="#3-SpringBoot实现JwtToken验证" class="headerlink" title="3.SpringBoot实现JwtToken验证"></a>3.SpringBoot实现JwtToken验证</h3><p>(1)添加依赖:</p>
+<p>在 pom.xml 中添加下列依赖：</p>
+<ul>
+<li>jjwt-api</li>
+<li>jjwt-impl</li>
+<li>jjwt-jackson</li>
+</ul>
+<p>添加之后点击重新加载。</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;&#x2F;groupId&gt;
+    &lt;artifactId&gt;jjwt-api&lt;&#x2F;artifactId&gt;
+    &lt;version&gt;0.11.2&lt;&#x2F;version&gt;
+&lt;&#x2F;dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;&#x2F;groupId&gt;
+    &lt;artifactId&gt;jjwt-impl&lt;&#x2F;artifactId&gt;
+    &lt;version&gt;0.11.2&lt;&#x2F;version&gt;
+    &lt;scope&gt;runtime&lt;&#x2F;scope&gt;
+&lt;&#x2F;dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;&#x2F;groupId&gt;
+    &lt;artifactId&gt;jjwt-jackson&lt;&#x2F;artifactId&gt;
+    &lt;version&gt;0.11.2&lt;&#x2F;version&gt;
+    &lt;scope&gt;runtime&lt;&#x2F;scope&gt;
+&lt;&#x2F;dependency&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>(2) 编写、修改相关类</p>
+<ul>
+<li>实现 JwtUtil 类,在 backend 目录下创建软件包 utils 并创建 JwtUtil 类。<br>JwtUtil 类为jwt 工具类，用来创建、解析 jwt token。</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">package com.kob.backend.utils;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.stereotype.Component;
+
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.util.Base64;
+import java.util.Date;
+import java.util.UUID;
+
+@Component
+public class JwtUtil &#123;
+    public static final long JWT_TTL &#x3D; 60 * 60 * 1000L * 24 * 14;  &#x2F;&#x2F; 有效期14天
+    public static final String JWT_KEY &#x3D; &quot;SDFGjhdsfalshdfHFdsjkdsfds121232131afasdfac&quot;;
+
+    public static String getUUID() &#123;
+        return UUID.randomUUID().toString().replaceAll(&quot;-&quot;, &quot;&quot;);
+    &#125;
+
+    public static String createJWT(String subject) &#123;
+        JwtBuilder builder &#x3D; getJwtBuilder(subject, null, getUUID());
+        return builder.compact();
+    &#125;
+
+    private static JwtBuilder getJwtBuilder(String subject, Long ttlMillis, String uuid) &#123;
+        SignatureAlgorithm signatureAlgorithm &#x3D; SignatureAlgorithm.HS256;
+        SecretKey secretKey &#x3D; generalKey();
+        long nowMillis &#x3D; System.currentTimeMillis();
+        Date now &#x3D; new Date(nowMillis);
+        if (ttlMillis &#x3D;&#x3D; null) &#123;
+            ttlMillis &#x3D; JwtUtil.JWT_TTL;
+        &#125;
+
+        long expMillis &#x3D; nowMillis + ttlMillis;
+        Date expDate &#x3D; new Date(expMillis);
+        return Jwts.builder()
+                .setId(uuid)
+                .setSubject(subject)
+                .setIssuer(&quot;sg&quot;)
+                .setIssuedAt(now)
+                .signWith(signatureAlgorithm, secretKey)
+                .setExpiration(expDate);
+    &#125;
+
+    public static SecretKey generalKey() &#123;
+        byte[] encodeKey &#x3D; Base64.getDecoder().decode(JwtUtil.JWT_KEY);
+        return new SecretKeySpec(encodeKey, 0, encodeKey.length, &quot;HmacSHA256&quot;);
+    &#125;
+
+    public static Claims parseJWT(String jwt) throws Exception &#123;
+        SecretKey secretKey &#x3D; generalKey();
+        return Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build()
+                .parseClaimsJws(jwt)
+                .getBody();
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>实现 JwtAuthenticationTokenFilter 类</li>
+</ul>
+<p>在 backend 的 config 目录下创建 config 软件包，并创建 JwtAuthenticationTokenFilter 类。<br>实现 JwtAuthenticationTokenFilter 类，用来验证 jwt token ，如果验证成功，则将 User 信息注入上下文中。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>kob<span class="token punctuation">.</span>backend<span class="token punctuation">.</span>config<span class="token punctuation">.</span>filter</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>kob<span class="token punctuation">.</span>backend<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span></span><span class="token class-name">UserMapper</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>kob<span class="token punctuation">.</span>backend<span class="token punctuation">.</span>pojo<span class="token punctuation">.</span></span><span class="token class-name">User</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>kob<span class="token punctuation">.</span>backend<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl<span class="token punctuation">.</span>utils<span class="token punctuation">.</span></span><span class="token class-name">UserDetailsImpl</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>kob<span class="token punctuation">.</span>backend<span class="token punctuation">.</span>utils<span class="token punctuation">.</span></span><span class="token class-name">JwtUtil</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>sun<span class="token punctuation">.</span>istack<span class="token punctuation">.</span>internal<span class="token punctuation">.</span></span><span class="token class-name">NotNull</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">io<span class="token punctuation">.</span>jsonwebtoken<span class="token punctuation">.</span></span><span class="token class-name">Claims</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>authentication<span class="token punctuation">.</span></span><span class="token class-name">UsernamePasswordAuthenticationToken</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>core<span class="token punctuation">.</span>context<span class="token punctuation">.</span></span><span class="token class-name">SecurityContextHolder</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Component</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">StringUtils</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>filter<span class="token punctuation">.</span></span><span class="token class-name">OncePerRequestFilter</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">FilterChain</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">ServletException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletRequest</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletResponse</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JwtAuthenticationTokenFilter</span> <span class="token keyword">extends</span> <span class="token class-name">OncePerRequestFilter</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">UserMapper</span> userMapper<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doFilterInternal</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token annotation punctuation">@NotNull</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">,</span> <span class="token annotation punctuation">@NotNull</span> <span class="token class-name">FilterChain</span> filterChain<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> token <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"Authorization"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">hasText</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span>token<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"Bearer "</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        token <span class="token operator">=</span> token<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">String</span> userid<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Claims</span> claims <span class="token operator">=</span> <span class="token class-name">JwtUtil</span><span class="token punctuation">.</span><span class="token function">parseJWT</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            userid <span class="token operator">=</span> claims<span class="token punctuation">.</span><span class="token function">getSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token class-name">User</span> user <span class="token operator">=</span> userMapper<span class="token punctuation">.</span><span class="token function">selectById</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>userid<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>user <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"用户名未登录"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token class-name">UserDetailsImpl</span> loginUser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UserDetailsImpl</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">UsernamePasswordAuthenticationToken</span> authenticationToken <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordAuthenticationToken</span><span class="token punctuation">(</span>loginUser<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">SecurityContextHolder</span><span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setAuthentication</span><span class="token punctuation">(</span>authenticationToken<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>配置config.SecurityConfig类</p>
+<p>放行登录、注册等接口。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>kob<span class="token punctuation">.</span>backend<span class="token punctuation">.</span>config</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>kob<span class="token punctuation">.</span>backend<span class="token punctuation">.</span>config<span class="token punctuation">.</span>filter<span class="token punctuation">.</span></span><span class="token class-name">JwtAuthenticationTokenFilter</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Bean</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpMethod</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>authentication<span class="token punctuation">.</span></span><span class="token class-name">AuthenticationManager</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>web<span class="token punctuation">.</span>builders<span class="token punctuation">.</span></span><span class="token class-name">HttpSecurity</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>web<span class="token punctuation">.</span>configuration<span class="token punctuation">.</span></span><span class="token class-name">EnableWebSecurity</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>web<span class="token punctuation">.</span>configuration<span class="token punctuation">.</span></span><span class="token class-name">WebSecurityConfigurerAdapter</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>config<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">SessionCreationPolicy</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>crypto<span class="token punctuation">.</span>bcrypt<span class="token punctuation">.</span></span><span class="token class-name">BCryptPasswordEncoder</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>crypto<span class="token punctuation">.</span>password<span class="token punctuation">.</span></span><span class="token class-name">PasswordEncoder</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>web<span class="token punctuation">.</span>authentication<span class="token punctuation">.</span></span><span class="token class-name">UsernamePasswordAuthenticationFilter</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@EnableWebSecurity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SecurityConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">JwtAuthenticationTokenFilter</span> jwtAuthenticationTokenFilter<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">PasswordEncoder</span> <span class="token function">passwordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">BCryptPasswordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">AuthenticationManager</span> <span class="token function">authenticationManagerBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">authenticationManagerBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">HttpSecurity</span> http<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        http<span class="token punctuation">.</span><span class="token function">csrf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">disable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">sessionManagement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sessionCreationPolicy</span><span class="token punctuation">(</span><span class="token class-name">SessionCreationPolicy</span><span class="token punctuation">.</span><span class="token constant">STATELESS</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">authorizeRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token string">"/user/account/token/"</span><span class="token punctuation">,</span> <span class="token string">"/user/account/register/"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token class-name">HttpMethod</span><span class="token punctuation">.</span><span class="token constant">OPTIONS</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">anyRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        http<span class="token punctuation">.</span><span class="token function">addFilterBefore</span><span class="token punctuation">(</span>jwtAuthenticationTokenFilter<span class="token punctuation">,</span> <span class="token class-name">UsernamePasswordAuthenticationFilter</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-Springboot实现匹配系统"><a href="#4-Springboot实现匹配系统" class="headerlink" title="4.Springboot实现匹配系统"></a>4.Springboot实现匹配系统</h3><h5 id="1-匹配系统的流程"><a href="#1-匹配系统的流程" class="headerlink" title="(1)匹配系统的流程"></a>(1)匹配系统的流程</h5><p>要实现匹配系统起码要有两个客户端client1，client2,当客户端打开对战页面并开始匹配时，会给后端服务器server发送一个请求，而匹配是一个异步的过程，什么时候返回结果是不可预知的，所以我们要写一个专门的匹配系统，维护一堆用户的集合，当用户发起匹配请求时，请求会先传给后端服务器，然后再传给匹配系统处理，匹配系统会不断地在用户里去筛选，将rating较为相近的的用户匹配到一组。当成功匹配后，匹配系统就会返回结果给springboot的后端服务器，继而返回给客户端即前端。然后我们就能在前端看到匹配到的对手是谁啦。</p>
+<h5 id="2-websocket协议"><a href="#2-websocket协议" class="headerlink" title="(2)websocket协议"></a>(2)websocket协议</h5><p>因为匹配是异步的过程，且需要前后端双向交互，而普通的http协议是单向的，一问一答式的，属于立即返回结果的类型，不能满足我们的异步需求，因此我们需要一个新的协议websocket：不仅客户端可以主动向服务器端发送请求，服务器端也可以主动向客户端发送请求，是双向双通的，且支持异步。简单来说就是客户端向后端发送请求，经过不确定的时间，会返回一次或多次结果给客户端。<br>基本原理： 每一个ws连接都会在后端维护起来，客户端连接服务器的时候会创建一个WebSocketServer类。每创建一个链接就是new一个WebSocketServer类的实例，所有与链接相关的信息，都会存在这个类里面。</p>
+<h5 id="3-前面逻辑的优化"><a href="#3-前面逻辑的优化" class="headerlink" title="(3)前面逻辑的优化"></a>(3)前面逻辑的优化</h5><p>由于每次刷新都会刷新不同的地图，为了公平起见，应该把地图的生成放在服务器端，然后返回结果给前端。<br>为了防止作弊，游戏的一系列操作、判断逻辑都应该放在服务器端，前端只是呈现动画。<br>我们可以从客户端获取输入，也可以通过微服务从代码端获得输入。<br>简单的流程如下： Game -&gt; Create map -&gt; 返回给客户端 -&gt; 客户端等待匹配waiting (sleep) -&gt; 匹配成功则进行一系列游戏逻辑</p>
+<p>用线程安全的set定义匹配池：</p>
+<pre class="line-numbers language-none"><code class="language-none">final private static CopyOnWriteArraySet&lt;Users&gt; matchPoll &#x3D; new CopyOnWriteArraySet&lt;&gt;();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>开始匹配时，将用户放进拼配池里，取消匹配时将用户移除匹配池,匹配过程在目前调试阶段可以简单地两两匹配</p>
+<h5 id="解决同步问题"><a href="#解决同步问题" class="headerlink" title="解决同步问题"></a>解决同步问题</h5><p>前文也提到过，生成地图，游戏逻辑等与游戏相关的操作都应该放在服务端，不然的话客户每次刷新得到的地图都不一样，游戏的公平性也不能得到保证。因此，我们要将之前在前端写的游戏逻辑全部转移到后端（云端），前端只负责动画的演示即可。</p>
+<h5 id="实现游戏同步"><a href="#实现游戏同步" class="headerlink" title="实现游戏同步"></a>实现游戏同步</h5><p>实际上我们在游戏对战的时候存在三个棋盘，两个是对战双方客户端里存在的棋盘，一个是云端存在的棋盘，我们要求实现云端与两个客户端之间的同步。</p>
+<p>实现方法:</p>
+<p>游戏总流程示意图:</p>
+<pre class="line-numbers language-none"><code class="language-none">Matching System &lt;---------- WS服务器 &lt;--------------Client1 、client2
+·····································|
+·····································|
+·····································|(维护)
+·····································|
+···································Game
+·····································|
+·································CreateMap
+·····································|
+······（有时间限制）·············Next Step(等待玩家或bot输入) &lt;------Client1 (Client2…) 或 bot
+·····································|
+································Judge System判断两名玩家下一步走法是否合法
+·····································|
+··································Result （Nest Step超时的话直接返回Result）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="引入线程"><a href="#引入线程" class="headerlink" title="引入线程:"></a>引入线程:</h5><p>为了优化游戏体验度，我们的Game不能作为单线程去处理，每一个Game要另起一个新线程来做。<br>从Next Step开始的操作可以当成一个线程，获取用户操作可以当成另一个线程。<br>这里我们涉及到两个线程之间进行通信的问题，以及线程开锁解锁的问题。</p>
+<p>每一局单独的游戏都会new 一个新的Game类，都是一个单独的线程</p>
+<h5 id="将类改成多线程"><a href="#将类改成多线程" class="headerlink" title="将类改成多线程"></a>将类改成多线程</h5><p>继承一个 Thread类，并且ALT + INS重写run()方法<br>我们开始进行线程的执行的时候，线程的入口函数就是这个run()函数consumer&#x2F;utils&#x2F;Game.java.</p>
+<p>将用户的操作nextStep存起来,方便外面的线程调用,<br>在Game线程里面会读取两个玩家的操作nextStepA&#x2F;B的值，<br>在外面Client线程里面则会修改这两个变量的值，<br>这里涉及到了线程的读写同步问题！<br>需要加上进程同步锁<br>一般来说就是先上锁再读写，后解锁<br>try{} finally {lock.unlock();}可以保证报异常的情况下也可以解锁而不会产生死锁<br>简单总结一下就是：先上锁再操作，具体可以参考OS相关的内容o(╯□╰)o<br>所以以下涉及到nextStepA 和 nextStepB 的，不管是读还是写，只要出现了的话就要考虑到上锁和解锁方面的问题了，consumer&#x2F;utils&#x2F;Game.java</p>
+<h5 id="实现接受客户端玩家输入的操作"><a href="#实现接受客户端玩家输入的操作" class="headerlink" title="实现接受客户端玩家输入的操作"></a>实现接受客户端玩家输入的操作</h5><p>后端接受前端两名玩家输入的操作后，才开始进行下一步操作。为了游戏的流畅性，提高玩家的游戏体验感，我们规定，如果超过一定的时间后，另一名玩家仍然未能给予操作，我们就判定这个玩家lose了。</p>
+<p>可以用sleep函数来实现等待效果,定最长等待时间为5s。<br>这里可以按照自己的情况合理地规定等待时间，可以通过增加循环次数，减少sleep时间优化玩家操作手感，以牺牲服务器的计算量换取玩家的操作的流畅性。<br>tips：要在循环里面上锁，在外面上锁会死锁！<br>还需要注意的是，我们前端设置1s走5步，200ms走一步，所以为了操作顺利，不会因为操作太快而读入多个操作，我们每一次读取前都要先sleep 200ms，规范一下</p>
+<h4 id="实现Try-again逻辑"><a href="#实现Try-again逻辑" class="headerlink" title="实现Try again逻辑"></a>实现Try again逻辑</h4><p>接下来我们把Try again按钮实现一下，玩家可以在游戏结束后点击这个按钮再来一局游戏。<br>实现逻辑也比较简单，每次点击按钮，把游戏页面展示状态status从playing 改成 matching即可,这样整个游戏页面就返回到匹配页面了。<br>不要忘记了要updateLoser改成none，即重新开始游戏前还没有loser<br>还有把对手头像updateOpponent成默认的灰头像。</p>
+<h4 id="设计录像数据库"><a href="#设计录像数据库" class="headerlink" title="设计录像数据库"></a>设计录像数据库</h4><p>为了后期存储对战录像，我们需要先设计一个存储对象的数据库。<br>数据库内容包括</p>
+<pre class="line-numbers language-none"><code class="language-none">Id          record的id 自增 主键
+a_id        用户a的id
+a_sx        用户a在地图中的横坐标
+a_sy        用户a在地图中的纵坐标
+b_id        用户b的id  
+b_sx        用户b在地图中的横坐标 
+b_sy        用户b在地图中的纵坐标
+a_steps     用户a走的步数
+b_steps     用户a走的步数
+Map         两个用户对战的地图信息
+Loser       记录失败方的名字
+Createtime  创建时间<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>建立相应的pojo,mapper层。</p>
+<p>准备工作完成后，我们就可以开始写将数据写入数据库的逻辑了</p>
+<p>consumer&#x2F;utils&#x2F;Game.java</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"> <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">getMapString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">StringBuilder</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rows<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> cols<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>mark<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> res<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">else</span> res<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">saveRecord</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Record</span> record <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Record</span><span class="token punctuation">(</span>
+                <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">//因为之前创建数据库时是把id定义为自动递增，所以这里不用手动传id</span>
+                playerA<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                playerA<span class="token punctuation">.</span><span class="token function">getSx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                playerA<span class="token punctuation">.</span><span class="token function">getSy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                playerB<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                playerB<span class="token punctuation">.</span><span class="token function">getSx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                playerB<span class="token punctuation">.</span><span class="token function">getSy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                playerA<span class="token punctuation">.</span><span class="token function">getStepsString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                playerB<span class="token punctuation">.</span><span class="token function">getStepsString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token function">getMapString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                loser<span class="token punctuation">,</span>
+                <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">WebSocketServer</span><span class="token punctuation">.</span>recordMapper<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>record<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//ws里数据库的注入</span>
+
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>至此，就完成了联机匹配和存储游戏对局数据的大部分内容。</p>
+<h4 id="JAVA注解大概分为两类"><a href="#JAVA注解大概分为两类" class="headerlink" title="JAVA注解大概分为两类"></a>JAVA注解大概分为两类</h4><p>(1)一类是使用Bean，即是把已经在xml文件中配置好的Bean拿来用，完成属性、方法的组装；比如@Autowired , @Resource，可以通过byTYPE（@Autowired）、byNAME（@Resource）的方式获取Bean；</p>
+<p>(2)一类是注册Bean,@Component , @Repository , @ Controller , @Service , @Configration这些注解都是把你要实例化的对象转化成一个Bean，放在IoC容器中，等你要用的时候，它会和上面的@Autowired , @Resource配合到一起，把对象、属性、方法完美组装。</p>
+<p>@controller ：标注控制层，也可以理解为接收请求处理请求的类。<br>@service：标注服务层，也就是内部逻辑处理层。<br>@repository：标注数据访问层，也就是用于数据获取访问的类（组件）。<br>@component 其他不属于以上三类的类，但是会同样注入spring容器以被获取使用。它的作用就是实现bean的注入</p>
+<p>@AutoWired 就是在你声明了注册类后，可以用该注解注入进当前写的类中。<br>凡是子类及带属性、方法的类都注册Bean到Spring中，交给它管理；@Bean用在方法上，告诉Spring容器，你可以从下面这个方法中拿到一个Bean。调用的时候和@Component一样，用@Autowired 调用有@Bean注解的方法，多用于第三方类无法写@Component的情况。</p>
+<h4 id="微服务实现匹配系统"><a href="#微服务实现匹配系统" class="headerlink" title="微服务实现匹配系统"></a>微服务实现匹配系统</h4><p>根据上一part的设计逻辑，我们可以用微服务去代替之前调试用的匹配系统，使匹配系统功能更加完善。<br>微服务：是一个独立的程序，可以认为是另起了一个新的springboot。<br>我们把这个新的springboot叫做Matching System作为我们的匹配系统，与之对应的是Matching Server，即匹配的服务器后端。</p>
+<p>当我们之前的springboot也就是游戏对战的服务器后端backend Server获取了两个匹配的玩家信息后，会向Matching Server服务器后端发送一个http请求，而当Matching Server接收到了请求后，会开一个独立的线程Matching开始进行玩家匹配。<br>匹配逻辑也非常简单，即每隔1s会扫描当前已有的所有玩家，判断当前玩家的rating是否相近，能否匹配出来，若能匹配出来则将结果返回给backend Server(通过http返回)</p>
+<p>实现手法：Spring Cloud</p>
+<h4 id="创建backendcloud"><a href="#创建backendcloud" class="headerlink" title="创建backendcloud"></a>创建backendcloud</h4><p>我们项目的结构会出现变化，要先创建一个新的springboot项目backendcloud作为父项目，包含两个并列的子项目Matching System和backend。</p>
+<p>注意：backendcloud 创建时要引入Spring Web依赖，不然的话后面自己要在pom.xml里手动添加！</p>
+<p>因为父级项目是不用写逻辑的，可以把他的整个src文件删掉。</p>
+<p>配置pom.xml</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;packaging&gt;pom&lt;&#x2F;packaging&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>加上Spring Cloud依赖</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;dependency&gt;
+           &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;groupId&gt;
+           &lt;artifactId&gt;spring-cloud-dependencies&lt;&#x2F;artifactId&gt;
+           &lt;version&gt;2021.0.3&lt;&#x2F;version&gt;
+           &lt;type&gt;pom&lt;&#x2F;type&gt;
+           &lt;scope&gt;import&lt;&#x2F;scope&gt;
+       &lt;&#x2F;dependency&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在backendcloud项目文件夹下创建两个模块：MatchingSystem, backend,相当于两个并列的springboot项目。</p>
+<h4 id="Matching-System"><a href="#Matching-System" class="headerlink" title="Matching System"></a>Matching System</h4><p>配置pom.xml<br>将父项目里的spring web依赖转移到Matching System的pom.xml里</p>
+<p>配置端口<br>在resources文件夹里创建文件application.properties</p>
+<pre class="line-numbers language-none"><code class="language-none">server.port &#x3D; 3001<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>匹配服务的实现</p>
+<p>和之前写的业务逻辑一样，先写个匹配的服务接口MatchingService，然后在Impl里实现对应的接口<br>这里提供参考逻辑：matchingsystem\service\impl\MatchingServiceImpl.java</p>
+<pre class="line-numbers language-none"><code class="language-none">@Service
+
+public class MatchingServiceImpl implements MatchingService &#123;
+    @Override
+    public String addPlayer(Integer userId, Integer rating) &#123;
+        System.out.println(&quot;add player: &quot; + userId + &quot; &quot; + rating);
+        return &quot;add player successfully&quot;;
+    &#125;
+
+    @Override
+    public String removePlayer(Integer userId) &#123;
+        System.out.println(&quot;remove player: &quot; + userId);
+        return &quot;remove player successfully&quot;;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>实现匹配的Controller</p>
+<p>matchingsystem\controller\MatchingController.java</p>
+<pre class="line-numbers language-none"><code class="language-none">@RestController
+public class MatchingController &#123;
+    @Autowired
+    private MatchingService matchingService;
+
+    @PostMapping(&quot;&#x2F;player&#x2F;add&#x2F;&quot;)
+    public String addPlayer(@RequestParam MultiValueMap&lt;String, String&gt; data) &#123;
+        Integer userId &#x3D; Integer.parseInt(Objects.requireNonNull(data.getFirst(&quot;user_id&quot;)));
+        Integer rating &#x3D; Integer.parseInt(Objects.requireNonNull(data.getFirst(&quot;rating&quot;)));
+        return matchingService.addPlayer(userId, rating);
+    &#125;
+
+    @PostMapping(&quot;&#x2F;player&#x2F;remove&#x2F;&quot;)
+    public String removePlayer(@RequestParam MultiValueMap&lt;String, String&gt; data) &#123;
+        Integer userId &#x3D; Integer.parseInt(Objects.requireNonNull(data.getFirst(&quot;user_id&quot;)));
+        return matchingService.removePlayer(userId);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意：这里用的是MultiValueMap，即一个键值key可以对应多个value值，一个key对应一个列表list<br>定义:MultiValueMap&lt;String, String&gt; valueMap &#x3D; new LinkedMultiValueMap&lt;&gt;();<br>这里如果用@Requestparam + map接收所有参数的话会不严谨，因为若url返回的是多个参数的话，map只能接受一个参数，即一个value，有时候匹配的会返回多个rating相近的人的结果，这时候如果用map接收可能会产生一些蜜汁错误，因此用MultiValueMap的话可以省事点。。。<br>用到的api：<br>MultiValueMap.getFirst(key)返回对应key的value列表的第一个值。</p>
+<p>设置网关<br>为了防止用户破坏系统，我们应该设置一定的访问权限，让自己的系统更加安全</p>
+<p>这里可以仿照之前写过的SecurityConfig</p>
+<p>添加spring security依赖</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-security&lt;&#x2F;artifactId&gt;
+        &lt;version&gt;2.7.1&lt;&#x2F;version&gt;
+    &lt;&#x2F;dependency&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>配置SecurityConfig</p>
+<pre class="line-numbers language-none"><code class="language-none">@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter &#123;
+  ...
+                .antMatchers(&quot;&#x2F;player&#x2F;add&#x2F;&quot;,&quot;&#x2F;player&#x2F;remove&#x2F;&quot;).hasIpAddress(&quot;127.0.0.1&quot;) &#x2F;&#x2F;只允许本地访问
+  ...
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>设置Matching System项目的启动入口</p>
+<pre class="line-numbers language-none"><code class="language-none">import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+
+public class MatchingSystemApplication &#123;
+    public static void main(String[] args)&#123;
+        SpringApplication.run(MatchingSystemApplication.class,args);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="实现收到请求后的匹配具体逻辑"><a href="#实现收到请求后的匹配具体逻辑" class="headerlink" title="实现收到请求后的匹配具体逻辑"></a>实现收到请求后的匹配具体逻辑</h5><p>思路：把所有当前匹配的用户放在一个数组(matchinPool)里，每隔1s扫描一遍数组，把rating较接近的两名用户匹配在一起，随着时间的推移，两名用户允许的rating差可以不断扩大，保证了所有用户都可以匹配在一起。</p>
+<p>在Impl文件夹里新建一个utils工具包，编写MatchingPool.java和Player.java类（对应于上面的数组和用户信息）</p>
+<p>MatchingPool.java是一个多线程的类，要继承自Thread类</p>
+<p>在匹配服务里把实现添加与删除用户的逻辑</p>
+<ul>
+<li><p>匹配逻辑：搞个无限循环，周期性执行，每次sleep(1000),若没有匹配的人选，则等待时间++,若有匹配的人选则进行匹配。匹配的rating差会随着等待时间而增加（rating差每等待1s则*10）。</p>
+</li>
+<li><p>匹配原则：为了提高用户体验，等待时间越长的玩家越优先匹配。即列表players从前往后匹配。用一个标记数组标记有没有匹配过即可，checkMatched()是判断这两个玩家是否能成功匹配在一起。sendResult()是发送匹配结果。</p>
+</li>
+</ul>
+<p>TIPS：这里标注一下我初学遇到的坑点，ArrayList循环删除某个元素不能直接循环一遍然后remove，因为每次循环的时候，ArrayList的size()都会改变，所以循环是有问题的，这样只能保证你删掉一个符合要求的元素，而不能实现循环删掉所有符合要求的元素，因此我们要从另一个角度思考问题，用一个新的ArrayList存放每一个不需要删除的元素，然后原来的引用直接指向新的List即可。<br>这里也提供另一种实现循环remove的方法：用迭代器Iterator</p>
+<pre class="line-numbers language-none"><code class="language-none">Iterator&lt;Player&gt; iterator &#x3D; players.iterator();
+       while (iterator.hasNext()) &#123;
+           if (要删除的条件) iterator.remove();
+       &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>但是我们上面的删除还涉及到used数组，所以迭代器删除法并不适合，所以要用新列表赋值法！！</p>
+<p>对于checkMatch判断两个玩家是否能成功匹配，还要考虑其等待时间，要判断分差能不能小于等于a与b的等待时间的最小值*10即 ratingDelta&lt;&#x3D;min(waitingTimea,waitingTimeb)∗10</p>
+<pre class="line-numbers language-none"><code class="language-none">private boolean checkMatched(Player a, Player b) &#123; &#x2F;&#x2F;判断两名玩家是否匹配
+      int ratingDelta &#x3D; Math.abs(a.getRating() - b.getRating());
+      int waitingTime &#x3D; Math.min(a.getWaitingTime(), b.getWaitingTime());
+      return ratingDelta &lt;&#x3D; waitingTime * 10;
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接收匹配成功的信息</p>
+<p>我们要在backend端再写一个接受MatchingSystem端匹配成功的信息的Service和相应的Controller</p>
+<h5 id="Matching-System调用ws端的接口"><a href="#Matching-System调用ws端的接口" class="headerlink" title="Matching System调用ws端的接口"></a>Matching System调用ws端的接口</h5><p>为了实现springboot之间的通信，我们要像前文一样使用一个Bean类，方法为调用RestTemplate类。即上文的RestTemplateConfig.java</p>
+<p>为了能让Spring里面的Bean注入进来，需要在MatchingPool.java里加上@Component</p>
+<h5 id="对于匹配时断开连接的处理"><a href="#对于匹配时断开连接的处理" class="headerlink" title="对于匹配时断开连接的处理"></a>对于匹配时断开连接的处理</h5><p>如果一名玩家开始匹配后断开了连接，按照我们上面的做法，断开连接后的玩家会一直处于匹配池中，这样我们的Matching System后端会报错，因为我们凡是要获取玩家信息的时候，该玩家已经掉线了，不存在了，会get一个空玩家信息，空信息是没有属性的，而我们后面会调用玩家属性，这是不合理的，肯定会报错的，我们需要修改这个bug：在每次get之前都要判断一下玩家信息是否为空，若不为空再进行下面的逻辑。</p>
+<h3 id="5-Springboot实现简易AI对战"><a href="#5-Springboot实现简易AI对战" class="headerlink" title="5.Springboot实现简易AI对战"></a>5.Springboot实现简易AI对战</h3><h4 id="Springboot实现类似OJ的代码执行功能"><a href="#Springboot实现类似OJ的代码执行功能" class="headerlink" title="Springboot实现类似OJ的代码执行功能"></a>Springboot实现类似OJ的代码执行功能</h4><p>由于我们这个项目是可以通过执行bot代码来实现AI的操作的，因此我们要设计一个新的微服务Bot Running System专门去跑我们的代码，类似于OJ，但又并不是传统意义上的oj评测，而是通过代码的运行来完成AI的操作。</p>
+<p>同样的，Bot Running System也会有一个独立的线程Bot Pool去存放我们的每一个bot代码且将其执行，并将代码执行结果返回给步骤判断阶段，也就是ws端的Next Step阶段。</p>
+<p>以上就是我们代码执行微服务的主要逻辑思路。</p>
+<h4 id="创建后端BotRunningSystem"><a href="#创建后端BotRunningSystem" class="headerlink" title="创建后端BotRunningSystem"></a>创建后端BotRunningSystem</h4><ul>
+<li>与前面类似，在根目录backendcloud下创建一个新模块BotRunningSystem</li>
+<li>将模块MatchingSystem的依赖都复制到BotRunningSystem里</li>
+<li>添加新依赖 joor-java-8 ：可以在Java中动态编译Java代码</li>
+<li>未来如果想要执行其他语言的代码，可以在云端创建一个有内存上限的docker，在docker里面执行代码</li>
+<li>给该springboot项目创建端口3002(server.port&#x3D;3002) \resources\application.properties</li>
+</ul>
+<p>把Main文件重命名为常见的BotRunningSystemApplication作为该springboot的入口<br>\botrunningsystem\BotRunningSystemApplication</p>
+<pre class="line-numbers language-none"><code class="language-none">@SpringBootApplication
+
+public class BotRunningSystemApplication &#123;
+    public static void main(String[] args) &#123;
+        SpringApplication.run(BotRunningSystemApplication.class, args);
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="编写BotRunningSystem的api接口"><a href="#编写BotRunningSystem的api接口" class="headerlink" title="编写BotRunningSystem的api接口"></a>编写BotRunningSystem的api接口</h4><p>与前面所有的springboot项目类似，我们要实现接口就得先创建好controller层和service层，在service层里新建接口，在impl里实现相应的接口，最后controller层定义相对应的url调用对应的服务。<br>service层</p>
+<pre class="line-numbers language-none"><code class="language-none">package com.popgame.botrunningsystem.service;
+
+public interface BotRunningService &#123;
+    String addBot(Integer userId, String botCode, String input);
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>实现该接口</p>
+<pre class="line-numbers language-none"><code class="language-none">@Service
+
+public class BotRunningServiceImpl implements BotRunningService &#123;
+    @Override
+    public String addBot(Integer userId, String botCode, String input) &#123;
+        System.out.println(&quot;add bot: &quot; + userId + &quot; &quot; + botCode + &quot; &quot; + input);
+        return &quot;add bot successfully&quot;;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>编写Controller层,BotRunningController.java</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>popgame<span class="token punctuation">.</span>botrunningsystem<span class="token punctuation">.</span>controller</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>popgame<span class="token punctuation">.</span>botrunningsystem<span class="token punctuation">.</span>service<span class="token punctuation">.</span></span><span class="token class-name">BotRunningService</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">MultiValueMap</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">PostMapping</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RequestParam</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RestController</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Objects</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@RestController</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BotRunningController</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">BotRunningService</span> botRunningService<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/bot/add/"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">addBot</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span> <span class="token class-name">MultiValueMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> data<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Integer</span> userId <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token class-name">Objects</span><span class="token punctuation">.</span><span class="token function">requireNonNull</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">getFirst</span><span class="token punctuation">(</span><span class="token string">"user_id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> botCode <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">getFirst</span><span class="token punctuation">(</span><span class="token string">"bot_code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> input <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">getFirst</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> botRunningService<span class="token punctuation">.</span><span class="token function">addBot</span><span class="token punctuation">(</span>userId<span class="token punctuation">,</span>botCode<span class="token punctuation">,</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="给该url添加网关"><a href="#给该url添加网关" class="headerlink" title="给该url添加网关"></a>给该url添加网关</h5><p>与上一章写的config目录下的RestTemplateConfig.java与SecurityConfig.java 类似，只需要更改url即可，这里就不再赘述了。</p>
+<p>如上，我们的BotRunningSystem后端框架就搭建完了，还需要更改前端让用户可以选择用bot对战还是人工对战</p>
+<h5 id="工程课-SpringBoot-7-1-Springboot实现简易ai对战-https-www-acwing-com-solution-content-133480"><a href="#工程课-SpringBoot-7-1-Springboot实现简易ai对战-https-www-acwing-com-solution-content-133480" class="headerlink" title="工程课 SpringBoot-7.1. Springboot实现简易ai对战(https://www.acwing.com/solution/content/133480/)"></a>工程课 SpringBoot-7.1. Springboot实现简易ai对战(<a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/133480/">https://www.acwing.com/solution/content/133480/</a>)</h5><h3 id="6-Springboot创建排行榜和录像回放"><a href="#6-Springboot创建排行榜和录像回放" class="headerlink" title="6.Springboot创建排行榜和录像回放"></a>6.Springboot创建排行榜和录像回放</h3><p>我采用了Elo Rating System来作为我的rating变化机制</p>
+<p>Elo Rating System是由匈牙利裔美国物理学家Arpad Elo创建的一个衡量各类对弈活动水平的评价方法，是当今对弈水平评估的公认的权威方法。被广泛用于国际象棋、围棋、足球、篮球等运动。网络游戏英雄联盟、魔兽世界内的竞技对战系统也采用此分级制度。</p>
+<p>总结：</p>
+<p>从Elo的工作模式中我们可以得出以下几点：</p>
+<p>Elo会给出玩家一场对局的获胜概率。Elo积分相差越大，积分高的一方获胜概率就越大；<br>每一场对局后，对阵双方都会进行一部分积分交换，胜者得分，败者失分；<br>如果两名玩家的积分相差很大，代表高分方获胜的概率极大，因此即便赢了也涨不了多少分，败方也掉不了多少分。但倘若被低分方爆出冷门，那高分方将失去大量分数。</p>
+<p>实现对局列表页面（<a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/134342/%EF%BC%89">https://www.acwing.com/solution/content/134342/）</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">zhang-shicong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2023/10/20/SpringBoot/">http://example.com/2023/10/20/SpringBoot/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">zhang-shicong</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/SpringBoot/">
+                                    <span class="chip bg-color">SpringBoot</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/10/20/SpringBoot%E9%A1%B9%E7%9B%AE%E4%B8%8A%E7%BA%BF/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="SpringBoot项目上线">
+                        
+                        <span class="card-title">SpringBoot项目上线</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringBoot/" class="post-category">
+                                    SpringBoot
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SpringBoot/">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/10/20/solidworks%E5%88%A0%E9%99%A4/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="solidworks删除">
+                        
+                        <span class="card-title">solidworks删除</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/solidworks/" class="post-category">
+                                    solidworks
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/solidworks/">
+                        <span class="chip bg-color">solidworks</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">zhang-shicong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
