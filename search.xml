@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>2023.9.23 网易笔试</title>
+      <link href="/2023/10/20/2023.9.23-%E7%BD%91%E6%98%93%E7%AC%94%E8%AF%95/"/>
+      <url>/2023/10/20/2023.9.23-%E7%BD%91%E6%98%93%E7%AC%94%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<ol><li></li></ol><pre class="line-numbers language-none"><code class="language-none">小红有一个长度为n的数组，数组下标为0到n-1每次可以交换下标为i和（i+2）%n的数，请问小红能否通过有限次交换使得数组变成一个单调不减的数组。输入描述:第一行一个整数t，表示数据组数接下来t组数据，每组数据第一行一个整数n，表示数组长度每组数据第二行几个整数ai，表示数组的值1≤t&lt;101≤n≤10^51≤ai≤10^9输出描述:对于每组数据，如果能够通过有限次交换使得数组变成一个单调不减的数组，输出“YES&quot;，否则输出“NO&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ol start="2"><li></li></ol><pre class="line-numbers language-none"><code class="language-none">小红认为两个字符串相似，需要这两个字符串的每个字母的个数都相等如&quot;abcbd&quot;和&quot;dbcba&quot;相似，&quot;abcd&quot;和&quot;abcd”相似而&quot;abb和&quot;aab&quot;不相似，&quot;ac”和&quot;cca&quot;不相似现在小红有几个字符串，她想知道有多少对字符串是相似的？:输入描述:输入一个整数n接下来n行，每行输入一个仅包含小写字母的字符串S1&lt;n&lt;10^51≤len(s)≤10输出描述:输出一个整数。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ol start="3"><li></li></ol><pre class="line-numbers language-none"><code class="language-none">给定由n个元素组成的数组，求所有子序列的平均数之和。答案请对10^9十7取模。子序列:原数组中选择部分元素保持原数组的顺序形成的新数组。例如[1,2.3.4,5]的子序列有[1,2,5],[2,4]等，但[2,2]、[1,3,2]则不是它的子序列。输入描述第一行输入一个正整数n，代表数组的元素个数第二行输入几个正整数ai，用来表示数组。1≤n≤10^51&lt;&#x3D;ai&lt;&#x3D;10^9输出描述所有子序列的平均数之和对10^9十7取模的值。可以证明，最终的答案一定是一个有理数，a&#x2F;b对P取模的意义是在[0,p-1]区间找到一个满足x*b % p&#x3D;a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ol start="4"><li></li></ol><pre class="line-numbers language-none"><code class="language-none">小红拿到了一棵树，她有q次询问，每次会选出一个点集，小红希望你使用尽可能少的简单路径覆盖点集中的所有节点。你能帮帮她吗？输入描述第一行输入两个正整数n和q，代表树的节点数量、小红的询问次数。接下来的n-1行，每行输入两个正整数u和v，代表节点u和节点v有一条边连接接下来的2*q行，每两行代表一次询问每次询问的第一行为一个正整数m，代表点集的大小：第二行为m个正整数ai代表点集中的节点编号输出描述输出q行每行输出一个正整数，代表每次询问覆盖点集中所有点的最少路径数量<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网易笔试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网易笔试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2023.9.16 58同城笔试</title>
       <link href="/2023/09/16/2023.9.16-58%E5%90%8C%E5%9F%8E%E7%AC%94%E8%AF%95/"/>
       <url>/2023/09/16/2023.9.16-58%E5%90%8C%E5%9F%8E%E7%AC%94%E8%AF%95/</url>
