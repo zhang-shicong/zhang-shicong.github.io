@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>YOLOV8环境搭建</title>
+      <link href="/2023/11/13/YOLOV8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+      <url>/2023/11/13/YOLOV8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<p>我的安装方法，我是win系统<br>安装Anacoda</p><p><a href="https://www.anaconda.com/download-success">https://www.anaconda.com/download-success</a></p><p>进入命令行，进入python虚拟环境 ， </p><pre class="line-numbers language-none"><code class="language-none">conda install pytorch torchvision torchaudio pytorch-cuda&#x3D;11.8 -c pytorch -c nvidia  （当时版本）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">pip install ultralytics<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>环境安装完成。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> YOLOV8环境搭建 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> YOLOV8环境搭建 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>匹配系统和bot运行系统</title>
       <link href="/2023/10/20/%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E7%AC%94%E8%AE%B0/%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F/"/>
       <url>/2023/10/20/%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E7%AC%94%E8%AE%B0/%E5%8C%B9%E9%85%8D%E7%B3%BB%E7%BB%9F/</url>

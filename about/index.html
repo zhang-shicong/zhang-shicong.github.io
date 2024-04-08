@@ -107,12 +107,53 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/archives" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
+
       
       <i class="fas fa-archive" style="zoom: 0.6;"></i>
       
       <span>归档</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-hourglass-half" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>时轴</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tag" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/pdf">
+          
+          <i class="fas fa-file-pdf" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>PDF</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -222,12 +263,56 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/archives" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-archive"></i>
+				<i class="fa-fw fas fa-archive"></i>
 			
 			归档
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-hourglass-half" style="position: absolute;left:50px" ></i>
+			      
+		          <span>时轴</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tag" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/pdf " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-file-pdf" style="position: absolute;left:50px" ></i>
+			      
+		          <span>PDF</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -414,21 +499,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">195</a></span>
+    <span class="count"><a href="/">196</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">40</a></span>
+    <span class="count"><a href="/categories">41</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">69</a></span>
+    <span class="count"><a href="/tags">70</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -444,21 +529,21 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">195</a></span>
+    <span class="count"><a href="/">196</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">40</a></span>
+    <span class="count"><a href="/categories">41</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">69</a></span>
+    <span class="count"><a href="/tags">70</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -592,7 +677,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10"]
+            data: ["2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04"]
         },
         yAxis: {
             type: 'value',
@@ -602,7 +687,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,195],
+                data: [0,0,0,0,0,0,195,1,0,0,0,0,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -644,7 +729,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"java八股文","value":1},{"name":"58同城笔试","value":1},{"name":"京东笔试","value":1},{"name":"网易笔试","value":1},{"name":"微众银行笔试","value":2},{"name":"广联达笔试","value":1},{"name":"实用网站","value":1},{"name":"JUC","value":3},{"name":"ChatGPT","value":5},{"name":"Docker","value":2},{"name":"Hexo博客","value":1},{"name":"JVM","value":2},{"name":"Hot100","value":12},{"name":"算法","value":69},{"name":"Linux","value":2},{"name":"docker","value":3},{"name":"MySQL","value":2},{"name":"Nginx","value":2},{"name":"nginx","value":1},{"name":"RabbitMQ","value":1},{"name":"Redis","value":5},{"name":"SpringBoot","value":4},{"name":"SpringCloud","value":4},{"name":"Spring高级","value":1},{"name":"hexo","value":3},{"name":"everything","value":1},{"name":"hutool","value":1},{"name":"java","value":1},{"name":"matery","value":1},{"name":"solidworks","value":1},{"name":"v2rayN","value":2},{"name":"Vue","value":2},{"name":"操作系统","value":1},{"name":"mysql","value":1},{"name":"无人直播","value":1},{"name":"爬虫","value":3},{"name":"wifi","value":1},{"name":"计算机网络","value":1},{"name":"设计模式","value":1},{"name":"服务器","value":1}],
+                data: [{"name":"java八股文","value":1},{"name":"58同城笔试","value":1},{"name":"京东笔试","value":1},{"name":"网易笔试","value":1},{"name":"微众银行笔试","value":2},{"name":"广联达笔试","value":1},{"name":"实用网站","value":1},{"name":"JUC","value":3},{"name":"ChatGPT","value":5},{"name":"Docker","value":2},{"name":"Hexo博客","value":1},{"name":"JVM","value":2},{"name":"Hot100","value":12},{"name":"算法","value":69},{"name":"Linux","value":2},{"name":"docker","value":3},{"name":"MySQL","value":2},{"name":"Nginx","value":2},{"name":"nginx","value":1},{"name":"RabbitMQ","value":1},{"name":"Redis","value":5},{"name":"SpringBoot","value":4},{"name":"SpringCloud","value":4},{"name":"Spring高级","value":1},{"name":"hexo","value":3},{"name":"everything","value":1},{"name":"hutool","value":1},{"name":"java","value":1},{"name":"matery","value":1},{"name":"solidworks","value":1},{"name":"v2rayN","value":2},{"name":"Vue","value":2},{"name":"操作系统","value":1},{"name":"mysql","value":1},{"name":"无人直播","value":1},{"name":"爬虫","value":3},{"name":"wifi","value":1},{"name":"计算机网络","value":1},{"name":"设计模式","value":1},{"name":"服务器","value":1},{"name":"YOLOV8环境搭建","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -1264,6 +1349,12 @@
             </a>
             
             
+            
+            <a href="/tags/YOLOV8%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+                <span class="chip center-align waves-effect waves-light chip-default">YOLOV8环境搭建</span>
+            </a>
+            
+            
         </div>
     </div>
     
@@ -1386,7 +1477,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2023</span>
+                <span id="year">2019-2024</span>
             
             <a href="/about" target="_blank">zhang-shicong</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
