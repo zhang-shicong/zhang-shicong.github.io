@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2024/04/18/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/"/>
+      <url>/2024/04/18/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<p>小程序运行教程</p><p>1.<a href="https://hx.dcloud.net.cn/Tutorial/install/windows">下载</a>HBuilder X</p><p>2.打开安装插件</p><ul><li><p>内置浏览器</p></li><li><p>scss</p></li></ul><p>3.用HBuilder X打开front，双击app.vue，然后点预览等配置好就可以</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2024/04/18/Windows%E5%85%B3%E9%97%AD%E6%8C%87%E5%AE%9A%E7%AB%AF%E5%8F%A3/"/>
+      <url>/2024/04/18/Windows%E5%85%B3%E9%97%AD%E6%8C%87%E5%AE%9A%E7%AB%AF%E5%8F%A3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Windows关闭指定端口"><a href="#Windows关闭指定端口" class="headerlink" title="Windows关闭指定端口"></a>Windows关闭指定端口</h1><h3 id="1-找出占用8080端口的进程"><a href="#1-找出占用8080端口的进程" class="headerlink" title="1. 找出占用8080端口的进程"></a>1. 找出占用8080端口的进程</h3><p>首先，打开命令提示符（CMD）或PowerShell，然后使用以下命令来查找占用指定端口（例如8080）的进程：</p><pre class="line-numbers language-none"><code class="language-none">netstat -aon | findstr :8080<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="2-确定进程"><a href="#2-确定进程" class="headerlink" title="2. 确定进程"></a>2. 确定进程</h3><p>输出将类似于：</p><pre class="line-numbers language-none"><code class="language-none">TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING       1234<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="3-终止进程"><a href="#3-终止进程" class="headerlink" title="3. 终止进程"></a>3. 终止进程</h3><p>一旦你有了进程ID，可以使用<code>taskkill</code>命令来结束它。在命令提示符或PowerShell中，输入以下命令：</p><pre class="line-numbers language-none"><code class="language-none">taskkill &#x2F;F &#x2F;PID 1234<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>pdf</title>
       <link href="/2024/04/09/pdf/"/>
       <url>/2024/04/09/pdf/</url>
