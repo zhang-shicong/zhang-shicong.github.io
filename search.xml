@@ -5,6 +5,19 @@
     
     <entry>
       <title></title>
+      <link href="/2024/06/01/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%90%AF%E5%8A%A8MYSQL/"/>
+      <url>/2024/06/01/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%90%AF%E5%8A%A8MYSQL/</url>
+      
+        <content type="html"><![CDATA[<h1 id="MYSQL启动失败"><a href="#MYSQL启动失败" class="headerlink" title="MYSQL启动失败"></a>MYSQL启动失败</h1><h2 id="启动前需要清除环境变量的数据库路径"><a href="#启动前需要清除环境变量的数据库路径" class="headerlink" title="启动前需要清除环境变量的数据库路径"></a>启动前需要清除环境变量的数据库路径</h2><h2 id="命令行启动MYSQL"><a href="#命令行启动MYSQL" class="headerlink" title="命令行启动MYSQL"></a>命令行启动MYSQL</h2><p><img src="C:\Users\24698\AppData\Roaming\Typora\typora-user-images\image-20240530171735198.png" alt="image-20240530171735198"></p><p>移除当前mysql</p><pre class="line-numbers language-none"><code class="language-none">mysql -remove mysql80<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>安装mysql</p><pre class="line-numbers language-none"><code class="language-none">mysql -install mysql80<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><a href="https://blog.csdn.net/weixin_47894267/article/details/129667227?ops_request_misc=&request_id=&biz_id=102&utm_term=windows%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8Bmysql%E5%AE%89%E8%A3%85%E7%9A%84%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%EF%BC%8C%E7%84%B6%E5%90%8E%E9%87%8D%E7%BD%AE&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-129667227.142%5Ev100%5Epc_search_result_base4&spm=1018.2226.3001.4187">初始化mysql并在控制台显示密码</a></p><pre class="line-numbers language-none"><code class="language-none">mysqld --initialize --console<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="E:\1国控数科\命令行启动MYSQL\image-20240530192847238.png" alt="image-20240530192847238"></p><p>重新使用</p><pre class="line-numbers language-none"><code class="language-none">net start mysql80<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
       <link href="/2024/04/18/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/"/>
       <url>/2024/04/18/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/</url>
       
