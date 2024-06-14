@@ -45,8 +45,6 @@
 
 
     
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
-    
 
 
 
@@ -506,10 +504,10 @@
                 </a>
                 
                 
-                <a href="/categories/java%E5%85%AB%E8%82%A1%E6%96%87/" title="java八股文: 1">
+                <a href="/categories/%E7%BD%91%E6%98%93%E7%AC%94%E8%AF%95/" title="网易笔试: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">java八股文
+                            style="background-color: #F5EEF8;">网易笔试
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -524,20 +522,20 @@
                 </a>
                 
                 
-                <a href="/categories/%E5%BE%AE%E4%BC%97%E9%93%B6%E8%A1%8C%E7%AC%94%E8%AF%95/" title="微众银行笔试: 2">
+                <a href="/categories/java%E5%85%AB%E8%82%A1%E6%96%87/" title="java八股文: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">微众银行笔试
-                        <span class="tag-length">2</span>
+                            style="background-color: #E8F8F5;">java八股文
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E7%BD%91%E6%98%93%E7%AC%94%E8%AF%95/" title="网易笔试: 1">
+                <a href="/categories/%E5%BE%AE%E4%BC%97%E9%93%B6%E8%A1%8C%E7%AC%94%E8%AF%95/" title="微众银行笔试: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">网易笔试
-                        <span class="tag-length">1</span>
+                            style="background-color: #FEF9E7;">微众银行笔试
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -740,15 +738,6 @@
                 </a>
                 
                 
-                <a href="/categories/hutool/" title="hutool: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9E79F;">hutool
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/java/" title="java: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -758,19 +747,19 @@
                 </a>
                 
                 
-                <a href="/categories/matery/" title="matery: 1">
+                <a href="/categories/hutool/" title="hutool: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">matery
+                            style="background-color: #F9E79F;">hutool
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/pdf/" title="pdf: 1">
+                <a href="/categories/matery/" title="matery: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">pdf
+                            style="background-color: #D7BDE2;">matery
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -794,6 +783,15 @@
                 </a>
                 
                 
+                <a href="/categories/pdf/" title="pdf: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">pdf
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Vue/" title="Vue: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -807,15 +805,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F8F9F9;">操作系统
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/mysql/" title="mysql: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8C471;">mysql
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -835,6 +824,15 @@
                              chip-default "
                             style="background-color: #D7BDE2;">爬虫
                         <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/mysql/" title="mysql: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8C471;">mysql
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -1190,6 +1188,94 @@ $(function () {
             $('body').hasClass('DarkMode') 
             ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
             : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
+n-icon').addClass("fa-sun").removeClass('fa-moon')),
             
             setTimeout(function () {
             $('.Cuteen_DarkSky').fadeOut(1e3, function () {
